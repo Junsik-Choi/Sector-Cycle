@@ -1,0 +1,334 @@
+{
+  "sectors": {
+    "technology": {
+      "name": "Technology",
+      "nameKr": "기술/IT",
+      "icon": "💻",
+      "description": "Information technology, software, semiconductors, hardware",
+      "descriptionKr": "정보기술, 소프트웨어, 반도체, 하드웨어",
+      "cyclePhase": "expansion",
+      "momentum": 0.85,
+      "stocks": {
+        "us": [
+          {"ticker": "AAPL", "name": "Apple Inc.", "marketCap": 2890000000000, "sector": "Technology Hardware"},
+          {"ticker": "MSFT", "name": "Microsoft Corporation", "marketCap": 2780000000000, "sector": "Software"},
+          {"ticker": "GOOGL", "name": "Alphabet Inc.", "marketCap": 1850000000000, "sector": "Internet Services"},
+          {"ticker": "NVDA", "name": "NVIDIA Corporation", "marketCap": 1420000000000, "sector": "Semiconductors"},
+          {"ticker": "META", "name": "Meta Platforms Inc.", "marketCap": 920000000000, "sector": "Internet Services"},
+          {"ticker": "AMD", "name": "Advanced Micro Devices", "marketCap": 280000000000, "sector": "Semiconductors"},
+          {"ticker": "INTC", "name": "Intel Corporation", "marketCap": 195000000000, "sector": "Semiconductors"},
+          {"ticker": "CRM", "name": "Salesforce Inc.", "marketCap": 245000000000, "sector": "Software"},
+          {"ticker": "ADBE", "name": "Adobe Inc.", "marketCap": 235000000000, "sector": "Software"},
+          {"ticker": "ORCL", "name": "Oracle Corporation", "marketCap": 320000000000, "sector": "Software"}
+        ],
+        "kr": [
+          {"ticker": "005930", "name": "삼성전자", "marketCap": 356000000000000, "sector": "반도체/전자"},
+          {"ticker": "000660", "name": "SK하이닉스", "marketCap": 98000000000000, "sector": "반도체"},
+          {"ticker": "035420", "name": "NAVER", "marketCap": 32000000000000, "sector": "인터넷"},
+          {"ticker": "035720", "name": "카카오", "marketCap": 18000000000000, "sector": "인터넷"},
+          {"ticker": "006400", "name": "삼성SDI", "marketCap": 28000000000000, "sector": "2차전지"},
+          {"ticker": "373220", "name": "LG에너지솔루션", "marketCap": 95000000000000, "sector": "2차전지"},
+          {"ticker": "066570", "name": "LG전자", "marketCap": 12000000000000, "sector": "전자"},
+          {"ticker": "036570", "name": "엔씨소프트", "marketCap": 8500000000000, "sector": "게임"}
+        ]
+      }
+    },
+    "financials": {
+      "name": "Financials",
+      "nameKr": "금융",
+      "icon": "🏦",
+      "description": "Banks, insurance, asset management, fintech",
+      "descriptionKr": "은행, 보험, 자산운용, 핀테크",
+      "cyclePhase": "recovery",
+      "momentum": 0.62,
+      "stocks": {
+        "us": [
+          {"ticker": "JPM", "name": "JPMorgan Chase & Co.", "marketCap": 520000000000, "sector": "Banks"},
+          {"ticker": "BAC", "name": "Bank of America Corp.", "marketCap": 295000000000, "sector": "Banks"},
+          {"ticker": "WFC", "name": "Wells Fargo & Company", "marketCap": 185000000000, "sector": "Banks"},
+          {"ticker": "GS", "name": "Goldman Sachs Group", "marketCap": 135000000000, "sector": "Investment Banking"},
+          {"ticker": "MS", "name": "Morgan Stanley", "marketCap": 155000000000, "sector": "Investment Banking"},
+          {"ticker": "V", "name": "Visa Inc.", "marketCap": 510000000000, "sector": "Payments"},
+          {"ticker": "MA", "name": "Mastercard Inc.", "marketCap": 380000000000, "sector": "Payments"},
+          {"ticker": "BLK", "name": "BlackRock Inc.", "marketCap": 125000000000, "sector": "Asset Management"}
+        ],
+        "kr": [
+          {"ticker": "105560", "name": "KB금융", "marketCap": 24000000000000, "sector": "은행"},
+          {"ticker": "055550", "name": "신한지주", "marketCap": 18000000000000, "sector": "은행"},
+          {"ticker": "086790", "name": "하나금융지주", "marketCap": 14000000000000, "sector": "은행"},
+          {"ticker": "316140", "name": "우리금융지주", "marketCap": 11000000000000, "sector": "은행"},
+          {"ticker": "032830", "name": "삼성생명", "marketCap": 15000000000000, "sector": "보험"},
+          {"ticker": "000810", "name": "삼성화재", "marketCap": 16000000000000, "sector": "보험"}
+        ]
+      }
+    },
+    "healthcare": {
+      "name": "Healthcare",
+      "nameKr": "헬스케어",
+      "icon": "🏥",
+      "description": "Pharmaceuticals, biotechnology, medical devices, healthcare services",
+      "descriptionKr": "제약, 바이오, 의료기기, 헬스케어 서비스",
+      "cyclePhase": "recovery",
+      "momentum": 0.58,
+      "stocks": {
+        "us": [
+          {"ticker": "JNJ", "name": "Johnson & Johnson", "marketCap": 385000000000, "sector": "Pharmaceuticals"},
+          {"ticker": "UNH", "name": "UnitedHealth Group", "marketCap": 480000000000, "sector": "Health Insurance"},
+          {"ticker": "PFE", "name": "Pfizer Inc.", "marketCap": 165000000000, "sector": "Pharmaceuticals"},
+          {"ticker": "ABBV", "name": "AbbVie Inc.", "marketCap": 285000000000, "sector": "Pharmaceuticals"},
+          {"ticker": "MRK", "name": "Merck & Co.", "marketCap": 275000000000, "sector": "Pharmaceuticals"},
+          {"ticker": "LLY", "name": "Eli Lilly and Company", "marketCap": 580000000000, "sector": "Pharmaceuticals"},
+          {"ticker": "TMO", "name": "Thermo Fisher Scientific", "marketCap": 195000000000, "sector": "Life Sciences"},
+          {"ticker": "ABT", "name": "Abbott Laboratories", "marketCap": 185000000000, "sector": "Medical Devices"}
+        ],
+        "kr": [
+          {"ticker": "207940", "name": "삼성바이오로직스", "marketCap": 52000000000000, "sector": "바이오"},
+          {"ticker": "068270", "name": "셀트리온", "marketCap": 24000000000000, "sector": "바이오"},
+          {"ticker": "326030", "name": "SK바이오팜", "marketCap": 8500000000000, "sector": "제약"},
+          {"ticker": "091990", "name": "셀트리온헬스케어", "marketCap": 6500000000000, "sector": "바이오"},
+          {"ticker": "128940", "name": "한미약품", "marketCap": 4500000000000, "sector": "제약"},
+          {"ticker": "000100", "name": "유한양행", "marketCap": 3800000000000, "sector": "제약"}
+        ]
+      }
+    },
+    "consumerDiscretionary": {
+      "name": "Consumer Discretionary",
+      "nameKr": "임의소비재",
+      "icon": "🛍️",
+      "description": "Retail, automobiles, luxury goods, entertainment",
+      "descriptionKr": "소매, 자동차, 명품, 엔터테인먼트",
+      "cyclePhase": "expansion",
+      "momentum": 0.78,
+      "stocks": {
+        "us": [
+          {"ticker": "AMZN", "name": "Amazon.com Inc.", "marketCap": 1650000000000, "sector": "E-commerce"},
+          {"ticker": "TSLA", "name": "Tesla Inc.", "marketCap": 780000000000, "sector": "Electric Vehicles"},
+          {"ticker": "HD", "name": "Home Depot Inc.", "marketCap": 345000000000, "sector": "Home Improvement"},
+          {"ticker": "NKE", "name": "Nike Inc.", "marketCap": 145000000000, "sector": "Apparel"},
+          {"ticker": "SBUX", "name": "Starbucks Corporation", "marketCap": 105000000000, "sector": "Restaurants"},
+          {"ticker": "MCD", "name": "McDonald's Corporation", "marketCap": 205000000000, "sector": "Restaurants"},
+          {"ticker": "LOW", "name": "Lowe's Companies", "marketCap": 135000000000, "sector": "Home Improvement"}
+        ],
+        "kr": [
+          {"ticker": "005380", "name": "현대자동차", "marketCap": 42000000000000, "sector": "자동차"},
+          {"ticker": "000270", "name": "기아", "marketCap": 32000000000000, "sector": "자동차"},
+          {"ticker": "012330", "name": "현대모비스", "marketCap": 18000000000000, "sector": "자동차부품"},
+          {"ticker": "028260", "name": "삼성물산", "marketCap": 16000000000000, "sector": "건설/무역"},
+          {"ticker": "004020", "name": "현대제철", "marketCap": 5500000000000, "sector": "철강"}
+        ]
+      }
+    },
+    "industrials": {
+      "name": "Industrials",
+      "nameKr": "산업재",
+      "icon": "🏭",
+      "description": "Aerospace, defense, machinery, construction",
+      "descriptionKr": "항공우주, 방산, 기계, 건설",
+      "cyclePhase": "expansion",
+      "momentum": 0.72,
+      "stocks": {
+        "us": [
+          {"ticker": "CAT", "name": "Caterpillar Inc.", "marketCap": 165000000000, "sector": "Machinery"},
+          {"ticker": "BA", "name": "Boeing Company", "marketCap": 125000000000, "sector": "Aerospace"},
+          {"ticker": "HON", "name": "Honeywell International", "marketCap": 135000000000, "sector": "Conglomerate"},
+          {"ticker": "UPS", "name": "United Parcel Service", "marketCap": 125000000000, "sector": "Logistics"},
+          {"ticker": "GE", "name": "GE Aerospace", "marketCap": 185000000000, "sector": "Aerospace"},
+          {"ticker": "LMT", "name": "Lockheed Martin", "marketCap": 115000000000, "sector": "Defense"},
+          {"ticker": "RTX", "name": "RTX Corporation", "marketCap": 145000000000, "sector": "Defense"}
+        ],
+        "kr": [
+          {"ticker": "009540", "name": "한국조선해양", "marketCap": 8500000000000, "sector": "조선"},
+          {"ticker": "042660", "name": "한화오션", "marketCap": 9200000000000, "sector": "조선"},
+          {"ticker": "010140", "name": "삼성중공업", "marketCap": 7800000000000, "sector": "조선"},
+          {"ticker": "034020", "name": "두산에너빌리티", "marketCap": 6500000000000, "sector": "중공업"},
+          {"ticker": "047050", "name": "포스코인터내셔널", "marketCap": 5200000000000, "sector": "무역"}
+        ]
+      }
+    },
+    "energy": {
+      "name": "Energy",
+      "nameKr": "에너지",
+      "icon": "⚡",
+      "description": "Oil & gas exploration, refining, renewable energy",
+      "descriptionKr": "석유가스 탐사, 정제, 신재생에너지",
+      "cyclePhase": "slowdown",
+      "momentum": 0.35,
+      "stocks": {
+        "us": [
+          {"ticker": "XOM", "name": "Exxon Mobil Corporation", "marketCap": 455000000000, "sector": "Oil & Gas"},
+          {"ticker": "CVX", "name": "Chevron Corporation", "marketCap": 285000000000, "sector": "Oil & Gas"},
+          {"ticker": "COP", "name": "ConocoPhillips", "marketCap": 135000000000, "sector": "Oil & Gas"},
+          {"ticker": "SLB", "name": "Schlumberger Limited", "marketCap": 75000000000, "sector": "Oil Services"},
+          {"ticker": "OXY", "name": "Occidental Petroleum", "marketCap": 52000000000, "sector": "Oil & Gas"},
+          {"ticker": "EOG", "name": "EOG Resources", "marketCap": 72000000000, "sector": "Oil & Gas"}
+        ],
+        "kr": [
+          {"ticker": "096770", "name": "SK이노베이션", "marketCap": 12000000000000, "sector": "정유"},
+          {"ticker": "010950", "name": "S-Oil", "marketCap": 8500000000000, "sector": "정유"},
+          {"ticker": "267250", "name": "HD현대", "marketCap": 5200000000000, "sector": "조선/에너지"}
+        ]
+      }
+    },
+    "materials": {
+      "name": "Materials",
+      "nameKr": "소재",
+      "icon": "🧱",
+      "description": "Chemicals, metals, mining, construction materials",
+      "descriptionKr": "화학, 금속, 광업, 건자재",
+      "cyclePhase": "slowdown",
+      "momentum": 0.42,
+      "stocks": {
+        "us": [
+          {"ticker": "LIN", "name": "Linde plc", "marketCap": 215000000000, "sector": "Chemicals"},
+          {"ticker": "APD", "name": "Air Products and Chemicals", "marketCap": 65000000000, "sector": "Chemicals"},
+          {"ticker": "SHW", "name": "Sherwin-Williams", "marketCap": 85000000000, "sector": "Chemicals"},
+          {"ticker": "FCX", "name": "Freeport-McMoRan", "marketCap": 62000000000, "sector": "Mining"},
+          {"ticker": "NEM", "name": "Newmont Corporation", "marketCap": 45000000000, "sector": "Gold Mining"}
+        ],
+        "kr": [
+          {"ticker": "005490", "name": "POSCO홀딩스", "marketCap": 22000000000000, "sector": "철강"},
+          {"ticker": "051910", "name": "LG화학", "marketCap": 28000000000000, "sector": "화학"},
+          {"ticker": "010130", "name": "고려아연", "marketCap": 8500000000000, "sector": "비철금속"},
+          {"ticker": "011170", "name": "롯데케미칼", "marketCap": 4200000000000, "sector": "화학"}
+        ]
+      }
+    },
+    "utilities": {
+      "name": "Utilities",
+      "nameKr": "유틸리티",
+      "icon": "💡",
+      "description": "Electric utilities, gas utilities, water utilities",
+      "descriptionKr": "전력, 가스, 수도",
+      "cyclePhase": "recovery",
+      "momentum": 0.55,
+      "stocks": {
+        "us": [
+          {"ticker": "NEE", "name": "NextEra Energy", "marketCap": 145000000000, "sector": "Electric Utilities"},
+          {"ticker": "DUK", "name": "Duke Energy", "marketCap": 78000000000, "sector": "Electric Utilities"},
+          {"ticker": "SO", "name": "Southern Company", "marketCap": 85000000000, "sector": "Electric Utilities"},
+          {"ticker": "D", "name": "Dominion Energy", "marketCap": 42000000000, "sector": "Electric Utilities"},
+          {"ticker": "AEP", "name": "American Electric Power", "marketCap": 48000000000, "sector": "Electric Utilities"}
+        ],
+        "kr": [
+          {"ticker": "015760", "name": "한국전력", "marketCap": 12000000000000, "sector": "전력"},
+          {"ticker": "036460", "name": "한국가스공사", "marketCap": 3800000000000, "sector": "가스"}
+        ]
+      }
+    },
+    "realEstate": {
+      "name": "Real Estate",
+      "nameKr": "부동산",
+      "icon": "🏢",
+      "description": "REITs, real estate development, property management",
+      "descriptionKr": "리츠, 부동산개발, 자산관리",
+      "cyclePhase": "contraction",
+      "momentum": 0.28,
+      "stocks": {
+        "us": [
+          {"ticker": "PLD", "name": "Prologis Inc.", "marketCap": 115000000000, "sector": "Industrial REITs"},
+          {"ticker": "AMT", "name": "American Tower", "marketCap": 95000000000, "sector": "Tower REITs"},
+          {"ticker": "EQIX", "name": "Equinix Inc.", "marketCap": 75000000000, "sector": "Data Center REITs"},
+          {"ticker": "SPG", "name": "Simon Property Group", "marketCap": 52000000000, "sector": "Retail REITs"},
+          {"ticker": "CCI", "name": "Crown Castle", "marketCap": 45000000000, "sector": "Tower REITs"}
+        ],
+        "kr": [
+          {"ticker": "000720", "name": "현대건설", "marketCap": 4500000000000, "sector": "건설"},
+          {"ticker": "000210", "name": "DL", "marketCap": 3200000000000, "sector": "건설"},
+          {"ticker": "006360", "name": "GS건설", "marketCap": 2800000000000, "sector": "건설"}
+        ]
+      }
+    },
+    "consumerStaples": {
+      "name": "Consumer Staples",
+      "nameKr": "필수소비재",
+      "icon": "🛒",
+      "description": "Food, beverages, household products, personal care",
+      "descriptionKr": "식품, 음료, 생활용품, 개인용품",
+      "cyclePhase": "normal",
+      "momentum": 0.50,
+      "stocks": {
+        "us": [
+          {"ticker": "PG", "name": "Procter & Gamble", "marketCap": 365000000000, "sector": "Household Products"},
+          {"ticker": "KO", "name": "Coca-Cola Company", "marketCap": 265000000000, "sector": "Beverages"},
+          {"ticker": "PEP", "name": "PepsiCo Inc.", "marketCap": 235000000000, "sector": "Beverages"},
+          {"ticker": "WMT", "name": "Walmart Inc.", "marketCap": 520000000000, "sector": "Retail"},
+          {"ticker": "COST", "name": "Costco Wholesale", "marketCap": 325000000000, "sector": "Retail"},
+          {"ticker": "PM", "name": "Philip Morris International", "marketCap": 185000000000, "sector": "Tobacco"}
+        ],
+        "kr": [
+          {"ticker": "051900", "name": "LG생활건강", "marketCap": 8500000000000, "sector": "생활용품"},
+          {"ticker": "090430", "name": "아모레퍼시픽", "marketCap": 5200000000000, "sector": "화장품"},
+          {"ticker": "004990", "name": "롯데지주", "marketCap": 3800000000000, "sector": "지주회사"},
+          {"ticker": "097950", "name": "CJ제일제당", "marketCap": 4500000000000, "sector": "식품"}
+        ]
+      }
+    },
+    "communication": {
+      "name": "Communication Services",
+      "nameKr": "커뮤니케이션",
+      "icon": "📡",
+      "description": "Telecom, media, entertainment, social media",
+      "descriptionKr": "통신, 미디어, 엔터테인먼트, 소셜미디어",
+      "cyclePhase": "expansion",
+      "momentum": 0.75,
+      "stocks": {
+        "us": [
+          {"ticker": "GOOG", "name": "Alphabet Inc. Class C", "marketCap": 1850000000000, "sector": "Internet"},
+          {"ticker": "NFLX", "name": "Netflix Inc.", "marketCap": 255000000000, "sector": "Streaming"},
+          {"ticker": "DIS", "name": "Walt Disney Company", "marketCap": 165000000000, "sector": "Entertainment"},
+          {"ticker": "VZ", "name": "Verizon Communications", "marketCap": 165000000000, "sector": "Telecom"},
+          {"ticker": "T", "name": "AT&T Inc.", "marketCap": 125000000000, "sector": "Telecom"},
+          {"ticker": "CMCSA", "name": "Comcast Corporation", "marketCap": 155000000000, "sector": "Cable"}
+        ],
+        "kr": [
+          {"ticker": "017670", "name": "SK텔레콤", "marketCap": 12000000000000, "sector": "통신"},
+          {"ticker": "030200", "name": "KT", "marketCap": 8500000000000, "sector": "통신"},
+          {"ticker": "032640", "name": "LG유플러스", "marketCap": 4200000000000, "sector": "통신"},
+          {"ticker": "041510", "name": "에스엠", "marketCap": 2800000000000, "sector": "엔터테인먼트"},
+          {"ticker": "352820", "name": "하이브", "marketCap": 8500000000000, "sector": "엔터테인먼트"}
+        ]
+      }
+    }
+  },
+  "cycleDefinitions": {
+    "expansion": {
+      "label": "Expansion",
+      "labelKr": "확장",
+      "description": "Economic growth is accelerating, corporate profits rising",
+      "descriptionKr": "경제 성장 가속화, 기업 이익 증가",
+      "color": "#3fb950"
+    },
+    "slowdown": {
+      "label": "Slowdown",
+      "labelKr": "둔화",
+      "description": "Growth is decelerating but still positive",
+      "descriptionKr": "성장률 둔화, 여전히 양의 성장",
+      "color": "#d29922"
+    },
+    "contraction": {
+      "label": "Contraction",
+      "labelKr": "침체",
+      "description": "Economic activity declining, potential recession",
+      "descriptionKr": "경제 활동 감소, 잠재적 침체",
+      "color": "#f85149"
+    },
+    "recovery": {
+      "label": "Recovery",
+      "labelKr": "회복",
+      "description": "Economy beginning to recover from trough",
+      "descriptionKr": "저점에서 회복 시작",
+      "color": "#58a6ff"
+    },
+    "normal": {
+      "label": "Normal",
+      "labelKr": "보통",
+      "description": "Stable economic conditions",
+      "descriptionKr": "안정적인 경제 상황",
+      "color": "#8b949e"
+    }
+  },
+  "metadata": {
+    "lastUpdate": "2026-01-05T09:00:00.000Z",
+    "version": "1.0.0"
+  }
+}
