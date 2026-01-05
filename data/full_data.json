@@ -1,0 +1,149 @@
+{
+  "timestamp": "2026-01-05T06:43:05.271902",
+  "sources": {
+    "fred": {},
+    "oecd_cli": {
+      "source": "OECD",
+      "source_url": "https://www.oecd.org/en/data/indicators/composite-leading-indicator-cli.html",
+      "asof": "2026-01-05T06:43:05.748942",
+      "data": {
+        "USA": {
+          "latest": {
+            "date": "2026-01",
+            "value": 101.0
+          },
+          "history": []
+        },
+        "KOR": {
+          "latest": {
+            "date": "2026-01",
+            "value": 99.5
+          },
+          "history": []
+        },
+        "CHN": {
+          "latest": {
+            "date": "2026-01",
+            "value": 99.5
+          },
+          "history": []
+        },
+        "JPN": {
+          "latest": {
+            "date": "2026-01",
+            "value": 100.0
+          },
+          "history": []
+        },
+        "DEU": {
+          "latest": {
+            "date": "2026-01",
+            "value": 100.5
+          },
+          "history": []
+        },
+        "OECD": {
+          "latest": {
+            "date": "2026-01",
+            "value": 100.5
+          },
+          "history": []
+        }
+      }
+    },
+    "eia": {
+      "source": "EIA",
+      "source_url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "asof": "2026-01-05T06:43:05.750396",
+      "crude_stocks": {
+        "latest": {
+          "date": "2026-01-05",
+          "value": 430000,
+          "change": 2100,
+          "unit": "thousand barrels"
+        },
+        "vs_5y_avg": -3.2
+      }
+    },
+    "bdi": {
+      "source": "Yahoo Finance",
+      "source_url": "https://finance.yahoo.com/quote/%5EBDI",
+      "asof": "2026-01-05T06:43:05.750451",
+      "latest": {
+        "date": "2026-01-05",
+        "value": 1842,
+        "change_pct": 5.2
+      }
+    }
+  },
+  "indicators": {},
+  "regimes": {
+    "macro": {
+      "status": "expansion",
+      "score": 75.0,
+      "components": {
+        "cli": {
+          "value": 101.0,
+          "score": 75.0
+        }
+      }
+    },
+    "trade": {
+      "status": "recovery",
+      "bdi": 1842,
+      "bdi_change": 5.2
+    }
+  },
+  "latest": {
+    "timestamp": "2026-01-05T06:43:05.271902",
+    "macro": {
+      "regime": "expansion",
+      "score": 75.0,
+      "cli": {
+        "usa": 101.0,
+        "kor": 99.5,
+        "chn": 99.5,
+        "jpn": 100.0,
+        "deu": 100.5,
+        "oecd": 100.5
+      },
+      "pmi": {
+        "manufacturing": 52.3,
+        "services": 54.1
+      }
+    },
+    "risk": {
+      "vix": null,
+      "vixChange": null,
+      "regime": "normal",
+      "range52w": {
+        "low": 12.1,
+        "high": 35.2
+      }
+    },
+    "trade": {
+      "bdi": 1842,
+      "bdiChange": 5.2,
+      "wci": 2156,
+      "regime": "recovery"
+    },
+    "commodity": {
+      "index": 124.5,
+      "energy": -3.1,
+      "food": 1.8,
+      "regime": "contraction"
+    },
+    "oil": {
+      "price": 72.4,
+      "inventory": 2.1,
+      "vs5yAvg": -3.2,
+      "regime": "normal"
+    },
+    "korea": {
+      "kospi": 2645,
+      "kospiChange": 0.8,
+      "foreignNet": "buy",
+      "regime": "expansion"
+    }
+  }
+}

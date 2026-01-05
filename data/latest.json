@@ -1,7 +1,8 @@
 {
-  "timestamp": "2026-01-05T09:00:00.000Z",
+  "timestamp": "2026-01-05T06:43:05.271902",
   "macro": {
     "regime": "expansion",
+<<<<<<< HEAD
     "score": 72,
     "cli": {"usa": 100.8, "kor": 100.2, "chn": 99.5, "jpn": 100.1, "deu": 99.8, "oecd": 100.3},
     "pmi": {"manufacturing": 52.3, "services": 54.1, "composite": 53.2},
@@ -56,5 +57,53 @@
       "krx": {"url": "https://data.krx.co.kr/", "indicators": ["KOSPI", "KOSDAQ"]}
     },
     "updateFrequency": {"vix": "daily", "cli": "monthly", "pmi": "monthly", "bdi": "daily", "wci": "weekly", "oil": "weekly", "korea": "daily"}
+=======
+    "score": 75.0,
+    "cli": {
+      "usa": 101.0,
+      "kor": 99.5,
+      "chn": 99.5,
+      "jpn": 100.0,
+      "deu": 100.5,
+      "oecd": 100.5
+    },
+    "pmi": {
+      "manufacturing": 52.3,
+      "services": 54.1
+    }
+  },
+  "risk": {
+    "vix": null,
+    "vixChange": null,
+    "regime": "normal",
+    "range52w": {
+      "low": 12.1,
+      "high": 35.2
+    }
+  },
+  "trade": {
+    "bdi": 1842,
+    "bdiChange": 5.2,
+    "wci": 2156,
+    "regime": "recovery"
+  },
+  "commodity": {
+    "index": 124.5,
+    "energy": -3.1,
+    "food": 1.8,
+    "regime": "contraction"
+  },
+  "oil": {
+    "price": 72.4,
+    "inventory": 2.1,
+    "vs5yAvg": -3.2,
+    "regime": "normal"
+  },
+  "korea": {
+    "kospi": 2645,
+    "kospiChange": 0.8,
+    "foreignNet": "buy",
+    "regime": "expansion"
+>>>>>>> cca217eac142a1201792f015bfa46d6b4a1604c8
   }
 }
