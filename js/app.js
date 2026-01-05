@@ -250,6 +250,221 @@ const SECTORS = {
 };
 
 // ============================================
+// Sector Explanations - 섹터별 상세 설명
+// ============================================
+const SECTOR_EXPLANATIONS = {
+    technology: {
+        summary: '기술 섹터는 경기 확장기 초반부터 중반에 가장 강한 성과를 보입니다. 금리가 낮고 성장 기대감이 높을 때 유리합니다.',
+        whyRising: [
+            'AI/반도체 수요 급증으로 데이터센터 투자 확대',
+            '클라우드 컴퓨팅 성장세 지속',
+            '금리 인하 기대감으로 성장주 밸류에이션 상승',
+            '기업들의 디지털 전환 가속화'
+        ],
+        whyFalling: [
+            '금리 상승 시 미래 수익 할인율 증가로 밸류에이션 하락',
+            '경기 침체 우려로 IT 투자 축소',
+            '반도체 재고 과잉 사이클',
+            '규제 리스크 (독점, 개인정보 등)'
+        ],
+        buySignal: 'PMI 50 이상 + 금리 인하 사이클 시작 + VIX 20 이하 안정',
+        sellSignal: '금리 급등 + 반도체 재고 증가 + 기술주 PER 30배 이상 과열',
+        holdSignal: '경기 불확실성 높음 + 실적 시즌 대기',
+        keyIndicators: ['반도체 재고', 'NASDAQ P/E', '기술주 EPS 성장률']
+    },
+    financials: {
+        summary: '금융 섹터는 경기 회복기에 강세를 보이며, 금리 상승과 경제 활동 증가 시 수혜를 받습니다.',
+        whyRising: [
+            '금리 상승으로 은행 순이자마진(NIM) 개선',
+            '경기 회복으로 대출 수요 증가',
+            '자산 건전성 개선 (부실채권 감소)',
+            '자본시장 활성화로 증권사 수익 증가'
+        ],
+        whyFalling: [
+            '금리 인하 시 순이자마진 축소',
+            '경기 침체로 대손충당금 증가',
+            '부동산 가격 하락 시 담보 가치 하락',
+            '규제 강화 리스크'
+        ],
+        buySignal: '금리 상승 초기 + 경기 회복 신호 + 은행 PBR 1배 미만',
+        sellSignal: '금리 피크 + 경기 침체 우려 + 부실채권 증가',
+        holdSignal: '금리 정점 근처 + 경기 불확실성',
+        keyIndicators: ['기준금리', '은행 NIM', '연체율']
+    },
+    healthcare: {
+        summary: '헬스케어는 경기 방어적 섹터로, 경기 침체 시에도 안정적인 수요를 유지합니다. 고령화 추세의 장기 수혜주입니다.',
+        whyRising: [
+            '신약 파이프라인 성과 (FDA 승인 등)',
+            '바이오텍 M&A 활성화',
+            '고령화로 의료 수요 구조적 증가',
+            '경기 침체 시 안전자산 선호'
+        ],
+        whyFalling: [
+            '약가 인하 정책 리스크',
+            '임상 실패로 개별 종목 급락',
+            '경기 확장기 성장주 대비 소외',
+            '바이오텍 자금 조달 환경 악화'
+        ],
+        buySignal: '경기 침체 우려 증가 + 방어주 선호 + 신약 모멘텀',
+        sellSignal: '경기 강한 확장 + 성장주 선호 + 정책 리스크 부각',
+        holdSignal: '중립적 경기 국면 + 실적 안정',
+        keyIndicators: ['FDA 승인 건수', '바이오텍 IPO', '의료비 지출 증가율']
+    },
+    consumerDiscretionary: {
+        summary: '임의소비재는 경기에 가장 민감한 섹터로, 경기 확장기에 소비 심리 개선과 함께 강한 성과를 보입니다.',
+        whyRising: [
+            '소비자 신뢰지수 상승',
+            '고용 시장 호조로 가처분소득 증가',
+            '금리 인하로 자동차/주택 관련 소비 증가',
+            '이커머스 성장세 지속'
+        ],
+        whyFalling: [
+            '경기 침체로 소비 심리 위축',
+            '인플레이션으로 실질 구매력 하락',
+            '금리 상승으로 할부 비용 증가',
+            '재고 과잉으로 마진 압박'
+        ],
+        buySignal: '소비자 신뢰지수 반등 + 고용 호조 + 소매판매 개선',
+        sellSignal: '경기 침체 신호 + 소비 심리 급락 + 재고 급증',
+        holdSignal: '소비 지표 혼조 + 경기 전환점 근처',
+        keyIndicators: ['소비자신뢰지수', '소매판매', '자동차 판매']
+    },
+    industrials: {
+        summary: '산업재는 경기 확장 중반~후반에 강세를 보이며, 인프라 투자와 제조업 활동 증가 시 수혜를 받습니다.',
+        whyRising: [
+            '제조업 PMI 확장 (50 이상)',
+            '인프라 투자 확대 정책',
+            '글로벌 교역량 증가',
+            '항공/여행 수요 회복'
+        ],
+        whyFalling: [
+            '제조업 PMI 위축 (50 미만)',
+            '글로벌 공급망 차질',
+            '원자재 가격 급등으로 마진 압박',
+            '경기 침체로 설비투자 축소'
+        ],
+        buySignal: 'PMI 50 상향 돌파 + BDI 상승 + 설비투자 증가',
+        sellSignal: 'PMI 하락 추세 + 수주 감소 + 재고 증가',
+        holdSignal: 'PMI 50 근처 횡보 + 경기 불확실성',
+        keyIndicators: ['제조업 PMI', 'BDI', '설비투자 증가율']
+    },
+    energy: {
+        summary: '에너지 섹터는 유가와 높은 상관관계를 보이며, 경기 확장 후반부에 강세를 보이는 후행적 섹터입니다.',
+        whyRising: [
+            '유가 상승 (지정학적 리스크, OPEC 감산)',
+            '글로벌 수요 회복으로 석유 소비 증가',
+            '정유 마진 개선',
+            '에너지 안보 이슈로 투자 확대'
+        ],
+        whyFalling: [
+            '유가 하락 (수요 둔화, 공급 과잉)',
+            '친환경 에너지 전환 가속화',
+            '경기 침체로 에너지 수요 감소',
+            'ESG 투자 흐름으로 자금 이탈'
+        ],
+        buySignal: '유가 상승 추세 + OPEC 감산 + 재고 감소',
+        sellSignal: '유가 하락 + 수요 둔화 + 재고 급증',
+        holdSignal: '유가 횡보 + 수급 균형',
+        keyIndicators: ['WTI/브렌트 유가', 'EIA 원유재고', '정유마진']
+    },
+    materials: {
+        summary: '소재 섹터는 원자재 가격과 연동되며, 경기 확장기 초중반에 강세를 보입니다. 인프라 투자 확대 시 수혜를 받습니다.',
+        whyRising: [
+            '원자재 가격 상승 (구리, 철강 등)',
+            '글로벌 인프라 투자 확대',
+            '제조업 회복으로 원자재 수요 증가',
+            '인플레이션 헤지 수요'
+        ],
+        whyFalling: [
+            '원자재 가격 하락',
+            '경기 둔화로 건설/제조업 수요 감소',
+            '중국 경기 둔화 (최대 수요국)',
+            '공급 과잉으로 가격 하락'
+        ],
+        buySignal: '원자재 가격 반등 + 중국 경기 회복 + PMI 개선',
+        sellSignal: '원자재 가격 하락 + 재고 증가 + 수요 둔화',
+        holdSignal: '가격 횡보 + 수급 균형',
+        keyIndicators: ['구리/철강 가격', '중국 PMI', 'LME 재고']
+    },
+    utilities: {
+        summary: '유틸리티는 대표적인 경기 방어 섹터로, 경기 침체 우려 시 안전자산으로 선호됩니다. 고배당 특성이 있습니다.',
+        whyRising: [
+            '경기 침체 우려로 방어주 선호',
+            '금리 인하로 배당주 매력 증가',
+            '안정적인 현금흐름과 배당',
+            '친환경 에너지 전환 투자'
+        ],
+        whyFalling: [
+            '금리 상승으로 배당주 매력 감소',
+            '경기 확장기 성장주 대비 소외',
+            '규제 및 전기요금 인상 제한',
+            '친환경 전환 비용 부담'
+        ],
+        buySignal: '경기 침체 우려 + 금리 인하 + 안전자산 선호',
+        sellSignal: '경기 확장 + 금리 상승 + 성장주 선호',
+        holdSignal: '금리 정점 + 경기 불확실성',
+        keyIndicators: ['기준금리', '배당수익률', '전력 수요']
+    },
+    realEstate: {
+        summary: '부동산 섹터는 금리에 가장 민감한 섹터로, 저금리 환경에서 강세를 보이며 금리 상승 시 약세를 보입니다.',
+        whyRising: [
+            '금리 인하로 차입 비용 감소',
+            '부동산 가격 상승 기대',
+            '임대료 상승으로 수익성 개선',
+            '리츠(REITs) 배당 매력'
+        ],
+        whyFalling: [
+            '금리 상승으로 차입 비용 증가',
+            '공실률 증가 (재택근무 확산 등)',
+            '부동산 가격 하락 우려',
+            '자금 조달 환경 악화'
+        ],
+        buySignal: '금리 인하 시작 + 공실률 안정 + 거래량 회복',
+        sellSignal: '금리 상승 + 공실률 증가 + 가격 하락',
+        holdSignal: '금리 정점 근처 + 시장 안정화 대기',
+        keyIndicators: ['모기지 금리', '공실률', '부동산 거래량']
+    },
+    consumerStaples: {
+        summary: '필수소비재는 경기와 무관하게 안정적인 수요를 유지하는 방어 섹터입니다. 경기 침체 시 상대적 강세를 보입니다.',
+        whyRising: [
+            '경기 침체 우려로 방어주 선호',
+            '안정적인 실적과 배당',
+            '인플레이션 시 가격 전가 능력',
+            '필수재 특성상 수요 변동 적음'
+        ],
+        whyFalling: [
+            '경기 확장기 성장주 대비 소외',
+            '금리 상승으로 배당주 매력 감소',
+            '원가 상승을 가격에 전가 못할 때',
+            'PB 상품 확대로 점유율 하락'
+        ],
+        buySignal: '경기 침체 우려 + 방어적 포지션 필요 + 배당 선호',
+        sellSignal: '경기 강한 확장 + 성장주 선호 + 금리 상승',
+        holdSignal: '경기 불확실성 + 포트폴리오 안정화',
+        keyIndicators: ['소비자물가', '식품가격지수', '소매판매']
+    },
+    communication: {
+        summary: '커뮤니케이션 섹터는 미디어/엔터테인먼트와 통신으로 구분되며, 디지털 광고와 스트리밍 성장 수혜를 받습니다.',
+        whyRising: [
+            '디지털 광고 시장 성장',
+            '스트리밍 서비스 가입자 증가',
+            '5G/AI 관련 투자 확대',
+            '경기 확장으로 광고 지출 증가'
+        ],
+        whyFalling: [
+            '경기 침체로 광고비 삭감',
+            '스트리밍 경쟁 심화로 수익성 악화',
+            '규제 리스크 (빅테크)',
+            '통신사 설비투자 부담'
+        ],
+        buySignal: '광고 시장 회복 + 가입자 성장 + 경기 확장',
+        sellSignal: '광고비 삭감 + 가입자 이탈 + 경쟁 심화',
+        holdSignal: '실적 혼조 + 시장 재편 진행 중',
+        keyIndicators: ['디지털 광고 성장률', '스트리밍 가입자', '5G 가입자']
+    }
+};
+
+// ============================================
 // State Management
 // ============================================
 let state = {
@@ -500,6 +715,7 @@ function renderSectorsGrid() {
 
 function showSectorDetail(sectorKey) {
     const sector = SECTORS[sectorKey];
+    const explanation = SECTOR_EXPLANATIONS[sectorKey];
     if (!sector) return;
     
     state.selectedSector = sectorKey;
@@ -513,6 +729,65 @@ function showSectorDetail(sectorKey) {
     title.textContent = `${sector.icon} ${sector.name} (${sector.nameKr})`;
     
     stocksList.innerHTML = '';
+    
+    // Add Sector Explanation
+    if (explanation) {
+        const explanationDiv = document.createElement('div');
+        explanationDiv.className = `sector-explanation ${sector.cycle}`;
+        explanationDiv.innerHTML = `
+            <div class="explanation-header">
+                <span class="explanation-icon">${sector.icon}</span>
+                <div class="explanation-title">
+                    <h3>${sector.name} 섹터 분석</h3>
+                    <span class="cycle-badge ${sector.cycle}">${capitalizeFirst(sector.cycle)}</span>
+                </div>
+            </div>
+            <div class="explanation-body">
+                <div class="explanation-section">
+                    <p><strong>📊 요약:</strong> ${explanation.summary}</p>
+                </div>
+                
+                <div class="explanation-section">
+                    <h4>📈 상승 요인 (Why Rising)</h4>
+                    <ul>
+                        ${explanation.whyRising.map(reason => `<li>${reason}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="explanation-section">
+                    <h4>📉 하락 요인 (Why Falling)</h4>
+                    <ul>
+                        ${explanation.whyFalling.map(reason => `<li>${reason}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="signal-box">
+                    <div class="signal-item buy">
+                        <div class="signal-label">🟢 매수 신호</div>
+                        <div class="signal-text">${explanation.buySignal}</div>
+                    </div>
+                    <div class="signal-item sell">
+                        <div class="signal-label">🔴 매도 신호</div>
+                        <div class="signal-text">${explanation.sellSignal}</div>
+                    </div>
+                    <div class="signal-item hold">
+                        <div class="signal-label">🟡 관망 신호</div>
+                        <div class="signal-text">${explanation.holdSignal}</div>
+                    </div>
+                </div>
+                
+                <div class="key-indicators">
+                    ${explanation.keyIndicators.map(ind => `
+                        <div class="key-indicator">
+                            <span class="label">핵심 지표</span>
+                            <span class="value">${ind}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        stocksList.appendChild(explanationDiv);
+    }
     
     // US Stocks
     if (sector.stocks.us?.length) {
