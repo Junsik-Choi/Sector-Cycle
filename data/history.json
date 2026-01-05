@@ -1,0 +1,179 @@
+{
+  "entries": [
+    {
+      "timestamp": "2026-01-05T09:00:00.000Z",
+      "snapshot": {
+        "macro": {"regime": "expansion", "score": 72},
+        "risk": {"vix": 18.5, "regime": "normal"},
+        "trade": {"bdi": 1842, "regime": "recovery"},
+        "commodity": {"index": 124.5, "regime": "contraction"},
+        "oil": {"price": 72.4, "regime": "normal"},
+        "korea": {"kospi": 2645, "regime": "expansion"}
+      }
+    },
+    {
+      "timestamp": "2026-01-04T09:00:00.000Z",
+      "snapshot": {
+        "macro": {"regime": "expansion", "score": 71},
+        "risk": {"vix": 18.9, "regime": "normal"},
+        "trade": {"bdi": 1798, "regime": "recovery"},
+        "commodity": {"index": 125.1, "regime": "contraction"},
+        "oil": {"price": 71.8, "regime": "normal"},
+        "korea": {"kospi": 2624, "regime": "expansion"}
+      }
+    },
+    {
+      "timestamp": "2026-01-03T09:00:00.000Z",
+      "snapshot": {
+        "macro": {"regime": "expansion", "score": 70},
+        "risk": {"vix": 19.2, "regime": "normal"},
+        "trade": {"bdi": 1756, "regime": "recovery"},
+        "commodity": {"index": 125.8, "regime": "contraction"},
+        "oil": {"price": 72.1, "regime": "normal"},
+        "korea": {"kospi": 2612, "regime": "expansion"}
+      }
+    },
+    {
+      "timestamp": "2026-01-02T09:00:00.000Z",
+      "snapshot": {
+        "macro": {"regime": "expansion", "score": 69},
+        "risk": {"vix": 20.1, "regime": "elevated"},
+        "trade": {"bdi": 1712, "regime": "recovery"},
+        "commodity": {"index": 126.2, "regime": "contraction"},
+        "oil": {"price": 73.5, "regime": "normal"},
+        "korea": {"kospi": 2598, "regime": "expansion"}
+      }
+    }
+  ],
+  "indicators": {
+    "vix": {
+      "name": "VIX Volatility Index",
+      "source": "FRED (VIXCLS)",
+      "history": [
+        {"date": "2026-01-05", "value": 18.5},
+        {"date": "2026-01-04", "value": 18.9},
+        {"date": "2026-01-03", "value": 19.2},
+        {"date": "2026-01-02", "value": 20.1},
+        {"date": "2025-12-31", "value": 19.8},
+        {"date": "2025-12-30", "value": 19.5},
+        {"date": "2025-12-29", "value": 18.8},
+        {"date": "2025-12-28", "value": 18.2},
+        {"date": "2025-12-27", "value": 17.9},
+        {"date": "2025-12-26", "value": 17.5},
+        {"date": "2025-12-23", "value": 17.2},
+        {"date": "2025-12-22", "value": 16.8},
+        {"date": "2025-12-21", "value": 17.1},
+        {"date": "2025-12-20", "value": 18.4},
+        {"date": "2025-12-19", "value": 21.2},
+        {"date": "2025-12-18", "value": 22.5},
+        {"date": "2025-12-17", "value": 20.8},
+        {"date": "2025-12-16", "value": 19.4},
+        {"date": "2025-12-15", "value": 18.6},
+        {"date": "2025-12-14", "value": 17.9},
+        {"date": "2025-12-13", "value": 17.2},
+        {"date": "2025-12-12", "value": 16.8},
+        {"date": "2025-12-11", "value": 16.5},
+        {"date": "2025-12-10", "value": 15.9},
+        {"date": "2025-12-09", "value": 15.4},
+        {"date": "2025-12-08", "value": 15.1},
+        {"date": "2025-12-05", "value": 14.8},
+        {"date": "2025-12-04", "value": 14.5},
+        {"date": "2025-12-03", "value": 14.2},
+        {"date": "2025-12-02", "value": 13.8}
+      ]
+    },
+    "cli": {
+      "name": "OECD Composite Leading Indicator",
+      "source": "OECD",
+      "countries": {
+        "USA": [
+          {"date": "2025-12", "value": 100.8},
+          {"date": "2025-11", "value": 100.6},
+          {"date": "2025-10", "value": 100.4},
+          {"date": "2025-09", "value": 100.2},
+          {"date": "2025-08", "value": 100.0},
+          {"date": "2025-07", "value": 99.8},
+          {"date": "2025-06", "value": 99.5},
+          {"date": "2025-05", "value": 99.3},
+          {"date": "2025-04", "value": 99.1},
+          {"date": "2025-03", "value": 99.0},
+          {"date": "2025-02", "value": 98.9},
+          {"date": "2025-01", "value": 98.8}
+        ],
+        "KOR": [
+          {"date": "2025-12", "value": 100.2},
+          {"date": "2025-11", "value": 100.0},
+          {"date": "2025-10", "value": 99.8},
+          {"date": "2025-09", "value": 99.5},
+          {"date": "2025-08", "value": 99.2},
+          {"date": "2025-07", "value": 98.9},
+          {"date": "2025-06", "value": 98.6},
+          {"date": "2025-05", "value": 98.4},
+          {"date": "2025-04", "value": 98.3},
+          {"date": "2025-03", "value": 98.2},
+          {"date": "2025-02", "value": 98.2},
+          {"date": "2025-01", "value": 98.3}
+        ]
+      }
+    },
+    "bdi": {
+      "name": "Baltic Dry Index",
+      "source": "Baltic Exchange",
+      "history": [
+        {"date": "2026-01-05", "value": 1842},
+        {"date": "2026-01-04", "value": 1798},
+        {"date": "2026-01-03", "value": 1756},
+        {"date": "2026-01-02", "value": 1712},
+        {"date": "2025-12-31", "value": 1680},
+        {"date": "2025-12-30", "value": 1645},
+        {"date": "2025-12-29", "value": 1612},
+        {"date": "2025-12-28", "value": 1598},
+        {"date": "2025-12-27", "value": 1587},
+        {"date": "2025-12-26", "value": 1574},
+        {"date": "2025-12-23", "value": 1562},
+        {"date": "2025-12-22", "value": 1548},
+        {"date": "2025-12-21", "value": 1532},
+        {"date": "2025-12-20", "value": 1518},
+        {"date": "2025-12-19", "value": 1502},
+        {"date": "2025-12-18", "value": 1488},
+        {"date": "2025-12-17", "value": 1475},
+        {"date": "2025-12-16", "value": 1462},
+        {"date": "2025-12-15", "value": 1448},
+        {"date": "2025-12-14", "value": 1435}
+      ]
+    },
+    "yieldCurve": {
+      "name": "10Y-2Y Treasury Spread",
+      "source": "FRED (T10Y2Y)",
+      "history": [
+        {"date": "2026-01-05", "value": 0.42},
+        {"date": "2026-01-04", "value": 0.38},
+        {"date": "2026-01-03", "value": 0.35},
+        {"date": "2026-01-02", "value": 0.32},
+        {"date": "2025-12-31", "value": 0.28},
+        {"date": "2025-12-30", "value": 0.25},
+        {"date": "2025-12-29", "value": 0.22},
+        {"date": "2025-12-28", "value": 0.18},
+        {"date": "2025-12-27", "value": 0.15},
+        {"date": "2025-12-26", "value": 0.12},
+        {"date": "2025-12-23", "value": 0.08},
+        {"date": "2025-12-22", "value": 0.05},
+        {"date": "2025-12-21", "value": 0.02},
+        {"date": "2025-12-20", "value": -0.02},
+        {"date": "2025-12-19", "value": -0.05},
+        {"date": "2025-12-18", "value": -0.08},
+        {"date": "2025-12-17", "value": -0.12},
+        {"date": "2025-12-16", "value": -0.15},
+        {"date": "2025-12-15", "value": -0.18},
+        {"date": "2025-12-14", "value": -0.22}
+      ]
+    }
+  },
+  "metadata": {
+    "lastUpdate": "2026-01-05T09:00:00.000Z",
+    "dataRange": {
+      "start": "2021-01-01",
+      "end": "2026-01-05"
+    }
+  }
+}

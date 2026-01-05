@@ -1,0 +1,144 @@
+{
+  "timestamp": "2026-01-05T09:00:00.000Z",
+  "macro": {
+    "regime": "expansion",
+    "score": 72,
+    "cli": {
+      "us": 100.8,
+      "korea": 100.2,
+      "china": 99.5,
+      "japan": 100.1,
+      "germany": 99.8,
+      "oecd": 100.3
+    },
+    "pmi": {
+      "manufacturing": 52.3,
+      "services": 54.1
+    }
+  },
+  "risk": {
+    "vix": 18.5,
+    "vixChange": -2.3,
+    "regime": "normal",
+    "range52w": {
+      "low": 12.1,
+      "high": 35.2
+    }
+  },
+  "trade": {
+    "bdi": 1842,
+    "bdiChange": 5.2,
+    "wci": 2156,
+    "wciChange": -1.8,
+    "regime": "recovery"
+  },
+  "commodity": {
+    "index": 124.5,
+    "energy": -3.1,
+    "food": 1.8,
+    "metals": 2.4,
+    "agriculture": -0.5,
+    "regime": "contraction"
+  },
+  "oil": {
+    "price": 72.4,
+    "inventory": 2.1,
+    "vs5yAvg": -3.2,
+    "wtiPrice": 71.8,
+    "brentPrice": 75.2,
+    "regime": "normal"
+  },
+  "korea": {
+    "kospi": 2645,
+    "kospiChange": 0.8,
+    "kosdaq": 842,
+    "kosdaqChange": 1.2,
+    "foreignNet": "buy",
+    "foreignAmount": 324.5,
+    "regime": "expansion"
+  },
+  "sectors": {
+    "technology": {
+      "cycle": "expansion",
+      "momentum": 0.85,
+      "signal": "positive"
+    },
+    "financials": {
+      "cycle": "recovery",
+      "momentum": 0.62,
+      "signal": "neutral"
+    },
+    "healthcare": {
+      "cycle": "recovery",
+      "momentum": 0.58,
+      "signal": "neutral"
+    },
+    "consumerDiscretionary": {
+      "cycle": "expansion",
+      "momentum": 0.78,
+      "signal": "positive"
+    },
+    "industrials": {
+      "cycle": "expansion",
+      "momentum": 0.72,
+      "signal": "positive"
+    },
+    "energy": {
+      "cycle": "slowdown",
+      "momentum": 0.35,
+      "signal": "negative"
+    },
+    "materials": {
+      "cycle": "slowdown",
+      "momentum": 0.42,
+      "signal": "negative"
+    },
+    "utilities": {
+      "cycle": "recovery",
+      "momentum": 0.55,
+      "signal": "neutral"
+    },
+    "realEstate": {
+      "cycle": "contraction",
+      "momentum": 0.28,
+      "signal": "negative"
+    },
+    "consumerStaples": {
+      "cycle": "normal",
+      "momentum": 0.50,
+      "signal": "neutral"
+    },
+    "communication": {
+      "cycle": "expansion",
+      "momentum": 0.75,
+      "signal": "positive"
+    }
+  },
+  "metadata": {
+    "sources": {
+      "fred": {
+        "url": "https://fred.stlouisfed.org/",
+        "indicators": ["VIXCLS", "T10Y2Y", "INDPRO", "FEDFUNDS"]
+      },
+      "oecd": {
+        "url": "https://www.oecd.org/en/data/indicators/composite-leading-indicator-cli.html",
+        "indicators": ["CLI"]
+      },
+      "eia": {
+        "url": "https://www.eia.gov/petroleum/supply/weekly/",
+        "indicators": ["Crude Oil Stocks"]
+      },
+      "balticExchange": {
+        "url": "https://www.balticexchange.com/",
+        "indicators": ["BDI"]
+      }
+    },
+    "updateFrequency": {
+      "vix": "daily",
+      "cli": "monthly",
+      "pmi": "monthly",
+      "bdi": "daily",
+      "oilInventory": "weekly"
+    }
+  }
+}
