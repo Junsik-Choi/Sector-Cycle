@@ -50,6 +50,10 @@ jobs:
         run: |
           python scripts/collect_data.py
           
+      - name: Calculate technical signals
+        run: |
+          python scripts/calculate_signals.py
+          
       - name: Check for changes
         id: check_changes
         run: |

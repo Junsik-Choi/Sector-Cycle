@@ -1,0 +1,5375 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "lastUpdate": "2026-01-06T15:54:45.620129",
+    "description": "Technical signals for stocks and sectors"
+  },
+  "vix": {
+    "value": 18.5,
+    "warning": false
+  },
+  "stocks": {
+    "us": {
+      "AAPL": {
+        "name": "Apple Inc.",
+        "sector_l1": "technology",
+        "sector_l2": "hardware",
+        "price": 190,
+        "change": -2.55,
+        "changePercent": -3.6,
+        "signalScore": {
+          "score": 65,
+          "fulfillmentRate": 36,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "32",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 32,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 38
+        },
+        "adx": {
+          "current": 15,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-23T15:54:45.622612"
+      },
+      "MSFT": {
+        "name": "Microsoft",
+        "sector_l1": "technology",
+        "sector_l2": "software",
+        "price": 169,
+        "change": 0.05,
+        "changePercent": -4.73,
+        "signalScore": {
+          "score": 27,
+          "fulfillmentRate": 42,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "경고",
+            "type": "bearish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "26",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 26,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 15
+        },
+        "adx": {
+          "current": 17,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-22T15:54:45.622651"
+      },
+      "GOOGL": {
+        "name": "Alphabet",
+        "sector_l1": "communication",
+        "sector_l2": "advertising",
+        "price": 438,
+        "change": 3.06,
+        "changePercent": 1.98,
+        "signalScore": {
+          "score": 62,
+          "fulfillmentRate": 51,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "42",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 42,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 10
+        },
+        "adx": {
+          "current": 40,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-30T15:54:45.622672"
+      },
+      "AMZN": {
+        "name": "Amazon",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "retail",
+        "price": 244,
+        "change": -4.03,
+        "changePercent": 3.47,
+        "signalScore": {
+          "score": 73,
+          "fulfillmentRate": 68,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "46",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 46,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 52
+        },
+        "adx": {
+          "current": 18,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-04T15:54:45.622691"
+      },
+      "NVDA": {
+        "name": "NVIDIA",
+        "sector_l1": "technology",
+        "sector_l2": "semiconductors",
+        "price": 243,
+        "change": -4.21,
+        "changePercent": -2.07,
+        "signalScore": {
+          "score": 71,
+          "fulfillmentRate": 70,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "54",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 54,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 37
+        },
+        "adx": {
+          "current": 32,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-30T15:54:45.622707"
+      },
+      "META": {
+        "name": "Meta Platforms",
+        "sector_l1": "communication",
+        "sector_l2": "advertising",
+        "price": 166,
+        "change": 2.73,
+        "changePercent": 4.85,
+        "signalScore": {
+          "score": 70,
+          "fulfillmentRate": 44,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "29",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 29,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 25
+        },
+        "adx": {
+          "current": 16,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-28T15:54:45.622724"
+      },
+      "TSLA": {
+        "name": "Tesla",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "ev_battery",
+        "price": 133,
+        "change": -1.3,
+        "changePercent": -2.9,
+        "signalScore": {
+          "score": 54,
+          "fulfillmentRate": 47,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "65",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 65,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 39
+        },
+        "adx": {
+          "current": 41,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-16T15:54:45.622740"
+      },
+      "JPM": {
+        "name": "JPMorgan Chase",
+        "sector_l1": "financials",
+        "sector_l2": "banks",
+        "price": 133,
+        "change": -0.38,
+        "changePercent": -2.3,
+        "signalScore": {
+          "score": 35,
+          "fulfillmentRate": 70,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "59",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 59,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 44
+        },
+        "adx": {
+          "current": 38,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-26T15:54:45.622754"
+      },
+      "V": {
+        "name": "Visa",
+        "sector_l1": "financials",
+        "sector_l2": "fintech",
+        "price": 167,
+        "change": 3.22,
+        "changePercent": 3.05,
+        "signalScore": {
+          "score": 78,
+          "fulfillmentRate": 55,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "74",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 74,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 5
+        },
+        "adx": {
+          "current": 39,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-30T15:54:45.622768"
+      },
+      "JNJ": {
+        "name": "Johnson & Johnson",
+        "sector_l1": "healthcare",
+        "sector_l2": "pharma",
+        "price": 211,
+        "change": -2.87,
+        "changePercent": -0.01,
+        "signalScore": {
+          "score": 83,
+          "fulfillmentRate": 71,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "61",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 61,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 10
+        },
+        "adx": {
+          "current": 43,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-28T15:54:45.622785"
+      },
+      "XOM": {
+        "name": "Exxon Mobil",
+        "sector_l1": "energy",
+        "sector_l2": "oil_gas_exploration",
+        "price": 325,
+        "change": -2.37,
+        "changePercent": 0.85,
+        "signalScore": {
+          "score": 33,
+          "fulfillmentRate": 67,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "40",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 40,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 24
+        },
+        "adx": {
+          "current": 38,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-29T15:54:45.622968"
+      },
+      "UNH": {
+        "name": "UnitedHealth",
+        "sector_l1": "healthcare",
+        "sector_l2": "healthcare_services",
+        "price": 436,
+        "change": -4.53,
+        "changePercent": -3.9,
+        "signalScore": {
+          "score": 33,
+          "fulfillmentRate": 70,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "57",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 57,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 51
+        },
+        "adx": {
+          "current": 30,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-15T15:54:45.622999"
+      },
+      "HD": {
+        "name": "Home Depot",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "retail",
+        "price": 245,
+        "change": 0.96,
+        "changePercent": -0.32,
+        "signalScore": {
+          "score": 52,
+          "fulfillmentRate": 46,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "63",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 63,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 44
+        },
+        "adx": {
+          "current": 17,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-13T15:54:45.623019"
+      },
+      "PG": {
+        "name": "Procter & Gamble",
+        "sector_l1": "consumerStaples",
+        "sector_l2": "household",
+        "price": 434,
+        "change": -2.33,
+        "changePercent": 1.41,
+        "signalScore": {
+          "score": 32,
+          "fulfillmentRate": 37,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "68",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 68,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 28
+        },
+        "adx": {
+          "current": 43,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-31T15:54:45.623033"
+      },
+      "MA": {
+        "name": "Mastercard",
+        "sector_l1": "financials",
+        "sector_l2": "fintech",
+        "price": 498,
+        "change": 2.2,
+        "changePercent": 4.72,
+        "signalScore": {
+          "score": 54,
+          "fulfillmentRate": 78,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "25",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 25,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 33
+        },
+        "adx": {
+          "current": 45,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-07T15:54:45.623062"
+      },
+      "LLY": {
+        "name": "Eli Lilly",
+        "sector_l1": "healthcare",
+        "sector_l2": "pharma",
+        "price": 309,
+        "change": 1.09,
+        "changePercent": -3.47,
+        "signalScore": {
+          "score": 31,
+          "fulfillmentRate": 78,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "65",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 65,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 35
+        },
+        "adx": {
+          "current": 24,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-12T15:54:45.623077"
+      },
+      "ABBV": {
+        "name": "AbbVie",
+        "sector_l1": "healthcare",
+        "sector_l2": "pharma",
+        "price": 356,
+        "change": -1.76,
+        "changePercent": -4.81,
+        "signalScore": {
+          "score": 84,
+          "fulfillmentRate": 53,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "58",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 58,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 16
+        },
+        "adx": {
+          "current": 44,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-04T15:54:45.623094"
+      },
+      "MRK": {
+        "name": "Merck",
+        "sector_l1": "healthcare",
+        "sector_l2": "pharma",
+        "price": 93,
+        "change": 2.32,
+        "changePercent": 3.16,
+        "signalScore": {
+          "score": 40,
+          "fulfillmentRate": 78,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "61",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 61,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 9
+        },
+        "adx": {
+          "current": 45,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-15T15:54:45.623109"
+      },
+      "CVX": {
+        "name": "Chevron",
+        "sector_l1": "energy",
+        "sector_l2": "oil_gas_exploration",
+        "price": 320,
+        "change": 3.72,
+        "changePercent": -0.77,
+        "signalScore": {
+          "score": 55,
+          "fulfillmentRate": 43,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "60",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 60,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 46
+        },
+        "adx": {
+          "current": 20,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-27T15:54:45.623123"
+      },
+      "KO": {
+        "name": "Coca-Cola",
+        "sector_l1": "consumerStaples",
+        "sector_l2": "food_beverage",
+        "price": 274,
+        "change": 4.0,
+        "changePercent": -0.49,
+        "signalScore": {
+          "score": 50,
+          "fulfillmentRate": 45,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "67",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 67,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 5
+        },
+        "adx": {
+          "current": 35,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-26T15:54:45.623140"
+      },
+      "PEP": {
+        "name": "PepsiCo",
+        "sector_l1": "consumerStaples",
+        "sector_l2": "food_beverage",
+        "price": 351,
+        "change": -2.8,
+        "changePercent": -4.29,
+        "signalScore": {
+          "score": 26,
+          "fulfillmentRate": 70,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "경고",
+            "type": "bearish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "62",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 62,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 15
+        },
+        "adx": {
+          "current": 32,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-03T15:54:45.623154"
+      },
+      "WMT": {
+        "name": "Walmart",
+        "sector_l1": "consumerStaples",
+        "sector_l2": "grocery",
+        "price": 86,
+        "change": 0.14,
+        "changePercent": -2.22,
+        "signalScore": {
+          "score": 82,
+          "fulfillmentRate": 61,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "27",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 27,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 35
+        },
+        "adx": {
+          "current": 42,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-01T15:54:45.623167"
+      },
+      "COST": {
+        "name": "Costco",
+        "sector_l1": "consumerStaples",
+        "sector_l2": "grocery",
+        "price": 174,
+        "change": 2.85,
+        "changePercent": 3.07,
+        "signalScore": {
+          "score": 71,
+          "fulfillmentRate": 42,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "61",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 61,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 7
+        },
+        "adx": {
+          "current": 33,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-15T15:54:45.623182"
+      },
+      "BAC": {
+        "name": "Bank of America",
+        "sector_l1": "financials",
+        "sector_l2": "banks",
+        "price": 289,
+        "change": 3.64,
+        "changePercent": -4.46,
+        "signalScore": {
+          "score": 52,
+          "fulfillmentRate": 71,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "47",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 47,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 4
+        },
+        "adx": {
+          "current": 28,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-24T15:54:45.623194"
+      },
+      "NFLX": {
+        "name": "Netflix",
+        "sector_l1": "communication",
+        "sector_l2": "media",
+        "price": 177,
+        "change": -3.08,
+        "changePercent": 0.36,
+        "signalScore": {
+          "score": 71,
+          "fulfillmentRate": 38,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "46",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 46,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 12
+        },
+        "adx": {
+          "current": 40,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-28T15:54:45.623209"
+      },
+      "AMD": {
+        "name": "AMD",
+        "sector_l1": "technology",
+        "sector_l2": "semiconductors",
+        "price": 276,
+        "change": 3.08,
+        "changePercent": 3.56,
+        "signalScore": {
+          "score": 54,
+          "fulfillmentRate": 36,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "40",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 40,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 42
+        },
+        "adx": {
+          "current": 42,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-19T15:54:45.623221"
+      },
+      "INTC": {
+        "name": "Intel",
+        "sector_l1": "technology",
+        "sector_l2": "semiconductors",
+        "price": 135,
+        "change": -0.94,
+        "changePercent": -0.19,
+        "signalScore": {
+          "score": 78,
+          "fulfillmentRate": 55,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "25",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 25,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 11
+        },
+        "adx": {
+          "current": 17,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-24T15:54:45.623239"
+      },
+      "CRM": {
+        "name": "Salesforce",
+        "sector_l1": "technology",
+        "sector_l2": "software",
+        "price": 196,
+        "change": -0.77,
+        "changePercent": 4.57,
+        "signalScore": {
+          "score": 25,
+          "fulfillmentRate": 80,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "경고",
+            "type": "bearish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "49",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 49,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 10
+        },
+        "adx": {
+          "current": 23,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-30T15:54:45.623252"
+      },
+      "ORCL": {
+        "name": "Oracle",
+        "sector_l1": "technology",
+        "sector_l2": "software",
+        "price": 346,
+        "change": 2.36,
+        "changePercent": -4.39,
+        "signalScore": {
+          "score": 43,
+          "fulfillmentRate": 50,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "38",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 38,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 4
+        },
+        "adx": {
+          "current": 45,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-18T15:54:45.623268"
+      },
+      "ADBE": {
+        "name": "Adobe",
+        "sector_l1": "technology",
+        "sector_l2": "software",
+        "price": 130,
+        "change": -4.43,
+        "changePercent": 0.08,
+        "signalScore": {
+          "score": 55,
+          "fulfillmentRate": 41,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "57",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 57,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 39
+        },
+        "adx": {
+          "current": 44,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-03T15:54:45.623282"
+      },
+      "NKE": {
+        "name": "Nike",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "apparel",
+        "price": 341,
+        "change": -2.54,
+        "changePercent": 0.95,
+        "signalScore": {
+          "score": 68,
+          "fulfillmentRate": 69,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "40",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 40,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 27
+        },
+        "adx": {
+          "current": 27,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-15T15:54:45.623295"
+      },
+      "DIS": {
+        "name": "Walt Disney",
+        "sector_l1": "communication",
+        "sector_l2": "media",
+        "price": 183,
+        "change": -2.96,
+        "changePercent": 2.16,
+        "signalScore": {
+          "score": 62,
+          "fulfillmentRate": 45,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "61",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 61,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 26
+        },
+        "adx": {
+          "current": 31,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-01T15:54:45.623313"
+      },
+      "VZ": {
+        "name": "Verizon",
+        "sector_l1": "communication",
+        "sector_l2": "telecom",
+        "price": 211,
+        "change": 4.29,
+        "changePercent": 4.36,
+        "signalScore": {
+          "score": 67,
+          "fulfillmentRate": 30,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "66",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 66,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 40
+        },
+        "adx": {
+          "current": 24,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-18T15:54:45.623326"
+      },
+      "T": {
+        "name": "AT&T",
+        "sector_l1": "communication",
+        "sector_l2": "telecom",
+        "price": 309,
+        "change": -2.35,
+        "changePercent": 4.33,
+        "signalScore": {
+          "score": 31,
+          "fulfillmentRate": 34,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "29",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 29,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 24
+        },
+        "adx": {
+          "current": 32,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-27T15:54:45.623340"
+      },
+      "NEE": {
+        "name": "NextEra Energy",
+        "sector_l1": "utilities",
+        "sector_l2": "electric",
+        "price": 410,
+        "change": -1.97,
+        "changePercent": 4.84,
+        "signalScore": {
+          "score": 35,
+          "fulfillmentRate": 71,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "53",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 53,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 43
+        },
+        "adx": {
+          "current": 41,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-10T15:54:45.623353"
+      },
+      "CAT": {
+        "name": "Caterpillar",
+        "sector_l1": "industrials",
+        "sector_l2": "machinery",
+        "price": 103,
+        "change": 4.39,
+        "changePercent": -3.66,
+        "signalScore": {
+          "score": 60,
+          "fulfillmentRate": 37,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "44",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 44,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 48
+        },
+        "adx": {
+          "current": 44,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-19T15:54:45.623369"
+      },
+      "BA": {
+        "name": "Boeing",
+        "sector_l1": "industrials",
+        "sector_l2": "aerospace_defense",
+        "price": 157,
+        "change": 2.18,
+        "changePercent": -2.96,
+        "signalScore": {
+          "score": 34,
+          "fulfillmentRate": 70,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "42",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 42,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 33
+        },
+        "adx": {
+          "current": 24,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-21T15:54:45.623625"
+      },
+      "LMT": {
+        "name": "Lockheed Martin",
+        "sector_l1": "industrials",
+        "sector_l2": "aerospace_defense",
+        "price": 266,
+        "change": 3.29,
+        "changePercent": -4.56,
+        "signalScore": {
+          "score": 41,
+          "fulfillmentRate": 51,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "28",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 28,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 41
+        },
+        "adx": {
+          "current": 17,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-28T15:54:45.623640"
+      },
+      "GS": {
+        "name": "Goldman Sachs",
+        "sector_l1": "financials",
+        "sector_l2": "investment_banks",
+        "price": 411,
+        "change": -0.72,
+        "changePercent": -4.9,
+        "signalScore": {
+          "score": 35,
+          "fulfillmentRate": 34,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "72",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 72,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 35
+        },
+        "adx": {
+          "current": 29,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-04T15:54:45.623656"
+      },
+      "LIN": {
+        "name": "Linde",
+        "sector_l1": "materials",
+        "sector_l2": "chemicals",
+        "price": 125,
+        "change": -0.7,
+        "changePercent": -4.58,
+        "signalScore": {
+          "score": 78,
+          "fulfillmentRate": 53,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "48",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 48,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 58
+        },
+        "adx": {
+          "current": 33,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-25T15:54:45.623672"
+      },
+      "UPS": {
+        "name": "UPS",
+        "sector_l1": "industrials",
+        "sector_l2": "logistics",
+        "price": 102,
+        "change": -1.46,
+        "changePercent": 0.6,
+        "signalScore": {
+          "score": 38,
+          "fulfillmentRate": 56,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "68",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 68,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 60
+        },
+        "adx": {
+          "current": 22,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-07T15:54:45.623688"
+      },
+      "PLD": {
+        "name": "Prologis",
+        "sector_l1": "realEstate",
+        "sector_l2": "industrial_reits",
+        "price": 261,
+        "change": -4.75,
+        "changePercent": 2.37,
+        "signalScore": {
+          "score": 40,
+          "fulfillmentRate": 51,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "35",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 35,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 52
+        },
+        "adx": {
+          "current": 40,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-15T15:54:45.623700"
+      },
+      "AMT": {
+        "name": "American Tower",
+        "sector_l1": "realEstate",
+        "sector_l2": "data_center_reits",
+        "price": 186,
+        "change": -3.41,
+        "changePercent": 2.01,
+        "signalScore": {
+          "score": 80,
+          "fulfillmentRate": 54,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "72",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 72,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 55
+        },
+        "adx": {
+          "current": 40,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-21T15:54:45.623712"
+      },
+      "PANW": {
+        "name": "Palo Alto Networks",
+        "sector_l1": "technology",
+        "sector_l2": "cybersecurity",
+        "price": 229,
+        "change": -1.95,
+        "changePercent": 2.95,
+        "signalScore": {
+          "score": 39,
+          "fulfillmentRate": 44,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "37",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 37,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 2
+        },
+        "adx": {
+          "current": 41,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-15T15:54:45.623731"
+      },
+      "CRWD": {
+        "name": "CrowdStrike",
+        "sector_l1": "technology",
+        "sector_l2": "cybersecurity",
+        "price": 492,
+        "change": -4.31,
+        "changePercent": 2.73,
+        "signalScore": {
+          "score": 37,
+          "fulfillmentRate": 52,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "50",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 50,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 44
+        },
+        "adx": {
+          "current": 25,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-10T15:54:45.623744"
+      },
+      "SNOW": {
+        "name": "Snowflake",
+        "sector_l1": "technology",
+        "sector_l2": "cloud",
+        "price": 109,
+        "change": 3.77,
+        "changePercent": -2.39,
+        "signalScore": {
+          "score": 59,
+          "fulfillmentRate": 67,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "46",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 46,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 3
+        },
+        "adx": {
+          "current": 45,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-02T15:54:45.623757"
+      },
+      "PLTR": {
+        "name": "Palantir",
+        "sector_l1": "technology",
+        "sector_l2": "ai_robotics",
+        "price": 452,
+        "change": -1.86,
+        "changePercent": 1.06,
+        "signalScore": {
+          "score": 63,
+          "fulfillmentRate": 62,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "52",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 52,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 25
+        },
+        "adx": {
+          "current": 26,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-08T15:54:45.623770"
+      },
+      "SLB": {
+        "name": "Schlumberger",
+        "sector_l1": "energy",
+        "sector_l2": "oil_services",
+        "price": 412,
+        "change": -0.64,
+        "changePercent": 0.2,
+        "signalScore": {
+          "score": 61,
+          "fulfillmentRate": 64,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "37",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 37,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 24
+        },
+        "adx": {
+          "current": 23,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-23T15:54:45.623786"
+      }
+    },
+    "kr": {
+      "005930": {
+        "name": "삼성전자",
+        "sector_l1": "technology",
+        "sector_l2": "semiconductors",
+        "price": 336712,
+        "change": -1.86,
+        "changePercent": 3.48,
+        "signalScore": {
+          "score": 29,
+          "fulfillmentRate": 76,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "경고",
+            "type": "bearish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "67",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 67,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 33
+        },
+        "adx": {
+          "current": 44,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-27T15:54:45.623803"
+      },
+      "000660": {
+        "name": "SK하이닉스",
+        "sector_l1": "technology",
+        "sector_l2": "semiconductors",
+        "price": 375538,
+        "change": -2.04,
+        "changePercent": -3.73,
+        "signalScore": {
+          "score": 67,
+          "fulfillmentRate": 56,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "51",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 51,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 44
+        },
+        "adx": {
+          "current": 25,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-13T15:54:45.623820"
+      },
+      "373220": {
+        "name": "LG에너지솔루션",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "ev_battery",
+        "price": 167784,
+        "change": -0.94,
+        "changePercent": 3.34,
+        "signalScore": {
+          "score": 82,
+          "fulfillmentRate": 49,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "36",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 36,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 14
+        },
+        "adx": {
+          "current": 34,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-23T15:54:45.623834"
+      },
+      "207940": {
+        "name": "삼성바이오로직스",
+        "sector_l1": "healthcare",
+        "sector_l2": "biotech",
+        "price": 178951,
+        "change": -0.35,
+        "changePercent": -0.58,
+        "signalScore": {
+          "score": 75,
+          "fulfillmentRate": 43,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "62",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 62,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 51
+        },
+        "adx": {
+          "current": 34,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-08T15:54:45.623848"
+      },
+      "005380": {
+        "name": "현대자동차",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "automotive",
+        "price": 54457,
+        "change": -2.16,
+        "changePercent": 1.64,
+        "signalScore": {
+          "score": 75,
+          "fulfillmentRate": 69,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "72",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 72,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 6
+        },
+        "adx": {
+          "current": 20,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-10T15:54:45.623861"
+      },
+      "006400": {
+        "name": "삼성SDI",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "ev_battery",
+        "price": 172749,
+        "change": -2.75,
+        "changePercent": -3.01,
+        "signalScore": {
+          "score": 85,
+          "fulfillmentRate": 31,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "73",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 73,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 16
+        },
+        "adx": {
+          "current": 22,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-21T15:54:45.623873"
+      },
+      "035420": {
+        "name": "NAVER",
+        "sector_l1": "communication",
+        "sector_l2": "advertising",
+        "price": 227286,
+        "change": 3.86,
+        "changePercent": 0.76,
+        "signalScore": {
+          "score": 64,
+          "fulfillmentRate": 75,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "74",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 74,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 32
+        },
+        "adx": {
+          "current": 17,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-24T15:54:45.623887"
+      },
+      "051910": {
+        "name": "LG화학",
+        "sector_l1": "materials",
+        "sector_l2": "chemicals",
+        "price": 12907,
+        "change": 3.93,
+        "changePercent": 3.6,
+        "signalScore": {
+          "score": 40,
+          "fulfillmentRate": 36,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "34",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 34,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 15
+        },
+        "adx": {
+          "current": 35,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-31T15:54:45.623901"
+      },
+      "068270": {
+        "name": "셀트리온",
+        "sector_l1": "healthcare",
+        "sector_l2": "biotech",
+        "price": 36328,
+        "change": 0.57,
+        "changePercent": 4.17,
+        "signalScore": {
+          "score": 76,
+          "fulfillmentRate": 37,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "69",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 69,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 9
+        },
+        "adx": {
+          "current": 31,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-11T15:54:45.623913"
+      },
+      "035720": {
+        "name": "카카오",
+        "sector_l1": "communication",
+        "sector_l2": "advertising",
+        "price": 322188,
+        "change": -1.83,
+        "changePercent": 2.55,
+        "signalScore": {
+          "score": 54,
+          "fulfillmentRate": 58,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "67",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 67,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 54
+        },
+        "adx": {
+          "current": 31,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-07T15:54:45.623927"
+      },
+      "105560": {
+        "name": "KB금융",
+        "sector_l1": "financials",
+        "sector_l2": "banks",
+        "price": 399889,
+        "change": 3.61,
+        "changePercent": -0.5,
+        "signalScore": {
+          "score": 60,
+          "fulfillmentRate": 78,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "53",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 53,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 54
+        },
+        "adx": {
+          "current": 43,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-16T15:54:45.623940"
+      },
+      "055550": {
+        "name": "신한지주",
+        "sector_l1": "financials",
+        "sector_l2": "banks",
+        "price": 264068,
+        "change": 1.27,
+        "changePercent": -2.25,
+        "signalScore": {
+          "score": 42,
+          "fulfillmentRate": 34,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "74",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 74,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 16
+        },
+        "adx": {
+          "current": 39,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-28T15:54:45.623956"
+      },
+      "000270": {
+        "name": "기아",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "automotive",
+        "price": 52245,
+        "change": -3.62,
+        "changePercent": -2.69,
+        "signalScore": {
+          "score": 46,
+          "fulfillmentRate": 74,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "45",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 45,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 46
+        },
+        "adx": {
+          "current": 43,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-30T15:54:45.623968"
+      },
+      "005490": {
+        "name": "POSCO홀딩스",
+        "sector_l1": "materials",
+        "sector_l2": "steel",
+        "price": 294484,
+        "change": -0.34,
+        "changePercent": -4.38,
+        "signalScore": {
+          "score": 29,
+          "fulfillmentRate": 56,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "경고",
+            "type": "bearish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "51",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 51,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "below",
+          "daysSinceCross": 58
+        },
+        "adx": {
+          "current": 28,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-12T15:54:45.623985"
+      },
+      "012330": {
+        "name": "현대모비스",
+        "sector_l1": "consumerDiscretionary",
+        "sector_l2": "automotive",
+        "price": 209429,
+        "change": -0.23,
+        "changePercent": 4.43,
+        "signalScore": {
+          "score": 62,
+          "fulfillmentRate": 49,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "69",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 69,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 55
+        },
+        "adx": {
+          "current": 15,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-08T15:54:45.623999"
+      },
+      "096770": {
+        "name": "SK이노베이션",
+        "sector_l1": "energy",
+        "sector_l2": "oil_gas_exploration",
+        "price": 395159,
+        "change": 0.46,
+        "changePercent": 1.03,
+        "signalScore": {
+          "score": 78,
+          "fulfillmentRate": 44,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "51",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 51,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 15
+        },
+        "adx": {
+          "current": 32,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-28T15:54:45.624012"
+      },
+      "015760": {
+        "name": "한국전력",
+        "sector_l1": "utilities",
+        "sector_l2": "electric",
+        "price": 186228,
+        "change": 1.69,
+        "changePercent": 2.98,
+        "signalScore": {
+          "score": 52,
+          "fulfillmentRate": 76,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "56",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 56,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 54
+        },
+        "adx": {
+          "current": 15,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-22T15:54:45.624025"
+      },
+      "017670": {
+        "name": "SK텔레콤",
+        "sector_l1": "communication",
+        "sector_l2": "telecom",
+        "price": 24138,
+        "change": 4.07,
+        "changePercent": 0.92,
+        "signalScore": {
+          "score": 83,
+          "fulfillmentRate": 72,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "33",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 33,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 6
+        },
+        "adx": {
+          "current": 34,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-16T15:54:45.624036"
+      },
+      "030200": {
+        "name": "KT",
+        "sector_l1": "communication",
+        "sector_l2": "telecom",
+        "price": 105278,
+        "change": -4.5,
+        "changePercent": -1.21,
+        "signalScore": {
+          "score": 52,
+          "fulfillmentRate": 43,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "33",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 33,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 21
+        },
+        "adx": {
+          "current": 42,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-26T15:54:45.624051"
+      },
+      "009540": {
+        "name": "한국조선해양",
+        "sector_l1": "industrials",
+        "sector_l2": "shipbuilding",
+        "price": 142262,
+        "change": 3.35,
+        "changePercent": -0.3,
+        "signalScore": {
+          "score": 73,
+          "fulfillmentRate": 77,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "49",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 49,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 23
+        },
+        "adx": {
+          "current": 23,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-29T15:54:45.624065"
+      },
+      "042660": {
+        "name": "한화오션",
+        "sector_l1": "industrials",
+        "sector_l2": "shipbuilding",
+        "price": 31106,
+        "change": 2.54,
+        "changePercent": 4.5,
+        "signalScore": {
+          "score": 66,
+          "fulfillmentRate": 42,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "29",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 29,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 40
+        },
+        "adx": {
+          "current": 39,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-01T15:54:45.624082"
+      },
+      "010140": {
+        "name": "삼성중공업",
+        "sector_l1": "industrials",
+        "sector_l2": "shipbuilding",
+        "price": 69973,
+        "change": 0.64,
+        "changePercent": -2.82,
+        "signalScore": {
+          "score": 40,
+          "fulfillmentRate": 74,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "33",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 33,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 50
+        },
+        "adx": {
+          "current": 30,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-25T15:54:45.624094"
+      },
+      "086790": {
+        "name": "하나금융지주",
+        "sector_l1": "financials",
+        "sector_l2": "banks",
+        "price": 386626,
+        "change": -3.85,
+        "changePercent": 3.19,
+        "signalScore": {
+          "score": 35,
+          "fulfillmentRate": 49,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "63",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 63,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 38
+        },
+        "adx": {
+          "current": 34,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2026-01-05T15:54:45.624110"
+      },
+      "032830": {
+        "name": "삼성생명",
+        "sector_l1": "financials",
+        "sector_l2": "insurance",
+        "price": 486067,
+        "change": 4.58,
+        "changePercent": -1.03,
+        "signalScore": {
+          "score": 84,
+          "fulfillmentRate": 75,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "44",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 44,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 5
+        },
+        "adx": {
+          "current": 33,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-18T15:54:45.624123"
+      },
+      "000720": {
+        "name": "현대건설",
+        "sector_l1": "realEstate",
+        "sector_l2": "developers",
+        "price": 375529,
+        "change": 2.72,
+        "changePercent": 3.5,
+        "signalScore": {
+          "score": 69,
+          "fulfillmentRate": 68,
+          "fulfilled": 2,
+          "total": 6,
+          "status": {
+            "label": "양호",
+            "type": "positive"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "65",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 65,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "golden",
+            "label": "상승 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 51
+        },
+        "adx": {
+          "current": 22,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-18T15:54:45.624135"
+      },
+      "036570": {
+        "name": "엔씨소프트",
+        "sector_l1": "communication",
+        "sector_l2": "gaming",
+        "price": 234593,
+        "change": 1.62,
+        "changePercent": -4.31,
+        "signalScore": {
+          "score": 75,
+          "fulfillmentRate": 71,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "27",
+              "positive": false
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 27,
+          "status": {
+            "type": "oversold",
+            "label": "과매도"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 1
+        },
+        "adx": {
+          "current": 26,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-09T15:54:45.624148"
+      },
+      "251270": {
+        "name": "넷마블",
+        "sector_l1": "communication",
+        "sector_l2": "gaming",
+        "price": 199890,
+        "change": 1.36,
+        "changePercent": 3.29,
+        "signalScore": {
+          "score": 51,
+          "fulfillmentRate": 75,
+          "fulfilled": 3,
+          "total": 6,
+          "status": {
+            "label": "관찰",
+            "type": "neutral"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "56",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "중립",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 56,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 28
+        },
+        "adx": {
+          "current": 18,
+          "status": {
+            "type": "weak",
+            "label": "횡보 가능"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-31T15:54:45.624162"
+      },
+      "012450": {
+        "name": "한화에어로스페이스",
+        "sector_l1": "industrials",
+        "sector_l2": "aerospace_defense",
+        "price": 151600,
+        "change": 1.16,
+        "changePercent": 4.2,
+        "signalScore": {
+          "score": 71,
+          "fulfillmentRate": 79,
+          "fulfilled": 5,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "58",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 58,
+          "status": {
+            "type": "neutral",
+            "label": "중립"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "above",
+          "daysSinceCross": 30
+        },
+        "adx": {
+          "current": 45,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-23T15:54:45.624173"
+      },
+      "047810": {
+        "name": "한국항공우주",
+        "sector_l1": "industrials",
+        "sector_l2": "aerospace_defense",
+        "price": 178980,
+        "change": 3.52,
+        "changePercent": 3.31,
+        "signalScore": {
+          "score": 77,
+          "fulfillmentRate": 35,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "우호",
+            "type": "bullish"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "71",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "상승 우세",
+              "positive": true
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 강화",
+              "positive": true
+            }
+          ]
+        },
+        "rsi": {
+          "current": 71,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bullish",
+            "label": "모멘텀 강화"
+          }
+        },
+        "maCross": {
+          "lastCross": {
+            "type": "dead",
+            "label": "하락 우세"
+          },
+          "currentPosition": "above",
+          "daysSinceCross": 57
+        },
+        "adx": {
+          "current": 33,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-22T15:54:45.624187"
+      },
+      "326030": {
+        "name": "SK바이오팜",
+        "sector_l1": "healthcare",
+        "sector_l2": "biotech",
+        "price": 329989,
+        "change": 1.68,
+        "changePercent": -1.64,
+        "signalScore": {
+          "score": 40,
+          "fulfillmentRate": 61,
+          "fulfilled": 4,
+          "total": 6,
+          "status": {
+            "label": "주의",
+            "type": "negative"
+          },
+          "signals": [
+            {
+              "name": "RSI",
+              "status": "73",
+              "positive": true
+            },
+            {
+              "name": "MA",
+              "status": "하락 우세",
+              "positive": false
+            },
+            {
+              "name": "MACD",
+              "status": "모멘텀 약화",
+              "positive": false
+            }
+          ]
+        },
+        "rsi": {
+          "current": 73,
+          "status": {
+            "type": "overbought",
+            "label": "과매수"
+          }
+        },
+        "macd": {
+          "status": {
+            "type": "bearish",
+            "label": "모멘텀 약화"
+          }
+        },
+        "maCross": {
+          "lastCross": null,
+          "currentPosition": "below",
+          "daysSinceCross": 12
+        },
+        "adx": {
+          "current": 29,
+          "status": {
+            "type": "strong",
+            "label": "추세 강도 높음"
+          }
+        },
+        "bollinger": {
+          "status": {
+            "type": "normal",
+            "label": "밴드 내 정상"
+          }
+        },
+        "lastSignalDate": "2025-12-21T15:54:45.624198"
+      }
+    }
+  }
+}

@@ -1,0 +1,647 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "lastUpdate": "2026-01-06T00:00:00Z",
+    "description": "Sector classification with L1 (major) and L2 (sub) categories"
+  },
+  "sectors": {
+    "technology": {
+      "name": "Technology",
+      "nameKr": "기술/IT",
+      "icon": "💻",
+      "gicsCode": "45",
+      "l2": {
+        "semiconductors": {
+          "name": "Semiconductors & Equipment",
+          "nameKr": "반도체/장비",
+          "icon": "🔌",
+          "stocks": {
+            "us": ["NVDA", "AMD", "INTC", "AVGO", "QCOM", "TXN", "MU", "ASML", "LRCX", "AMAT", "KLAC", "ADI", "NXPI", "MRVL", "ON"],
+            "kr": ["005930", "000660", "042700", "018260", "058470", "034220", "033640", "066970", "005380"]
+          },
+          "etf": { "us": "SMH", "kr": "091170" }
+        },
+        "software": {
+          "name": "Software",
+          "nameKr": "소프트웨어",
+          "icon": "💾",
+          "stocks": {
+            "us": ["MSFT", "ORCL", "CRM", "ADBE", "NOW", "INTU", "SNPS", "CDNS", "PANW", "FTNT", "CRWD", "ZS", "DDOG", "MDB", "SNOW"],
+            "kr": ["035420", "035720", "036570", "263750", "352820", "041510"]
+          },
+          "etf": { "us": "IGV", "kr": null }
+        },
+        "internet": {
+          "name": "Internet & E-commerce",
+          "nameKr": "인터넷/이커머스",
+          "icon": "🌐",
+          "stocks": {
+            "us": ["GOOGL", "META", "AMZN", "NFLX", "BKNG", "ABNB", "UBER", "DASH", "SHOP", "PINS"],
+            "kr": ["035420", "035720", "377300", "017670"]
+          },
+          "etf": { "us": "FDN", "kr": null }
+        },
+        "hardware": {
+          "name": "Hardware & Devices",
+          "nameKr": "하드웨어/디바이스",
+          "icon": "💻",
+          "stocks": {
+            "us": ["AAPL", "DELL", "HPQ", "HPE", "WDC", "STX", "NTAP"],
+            "kr": ["066570", "006400", "030200"]
+          },
+          "etf": { "us": "XLK", "kr": null }
+        },
+        "cloud": {
+          "name": "Cloud Computing",
+          "nameKr": "클라우드",
+          "icon": "☁️",
+          "stocks": {
+            "us": ["AMZN", "MSFT", "GOOGL", "SNOW", "NET", "DDOG", "MDB", "CFLT", "ESTC"],
+            "kr": ["035420", "035720"]
+          },
+          "etf": { "us": "SKYY", "kr": null }
+        },
+        "cybersecurity": {
+          "name": "Cybersecurity",
+          "nameKr": "사이버보안",
+          "icon": "🔐",
+          "stocks": {
+            "us": ["PANW", "CRWD", "FTNT", "ZS", "OKTA", "S", "CYBR", "RPD", "TENB", "QLYS"],
+            "kr": ["053800", "219130"]
+          },
+          "etf": { "us": "HACK", "kr": null }
+        },
+        "ai_robotics": {
+          "name": "AI & Robotics",
+          "nameKr": "AI/로봇",
+          "icon": "🤖",
+          "stocks": {
+            "us": ["NVDA", "AMD", "GOOGL", "MSFT", "PLTR", "AI", "PATH", "IONQ", "BBAI"],
+            "kr": ["373220", "454910", "336260", "108860"]
+          },
+          "etf": { "us": "BOTZ", "kr": "371160" }
+        }
+      }
+    },
+    "financials": {
+      "name": "Financials",
+      "nameKr": "금융",
+      "icon": "🏦",
+      "gicsCode": "40",
+      "l2": {
+        "banks": {
+          "name": "Banks",
+          "nameKr": "은행",
+          "icon": "🏛️",
+          "stocks": {
+            "us": ["JPM", "BAC", "WFC", "C", "USB", "PNC", "TFC", "FITB", "MTB", "KEY"],
+            "kr": ["105560", "055550", "086790", "316140", "024110", "138930"]
+          },
+          "etf": { "us": "KBE", "kr": null }
+        },
+        "investment_banks": {
+          "name": "Investment Banks",
+          "nameKr": "증권/투자은행",
+          "icon": "📈",
+          "stocks": {
+            "us": ["GS", "MS", "SCHW", "RJF", "LPLA", "IBKR", "MKTX"],
+            "kr": ["039490", "005940", "016360", "001500", "030610"]
+          },
+          "etf": { "us": "IAI", "kr": null }
+        },
+        "insurance": {
+          "name": "Insurance",
+          "nameKr": "보험",
+          "icon": "🛡️",
+          "stocks": {
+            "us": ["BRK.B", "PGR", "AIG", "MET", "PRU", "TRV", "ALL", "CB", "AFL"],
+            "kr": ["032830", "088350", "000810", "001450", "000060"]
+          },
+          "etf": { "us": "KIE", "kr": null }
+        },
+        "fintech": {
+          "name": "Fintech",
+          "nameKr": "핀테크",
+          "icon": "💳",
+          "stocks": {
+            "us": ["V", "MA", "PYPL", "SQ", "COIN", "AFRM", "SOFI", "UPST", "NU"],
+            "kr": ["138930", "021650"]
+          },
+          "etf": { "us": "FINX", "kr": null }
+        },
+        "reits": {
+          "name": "REITs",
+          "nameKr": "리츠",
+          "icon": "🏢",
+          "stocks": {
+            "us": ["PLD", "AMT", "EQIX", "SPG", "PSA", "O", "WELL", "DLR", "AVB"],
+            "kr": ["395400", "330590", "293940"]
+          },
+          "etf": { "us": "VNQ", "kr": "329200" }
+        }
+      }
+    },
+    "healthcare": {
+      "name": "Healthcare",
+      "nameKr": "헬스케어",
+      "icon": "🏥",
+      "gicsCode": "35",
+      "l2": {
+        "pharma": {
+          "name": "Pharmaceuticals",
+          "nameKr": "제약",
+          "icon": "💊",
+          "stocks": {
+            "us": ["JNJ", "PFE", "MRK", "ABBV", "LLY", "BMY", "AMGN", "GILD", "REGN", "VRTX"],
+            "kr": ["068760", "006280", "128940", "185750", "000100"]
+          },
+          "etf": { "us": "XLV", "kr": null }
+        },
+        "biotech": {
+          "name": "Biotechnology",
+          "nameKr": "바이오텍",
+          "icon": "🧬",
+          "stocks": {
+            "us": ["AMGN", "GILD", "REGN", "VRTX", "MRNA", "BIIB", "SGEN", "ALNY", "BMRN"],
+            "kr": ["207940", "068270", "326030", "091990", "141080", "145020", "178920"]
+          },
+          "etf": { "us": "XBI", "kr": "275980" }
+        },
+        "medical_devices": {
+          "name": "Medical Devices",
+          "nameKr": "의료기기",
+          "icon": "🔬",
+          "stocks": {
+            "us": ["ABT", "MDT", "SYK", "BSX", "ISRG", "EW", "DXCM", "IDXX", "ZBH"],
+            "kr": ["036490", "085660", "137310", "041830"]
+          },
+          "etf": { "us": "IHI", "kr": null }
+        },
+        "diagnostics": {
+          "name": "Diagnostics",
+          "nameKr": "진단/검사",
+          "icon": "🧪",
+          "stocks": {
+            "us": ["TMO", "DHR", "A", "IQV", "LH", "DGX", "ILMN", "EXAS"],
+            "kr": ["096530", "203650", "222110"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "healthcare_services": {
+          "name": "Healthcare Services",
+          "nameKr": "의료서비스",
+          "icon": "🏨",
+          "stocks": {
+            "us": ["UNH", "CVS", "CI", "HUM", "ELV", "CNC", "HCA", "MCK"],
+            "kr": ["145720", "215000"]
+          },
+          "etf": { "us": "IHF", "kr": null }
+        }
+      }
+    },
+    "consumerDiscretionary": {
+      "name": "Consumer Discretionary",
+      "nameKr": "임의소비재",
+      "icon": "🛍️",
+      "gicsCode": "25",
+      "l2": {
+        "automotive": {
+          "name": "Automotive",
+          "nameKr": "자동차",
+          "icon": "🚗",
+          "stocks": {
+            "us": ["TSLA", "GM", "F", "RIVN", "LCID", "TM", "HMC", "STLA"],
+            "kr": ["005380", "000270", "012330", "161390", "018880", "011210"]
+          },
+          "etf": { "us": "CARZ", "kr": null }
+        },
+        "ev_battery": {
+          "name": "EV & Battery",
+          "nameKr": "전기차/배터리",
+          "icon": "🔋",
+          "stocks": {
+            "us": ["TSLA", "RIVN", "LCID", "NIO", "LI", "XPEV", "QS", "CHPT"],
+            "kr": ["373220", "006400", "051910", "096770", "011070", "247540"]
+          },
+          "etf": { "us": "LIT", "kr": "371460" }
+        },
+        "retail": {
+          "name": "Retail",
+          "nameKr": "유통/리테일",
+          "icon": "🛒",
+          "stocks": {
+            "us": ["AMZN", "WMT", "TGT", "HD", "LOW", "COST", "TJX", "ROST", "DG", "DLTR"],
+            "kr": ["023530", "139480", "004170", "069960"]
+          },
+          "etf": { "us": "XRT", "kr": null }
+        },
+        "leisure": {
+          "name": "Leisure & Entertainment",
+          "nameKr": "레저/엔터테인먼트",
+          "icon": "🎭",
+          "stocks": {
+            "us": ["DIS", "NFLX", "CMCSA", "LYV", "MTN", "SIX", "SEAS", "HLT", "MAR"],
+            "kr": ["035900", "041510", "122870", "101140"]
+          },
+          "etf": { "us": "PEJ", "kr": null }
+        },
+        "apparel": {
+          "name": "Apparel & Luxury",
+          "nameKr": "의류/럭셔리",
+          "icon": "👔",
+          "stocks": {
+            "us": ["NKE", "LULU", "TPR", "RL", "VFC", "PVH", "HBI", "GPS"],
+            "kr": ["105560", "111770", "088350"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "restaurants": {
+          "name": "Restaurants",
+          "nameKr": "음식료/외식",
+          "icon": "🍔",
+          "stocks": {
+            "us": ["MCD", "SBUX", "CMG", "YUM", "DRI", "WING", "CAVA", "SHAK"],
+            "kr": ["097950", "282330"]
+          },
+          "etf": { "us": null, "kr": null }
+        }
+      }
+    },
+    "industrials": {
+      "name": "Industrials",
+      "nameKr": "산업재",
+      "icon": "🏭",
+      "gicsCode": "20",
+      "l2": {
+        "aerospace_defense": {
+          "name": "Aerospace & Defense",
+          "nameKr": "항공우주/방산",
+          "icon": "✈️",
+          "stocks": {
+            "us": ["BA", "LMT", "RTX", "NOC", "GD", "TDG", "HWM", "HII", "LHX"],
+            "kr": ["012450", "047810", "064350", "298040"]
+          },
+          "etf": { "us": "ITA", "kr": "455850" }
+        },
+        "machinery": {
+          "name": "Machinery",
+          "nameKr": "기계",
+          "icon": "⚙️",
+          "stocks": {
+            "us": ["CAT", "DE", "CMI", "PH", "EMR", "ROK", "IR", "DOV", "ITW"],
+            "kr": ["042660", "034020", "010140", "009540", "001440"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "construction": {
+          "name": "Construction & Engineering",
+          "nameKr": "건설/엔지니어링",
+          "icon": "🏗️",
+          "stocks": {
+            "us": ["ACM", "PWR", "FAST", "VMC", "MLM", "URI"],
+            "kr": ["000720", "000210", "006360", "028260", "047040"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "logistics": {
+          "name": "Logistics & Transportation",
+          "nameKr": "물류/운송",
+          "icon": "📦",
+          "stocks": {
+            "us": ["UPS", "FDX", "XPO", "JBHT", "ODFL", "CHRW", "EXPD"],
+            "kr": ["086900", "011780", "055550"]
+          },
+          "etf": { "us": "IYT", "kr": null }
+        },
+        "shipbuilding": {
+          "name": "Shipbuilding",
+          "nameKr": "조선",
+          "icon": "🚢",
+          "stocks": {
+            "us": ["HII"],
+            "kr": ["009540", "042660", "010140", "267250", "329180"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "airlines": {
+          "name": "Airlines",
+          "nameKr": "항공",
+          "icon": "🛫",
+          "stocks": {
+            "us": ["DAL", "UAL", "LUV", "AAL", "ALK", "JBLU"],
+            "kr": ["003490", "020560", "089590"]
+          },
+          "etf": { "us": "JETS", "kr": null }
+        }
+      }
+    },
+    "energy": {
+      "name": "Energy",
+      "nameKr": "에너지",
+      "icon": "⚡",
+      "gicsCode": "10",
+      "l2": {
+        "oil_gas_exploration": {
+          "name": "Oil & Gas Exploration",
+          "nameKr": "석유/가스 탐사",
+          "icon": "🛢️",
+          "stocks": {
+            "us": ["XOM", "CVX", "COP", "EOG", "PXD", "DVN", "OXY", "MRO", "APA"],
+            "kr": ["096770", "010950"]
+          },
+          "etf": { "us": "XOP", "kr": null }
+        },
+        "oil_services": {
+          "name": "Oil Services & Equipment",
+          "nameKr": "석유서비스/장비",
+          "icon": "🔧",
+          "stocks": {
+            "us": ["SLB", "HAL", "BKR", "NOV", "FTI", "WHD"],
+            "kr": []
+          },
+          "etf": { "us": "OIH", "kr": null }
+        },
+        "refining": {
+          "name": "Refining & Marketing",
+          "nameKr": "정유",
+          "icon": "🏭",
+          "stocks": {
+            "us": ["VLO", "PSX", "MPC", "HES", "DK"],
+            "kr": ["096770", "010950", "267250"]
+          },
+          "etf": { "us": "CRAK", "kr": null }
+        },
+        "renewable": {
+          "name": "Renewable Energy",
+          "nameKr": "신재생에너지",
+          "icon": "🌱",
+          "stocks": {
+            "us": ["NEE", "ENPH", "SEDG", "FSLR", "RUN", "NOVA", "CSIQ", "ARRY"],
+            "kr": ["117580", "336260", "227840", "322000"]
+          },
+          "etf": { "us": "ICLN", "kr": "371160" }
+        },
+        "utilities_power": {
+          "name": "Power Generation",
+          "nameKr": "발전",
+          "icon": "⚡",
+          "stocks": {
+            "us": ["NEE", "DUK", "SO", "D", "AEP", "EXC", "XEL", "SRE"],
+            "kr": ["015760", "036460", "017390"]
+          },
+          "etf": { "us": "XLU", "kr": null }
+        }
+      }
+    },
+    "materials": {
+      "name": "Materials",
+      "nameKr": "소재",
+      "icon": "🧱",
+      "gicsCode": "15",
+      "l2": {
+        "steel": {
+          "name": "Steel",
+          "nameKr": "철강",
+          "icon": "🔩",
+          "stocks": {
+            "us": ["NUE", "STLD", "CLF", "X", "RS"],
+            "kr": ["005490", "004020", "010130", "001230", "103140"]
+          },
+          "etf": { "us": "SLX", "kr": null }
+        },
+        "nonferrous": {
+          "name": "Non-ferrous Metals",
+          "nameKr": "비철금속",
+          "icon": "🥇",
+          "stocks": {
+            "us": ["FCX", "NEM", "AA", "SCCO", "TECK"],
+            "kr": ["010130", "104700"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "chemicals": {
+          "name": "Chemicals",
+          "nameKr": "화학",
+          "icon": "🧪",
+          "stocks": {
+            "us": ["LIN", "APD", "SHW", "ECL", "DD", "PPG", "DOW", "LYB", "CE"],
+            "kr": ["051910", "011170", "006220", "010060"]
+          },
+          "etf": { "us": "XLB", "kr": null }
+        },
+        "battery_materials": {
+          "name": "Battery Materials",
+          "nameKr": "2차전지소재",
+          "icon": "🔋",
+          "stocks": {
+            "us": ["ALB", "SQM", "LTHM", "LAC", "MP"],
+            "kr": ["247540", "003670", "108320", "028260", "066970"]
+          },
+          "etf": { "us": "LIT", "kr": "371460" }
+        },
+        "construction_materials": {
+          "name": "Construction Materials",
+          "nameKr": "건자재",
+          "icon": "🏗️",
+          "stocks": {
+            "us": ["VMC", "MLM", "CX", "USLM", "EXP"],
+            "kr": ["000210", "002300", "006120"]
+          },
+          "etf": { "us": null, "kr": null }
+        }
+      }
+    },
+    "consumerStaples": {
+      "name": "Consumer Staples",
+      "nameKr": "필수소비재",
+      "icon": "🛒",
+      "gicsCode": "30",
+      "l2": {
+        "food_beverage": {
+          "name": "Food & Beverage",
+          "nameKr": "식품/음료",
+          "icon": "🍽️",
+          "stocks": {
+            "us": ["KO", "PEP", "MDLZ", "KHC", "GIS", "K", "HSY", "CPB", "SJM"],
+            "kr": ["097950", "271560", "005440", "280360"]
+          },
+          "etf": { "us": "XLP", "kr": null }
+        },
+        "household": {
+          "name": "Household Products",
+          "nameKr": "생활용품",
+          "icon": "🧴",
+          "stocks": {
+            "us": ["PG", "CL", "KMB", "CLX", "CHD"],
+            "kr": ["051900", "090430", "002790"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "tobacco": {
+          "name": "Tobacco",
+          "nameKr": "담배",
+          "icon": "🚬",
+          "stocks": {
+            "us": ["PM", "MO", "BTI"],
+            "kr": ["033780"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "grocery": {
+          "name": "Grocery & Drugstore",
+          "nameKr": "마트/드럭스토어",
+          "icon": "🛒",
+          "stocks": {
+            "us": ["WMT", "COST", "KR", "WBA", "CVS"],
+            "kr": ["139480", "004170", "023530"]
+          },
+          "etf": { "us": null, "kr": null }
+        }
+      }
+    },
+    "communication": {
+      "name": "Communication Services",
+      "nameKr": "커뮤니케이션서비스",
+      "icon": "📡",
+      "gicsCode": "50",
+      "l2": {
+        "telecom": {
+          "name": "Telecom",
+          "nameKr": "통신",
+          "icon": "📱",
+          "stocks": {
+            "us": ["T", "VZ", "TMUS"],
+            "kr": ["017670", "030200", "032640"]
+          },
+          "etf": { "us": "VOX", "kr": null }
+        },
+        "media": {
+          "name": "Media & Entertainment",
+          "nameKr": "미디어/엔터",
+          "icon": "🎬",
+          "stocks": {
+            "us": ["DIS", "CMCSA", "NFLX", "WBD", "PARA", "FOX", "ROKU"],
+            "kr": ["352820", "041510", "035900", "122870"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "gaming": {
+          "name": "Gaming",
+          "nameKr": "게임",
+          "icon": "🎮",
+          "stocks": {
+            "us": ["EA", "TTWO", "ATVI", "RBLX"],
+            "kr": ["036570", "251270", "263750", "112040", "194480"]
+          },
+          "etf": { "us": "ESPO", "kr": null }
+        },
+        "advertising": {
+          "name": "Digital Advertising",
+          "nameKr": "디지털광고",
+          "icon": "📺",
+          "stocks": {
+            "us": ["GOOGL", "META", "TTD", "MGNI", "DV", "IAS"],
+            "kr": ["035720", "035420"]
+          },
+          "etf": { "us": null, "kr": null }
+        }
+      }
+    },
+    "utilities": {
+      "name": "Utilities",
+      "nameKr": "유틸리티",
+      "icon": "💡",
+      "gicsCode": "55",
+      "l2": {
+        "electric": {
+          "name": "Electric Utilities",
+          "nameKr": "전력",
+          "icon": "⚡",
+          "stocks": {
+            "us": ["NEE", "DUK", "SO", "AEP", "EXC", "XEL", "SRE", "D", "ED"],
+            "kr": ["015760"]
+          },
+          "etf": { "us": "XLU", "kr": null }
+        },
+        "gas": {
+          "name": "Gas Utilities",
+          "nameKr": "가스",
+          "icon": "🔥",
+          "stocks": {
+            "us": ["NI", "ATO", "SWX", "OGS"],
+            "kr": ["036460", "017390"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "water": {
+          "name": "Water Utilities",
+          "nameKr": "수도",
+          "icon": "💧",
+          "stocks": {
+            "us": ["AWK", "WTR", "CWT", "WTRG"],
+            "kr": []
+          },
+          "etf": { "us": "PHO", "kr": null }
+        }
+      }
+    },
+    "realEstate": {
+      "name": "Real Estate",
+      "nameKr": "부동산",
+      "icon": "🏢",
+      "gicsCode": "60",
+      "l2": {
+        "industrial_reits": {
+          "name": "Industrial REITs",
+          "nameKr": "물류/산업용 리츠",
+          "icon": "📦",
+          "stocks": {
+            "us": ["PLD", "REXR", "EGP", "FR", "STAG"],
+            "kr": ["395400"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "data_center_reits": {
+          "name": "Data Center REITs",
+          "nameKr": "데이터센터 리츠",
+          "icon": "🖥️",
+          "stocks": {
+            "us": ["EQIX", "DLR", "AMT", "CCI"],
+            "kr": []
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "residential_reits": {
+          "name": "Residential REITs",
+          "nameKr": "주거용 리츠",
+          "icon": "🏠",
+          "stocks": {
+            "us": ["AVB", "EQR", "ESS", "MAA", "UDR"],
+            "kr": []
+          },
+          "etf": { "us": "REZ", "kr": null }
+        },
+        "retail_reits": {
+          "name": "Retail REITs",
+          "nameKr": "상업용 리츠",
+          "icon": "🏬",
+          "stocks": {
+            "us": ["SPG", "O", "NNN", "REG", "KIM"],
+            "kr": ["330590", "293940"]
+          },
+          "etf": { "us": null, "kr": null }
+        },
+        "developers": {
+          "name": "Real Estate Developers",
+          "nameKr": "건설/개발",
+          "icon": "🏗️",
+          "stocks": {
+            "us": ["LEN", "DHI", "PHM", "TOL", "KBH"],
+            "kr": ["000720", "000210", "006360", "028260"]
+          },
+          "etf": { "us": "ITB", "kr": null }
+        }
+      }
+    }
+  }
+}

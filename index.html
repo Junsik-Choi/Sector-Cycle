@@ -8,8 +8,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0d1117">
     <meta name="description" content="섹터 사이클 대시보드 - 경기/업황/리스크 지표 시각화">
-    <title>Sector Cycle Dashboard | 섹터 사이클 대시보드</title>
+    <title>섹터 사이클 대시보드 | 경기/업황/리스크</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/scanner.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -33,16 +34,16 @@
     <header class="main-header">
         <div class="header-content">
             <div class="logo-section">
-                <h1 class="logo">📊 Sector Cycle</h1>
+                <h1 class="logo">📊 섹터 사이클</h1>
                 <span class="tagline">경기 · 업황 · 리스크 지표 대시보드</span>
             </div>
             <div class="header-actions">
                 <div class="last-update">
-                    <span class="update-label">Last Update:</span>
-                    <span id="lastUpdateTime" class="update-time">Loading...</span>
+                    <span class="update-label">최근 업데이트:</span>
+                    <span id="lastUpdateTime" class="update-time">로딩중...</span>
                 </div>
                 <button class="btn-refresh" onclick="refreshData()">
-                    <span class="refresh-icon">🔄</span> Refresh
+                    <span class="refresh-icon">🔄</span> 새로고침
                 </button>
             </div>
         </div>
@@ -53,19 +54,28 @@
         <div class="nav-content">
             <ul class="nav-tabs">
                 <li class="nav-tab active" data-tab="overview">
-                    <span class="tab-icon">📈</span> Overview
+                    <span class="tab-icon">📈</span> 개요
+                </li>
+                <li class="nav-tab" data-tab="heatmap">
+                    <span class="tab-icon">🗺️</span> 히트맵
+                </li>
+                <li class="nav-tab" data-tab="scanner">
+                    <span class="tab-icon">🔍</span> 스캐너
+                </li>
+                <li class="nav-tab" data-tab="volatility">
+                    <span class="tab-icon">📊</span> 변동성
                 </li>
                 <li class="nav-tab" data-tab="macro">
-                    <span class="tab-icon">🌍</span> Macro
+                    <span class="tab-icon">🌍</span> 거시경제
                 </li>
                 <li class="nav-tab" data-tab="sectors">
-                    <span class="tab-icon">🏭</span> Sectors
+                    <span class="tab-icon">🏭</span> 섹터
                 </li>
                 <li class="nav-tab" data-tab="stocks">
-                    <span class="tab-icon">📊</span> Stocks
+                    <span class="tab-icon">📉</span> 종목
                 </li>
                 <li class="nav-tab" data-tab="indicators">
-                    <span class="tab-icon">📉</span> Indicators
+                    <span class="tab-icon">📋</span> 지표안내
                 </li>
             </ul>
         </div>
@@ -80,41 +90,41 @@
                 <!-- Macro Regime Card -->
                 <div class="summary-card macro-card" data-card="macro">
                     <div class="card-header">
-                        <h3 class="card-title">Macro Regime</h3>
-                        <span class="card-badge">거시경기</span>
+                        <h3 class="card-title">거시 경기</h3>
+                        <span class="card-badge">CLI/PMI</span>
                     </div>
                     <div class="card-body">
                         <div class="regime-indicator">
-                            <span id="macroRegime" class="regime-label expansion">Expansion</span>
+                            <span id="macroRegime" class="regime-label expansion">확장</span>
                             <span id="macroScore" class="regime-score">72</span>
                         </div>
                         <div class="mini-chart" id="macroMiniChart"></div>
                         <div class="card-metrics">
                             <div class="metric">
-                                <span class="metric-label">CLI (US)</span>
+                                <span class="metric-label">CLI (미국)</span>
                                 <span id="cliValue" class="metric-value">100.8</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-label">PMI</span>
+                                <span class="metric-label">PMI 제조업</span>
                                 <span id="pmiValue" class="metric-value">52.3</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="update-freq">Daily</span>
-                        <a href="#" class="card-link">Details →</a>
+                        <span class="update-freq">일간</span>
+                        <a href="#" class="card-link">상세보기 →</a>
                     </div>
                 </div>
 
                 <!-- Risk (VIX) Card -->
                 <div class="summary-card risk-card" data-card="risk">
                     <div class="card-header">
-                        <h3 class="card-title">Risk Gauge</h3>
+                        <h3 class="card-title">리스크 지수</h3>
                         <span class="card-badge">VIX</span>
                     </div>
                     <div class="card-body">
                         <div class="regime-indicator">
-                            <span id="riskRegime" class="regime-label normal">Normal</span>
+                            <span id="riskRegime" class="regime-label normal">보통</span>
                             <span id="vixValue" class="regime-score vix">18.5</span>
                         </div>
                         <div class="vix-gauge" id="vixGauge">
@@ -125,117 +135,117 @@
                         </div>
                         <div class="card-metrics">
                             <div class="metric">
-                                <span class="metric-label">Change</span>
+                                <span class="metric-label">변화율</span>
                                 <span id="vixChange" class="metric-value negative">-2.3%</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-label">52W Range</span>
+                                <span class="metric-label">52주 범위</span>
                                 <span class="metric-value">12.1 - 35.2</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="update-freq">Daily</span>
-                        <a href="#" class="card-link">Details →</a>
+                        <span class="update-freq">일간</span>
+                        <a href="#" class="card-link">상세보기 →</a>
                     </div>
                 </div>
 
                 <!-- Trade Pulse Card -->
                 <div class="summary-card trade-card" data-card="trade">
                     <div class="card-header">
-                        <h3 class="card-title">Trade Pulse</h3>
+                        <h3 class="card-title">교역 동향</h3>
                         <span class="card-badge">BDI/WCI</span>
                     </div>
                     <div class="card-body">
                         <div class="regime-indicator">
-                            <span id="tradeRegime" class="regime-label recovery">Recovery</span>
+                            <span id="tradeRegime" class="regime-label recovery">회복</span>
                             <span id="bdiValue" class="regime-score">1,842</span>
                         </div>
                         <div class="mini-chart" id="tradeMiniChart"></div>
                         <div class="card-metrics">
                             <div class="metric">
-                                <span class="metric-label">BDI Chg</span>
+                                <span class="metric-label">BDI 변화</span>
                                 <span id="bdiChange" class="metric-value positive">+5.2%</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-label">WCI</span>
+                                <span class="metric-label">컨테이너 운임</span>
                                 <span id="wciValue" class="metric-value">2,156</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="update-freq">Weekly</span>
-                        <a href="#" class="card-link">Details →</a>
+                        <span class="update-freq">주간</span>
+                        <a href="#" class="card-link">상세보기 →</a>
                     </div>
                 </div>
 
                 <!-- Commodity Card -->
                 <div class="summary-card commodity-card" data-card="commodity">
                     <div class="card-header">
-                        <h3 class="card-title">Commodity</h3>
+                        <h3 class="card-title">원자재</h3>
                         <span class="card-badge">WB/FAO</span>
                     </div>
                     <div class="card-body">
                         <div class="regime-indicator">
-                            <span id="commodityRegime" class="regime-label contraction">Pressure</span>
+                            <span id="commodityRegime" class="regime-label contraction">압박</span>
                             <span id="commodityIndex" class="regime-score">124.5</span>
                         </div>
                         <div class="mini-chart" id="commodityMiniChart"></div>
                         <div class="card-metrics">
                             <div class="metric">
-                                <span class="metric-label">Energy</span>
+                                <span class="metric-label">에너지</span>
                                 <span class="metric-value negative">-3.1%</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-label">Food</span>
+                                <span class="metric-label">식량</span>
                                 <span class="metric-value positive">+1.8%</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="update-freq">Monthly</span>
-                        <a href="#" class="card-link">Details →</a>
+                        <span class="update-freq">월간</span>
+                        <a href="#" class="card-link">상세보기 →</a>
                     </div>
                 </div>
 
                 <!-- Oil Card -->
                 <div class="summary-card oil-card" data-card="oil">
                     <div class="card-header">
-                        <h3 class="card-title">Oil Balance</h3>
+                        <h3 class="card-title">유가 밸런스</h3>
                         <span class="card-badge">EIA</span>
                     </div>
                     <div class="card-body">
                         <div class="regime-indicator">
-                            <span id="oilRegime" class="regime-label normal">Balanced</span>
+                            <span id="oilRegime" class="regime-label normal">균형</span>
                             <span id="oilPrice" class="regime-score">$72.4</span>
                         </div>
                         <div class="mini-chart" id="oilMiniChart"></div>
                         <div class="card-metrics">
                             <div class="metric">
-                                <span class="metric-label">Inventory</span>
+                                <span class="metric-label">재고</span>
                                 <span id="oilInventory" class="metric-value">+2.1M bbl</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-label">vs 5Y Avg</span>
+                                <span class="metric-label">5년평균 대비</span>
                                 <span class="metric-value negative">-3.2%</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="update-freq">Weekly</span>
-                        <a href="#" class="card-link">Details →</a>
+                        <span class="update-freq">주간</span>
+                        <a href="#" class="card-link">상세보기 →</a>
                     </div>
                 </div>
 
                 <!-- Korea Card -->
                 <div class="summary-card korea-card" data-card="korea">
                     <div class="card-header">
-                        <h3 class="card-title">Korea Market</h3>
+                        <h3 class="card-title">한국 시장</h3>
                         <span class="card-badge">KRX</span>
                     </div>
                     <div class="card-body">
                         <div class="regime-indicator">
-                            <span id="koreaRegime" class="regime-label expansion">Risk-On</span>
+                            <span id="koreaRegime" class="regime-label expansion">위험선호</span>
                             <span id="kospiValue" class="regime-score">2,645</span>
                         </div>
                         <div class="mini-chart" id="koreaMiniChart"></div>
@@ -245,14 +255,14 @@
                                 <span class="metric-value positive">+0.8%</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-label">Foreign</span>
-                                <span class="metric-value positive">Net Buy</span>
+                                <span class="metric-label">외국인</span>
+                                <span class="metric-value positive">순매수</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="update-freq">Daily</span>
-                        <a href="#" class="card-link">Details →</a>
+                        <span class="update-freq">일간</span>
+                        <a href="#" class="card-link">상세보기 →</a>
                     </div>
                 </div>
             </div>
@@ -265,7 +275,7 @@
                 </div>
                 <div class="cycle-matrix">
                     <div class="cycle-quadrant expansion-quadrant">
-                        <h4 class="quadrant-title">🚀 Expansion (확장)</h4>
+                        <h4 class="quadrant-title">🚀 확장 국면</h4>
                         <div class="quadrant-sectors" id="expansionSectors">
                             <span class="sector-chip tech">Technology</span>
                             <span class="sector-chip consumer">Consumer Disc.</span>
@@ -273,20 +283,20 @@
                         </div>
                     </div>
                     <div class="cycle-quadrant slowdown-quadrant">
-                        <h4 class="quadrant-title">📉 Slowdown (둔화)</h4>
+                        <h4 class="quadrant-title">📉 둔화 국면</h4>
                         <div class="quadrant-sectors" id="slowdownSectors">
                             <span class="sector-chip materials">Materials</span>
                             <span class="sector-chip energy">Energy</span>
                         </div>
                     </div>
                     <div class="cycle-quadrant contraction-quadrant">
-                        <h4 class="quadrant-title">⬇️ Contraction (침체)</h4>
+                        <h4 class="quadrant-title">⬇️ 침체 국면</h4>
                         <div class="quadrant-sectors" id="contractionSectors">
                             <span class="sector-chip realestate">Real Estate</span>
                         </div>
                     </div>
                     <div class="cycle-quadrant recovery-quadrant">
-                        <h4 class="quadrant-title">🌱 Recovery (회복)</h4>
+                        <h4 class="quadrant-title">🌱 회복 국면</h4>
                         <div class="quadrant-sectors" id="recoverySectors">
                             <span class="sector-chip financials">Financials</span>
                             <span class="sector-chip healthcare">Healthcare</span>
@@ -296,25 +306,32 @@
                 </div>
             </section>
 
+            <!-- VIX Warning Badge - shown when VIX is elevated -->
+            <div id="vixWarningBadge" class="vix-warning-badge" style="display: none;">
+                <span class="warning-icon">⚠️</span>
+                <span class="warning-text">VIX 상승 경고</span>
+                <span class="warning-value" id="vixWarningValue">25.0</span>
+            </div>
+
             <!-- Main Chart Section -->
             <section class="main-chart-section">
                 <div class="section-header">
-                    <h2 class="section-title">📊 Historical Indicators</h2>
+                    <h2 class="section-title">📊 지표 추이 차트</h2>
                     <div class="chart-controls">
                         <select id="indicatorSelect" class="control-select">
-                            <option value="vix">VIX Index</option>
-                            <option value="cli">OECD CLI</option>
-                            <option value="pmi">PMI</option>
-                            <option value="bdi">Baltic Dry Index</option>
-                            <option value="yield">Yield Curve (10Y-2Y)</option>
+                            <option value="vix">VIX 변동성지수</option>
+                            <option value="cli">OECD 경기선행지수</option>
+                            <option value="pmi">PMI 구매관리자지수</option>
+                            <option value="bdi">발틱건화지수 (BDI)</option>
+                            <option value="yield">수익률 곡선 (10Y-2Y)</option>
                         </select>
                         <div class="timeframe-buttons">
-                            <button class="tf-btn active" data-range="1M">1M</button>
-                            <button class="tf-btn" data-range="3M">3M</button>
-                            <button class="tf-btn" data-range="6M">6M</button>
-                            <button class="tf-btn" data-range="1Y">1Y</button>
-                            <button class="tf-btn" data-range="2Y">2Y</button>
-                            <button class="tf-btn" data-range="5Y">5Y</button>
+                            <button class="tf-btn active" data-range="1M">1개월</button>
+                            <button class="tf-btn" data-range="3M">3개월</button>
+                            <button class="tf-btn" data-range="6M">6개월</button>
+                            <button class="tf-btn" data-range="1Y">1년</button>
+                            <button class="tf-btn" data-range="2Y">2년</button>
+                            <button class="tf-btn" data-range="5Y">5년</button>
                         </div>
                     </div>
                 </div>
@@ -324,27 +341,282 @@
             </section>
         </section>
 
+        <!-- Heatmap Tab -->
+        <section id="heatmap-tab" class="tab-content">
+            <div class="heatmap-dashboard">
+                <div class="section-header">
+                    <h2 class="section-title">🗺️ 섹터 히트맵</h2>
+                    <p class="section-desc">섹터별 기술적 지표 충족률 및 신호 현황 (L1/L2)</p>
+                </div>
+                
+                <!-- Heatmap Controls -->
+                <div class="heatmap-controls">
+                    <div class="control-group">
+                        <label>보기 모드:</label>
+                        <div class="btn-group">
+                            <button class="btn-toggle active" data-view="heatmap">히트맵</button>
+                            <button class="btn-toggle" data-view="table">테이블</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>분류 레벨:</label>
+                        <div class="btn-group">
+                            <button class="btn-toggle active" data-level="l1">L1 (대분류)</button>
+                            <button class="btn-toggle" data-level="l2">L2 (세부)</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>정렬:</label>
+                        <select id="heatmapSort" class="control-select">
+                            <option value="fulfillment">충족률순</option>
+                            <option value="score">점수순</option>
+                            <option value="name">이름순</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Heatmap Container -->
+                <div class="heatmap-container" id="heatmapContainer">
+                    <!-- Heatmap will be rendered here -->
+                </div>
+
+                <!-- Sector Breadth Summary -->
+                <div class="breadth-summary">
+                    <h3>시장 내부 지표</h3>
+                    <p class="breadth-desc">전체 종목 대비 비율로 시장 건전성을 파악합니다</p>
+                    <div class="breadth-grid" id="breadthGrid">
+                        <div class="breadth-card">
+                            <span class="breadth-label">골든 크로스 비율</span>
+                            <span class="breadth-hint">50MA > 200MA 종목 비율</span>
+                            <span class="breadth-value" id="goldenCrossRatio">--</span>
+                        </div>
+                        <div class="breadth-card">
+                            <span class="breadth-label">200MA 위 종목</span>
+                            <span class="breadth-hint">장기 상승추세 종목 비율</span>
+                            <span class="breadth-value" id="above200MACount">--</span>
+                        </div>
+                        <div class="breadth-card">
+                            <span class="breadth-label">과매도 종목</span>
+                            <span class="breadth-hint">RSI 30 미만 종목 (반등 기대)</span>
+                            <span class="breadth-value" id="oversoldCount">--</span>
+                        </div>
+                        <div class="breadth-card">
+                            <span class="breadth-label">과매수 종목</span>
+                            <span class="breadth-hint">RSI 70 초과 종목 (조정 가능)</span>
+                            <span class="breadth-value" id="overboughtCount">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scanner Tab -->
+        <section id="scanner-tab" class="tab-content">
+            <div class="scanner-dashboard">
+                <div class="section-header">
+                    <h2 class="section-title">🔍 종목 스캐너</h2>
+                    <p class="section-desc">기술적 지표 기반 종목 스캔 및 필터링</p>
+                </div>
+                
+                <!-- Scanner Filters -->
+                <div class="scanner-filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>시장:</label>
+                            <select id="scannerMarket" class="filter-select">
+                                <option value="all">전체</option>
+                                <option value="us">미국 (US)</option>
+                                <option value="kr">한국 (KR)</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>섹터 (L1):</label>
+                            <select id="scannerSector" class="filter-select">
+                                <option value="all">전체</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>신호 상태:</label>
+                            <select id="scannerSignal" class="filter-select">
+                                <option value="all">전체</option>
+                                <option value="bullish">우호 (매우 강세)</option>
+                                <option value="positive">양호 (강세)</option>
+                                <option value="neutral">관찰 (중립)</option>
+                                <option value="negative">주의 (약세)</option>
+                                <option value="bearish">경고 (매우 약세)</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>정렬:</label>
+                            <select id="scannerSort" class="filter-select">
+                                <option value="score-desc">점수 높은순</option>
+                                <option value="score-asc">점수 낮은순</option>
+                                <option value="fulfillment-desc">충족률 높은순</option>
+                                <option value="rsi-asc">RSI 낮은순 (과매도)</option>
+                                <option value="rsi-desc">RSI 높은순 (과매수)</option>
+                                <option value="adx-desc">ADX 높은순 (강추세)</option>
+                            </select>
+                        </div>
+                        <button class="btn-scan" onclick="runScanner()">
+                            <span>🔍</span> 스캔 실행
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scanner Results -->
+                <div class="scanner-results">
+                    <div class="results-header">
+                        <span class="results-count">결과: <strong id="scannerCount">0</strong>개 종목</span>
+                        <div class="pagination" id="scannerPagination"></div>
+                    </div>
+                    <div class="scanner-table-container">
+                        <table class="scanner-table">
+                            <thead>
+                                <tr>
+                                    <th>티커</th>
+                                    <th>종목명</th>
+                                    <th>섹터</th>
+                                    <th>점수</th>
+                                    <th>충족률</th>
+                                    <th>RSI</th>
+                                    <th>MA</th>
+                                    <th>MACD</th>
+                                    <th>ADX</th>
+                                    <th>상태</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scannerTableBody">
+                                <!-- Scanner results will be rendered here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volatility Tab -->
+        <section id="volatility-tab" class="tab-content">
+            <div class="volatility-dashboard">
+                <div class="section-header">
+                    <h2 class="section-title">📊 변동성 패널</h2>
+                    <p class="section-desc">VIX 및 시장 변동성 지표</p>
+                </div>
+
+                <!-- VIX Main Panel -->
+                <div class="vix-main-panel">
+                    <div class="vix-display">
+                        <div class="vix-gauge-large" id="vixGaugeLarge">
+                            <div class="gauge-arc">
+                                <svg viewBox="0 0 200 120" class="gauge-svg">
+                                    <defs>
+                                        <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#22c55e"/>
+                                            <stop offset="30%" style="stop-color:#eab308"/>
+                                            <stop offset="50%" style="stop-color:#f97316"/>
+                                            <stop offset="75%" style="stop-color:#ef4444"/>
+                                            <stop offset="100%" style="stop-color:#dc2626"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" stroke="#333" stroke-width="15" fill="none"/>
+                                    <path class="gauge-fill" id="vixGaugeFill" d="M 20 100 A 80 80 0 0 1 100 20" stroke="url(#gaugeGradient)" stroke-width="15" fill="none"/>
+                                    <circle class="gauge-needle" id="vixNeedle" cx="100" cy="100" r="6" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <div class="vix-value-large" id="vixValueLarge">18.5</div>
+                            <div class="vix-status-large" id="vixStatusLarge">보통</div>
+                        </div>
+                        <div class="vix-details">
+                            <div class="vix-detail-row">
+                                <span class="detail-label">일간 변화</span>
+                                <span class="detail-value" id="vixDailyChange">-0.5 (-2.6%)</span>
+                            </div>
+                            <div class="vix-detail-row">
+                                <span class="detail-label">52주 범위</span>
+                                <span class="detail-value" id="vix52WRange">12.1 - 38.5</span>
+                            </div>
+                            <div class="vix-detail-row">
+                                <span class="detail-label">백분위</span>
+                                <span class="detail-value" id="vixPercentile">35%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIX Thresholds -->
+                <div class="vix-thresholds">
+                    <h3>VIX 임계값 기준</h3>
+                    <div class="threshold-legend">
+                        <div class="threshold-item low">
+                            <span class="threshold-color"></span>
+                            <span class="threshold-label">낮음 (&lt;15)</span>
+                            <span class="threshold-desc">안정적, 저변동성</span>
+                        </div>
+                        <div class="threshold-item normal">
+                            <span class="threshold-color"></span>
+                            <span class="threshold-label">보통 (15-20)</span>
+                            <span class="threshold-desc">정상 범위</span>
+                        </div>
+                        <div class="threshold-item elevated">
+                            <span class="threshold-color"></span>
+                            <span class="threshold-label">상승 (20-25)</span>
+                            <span class="threshold-desc">주의 필요</span>
+                        </div>
+                        <div class="threshold-item high">
+                            <span class="threshold-color"></span>
+                            <span class="threshold-label">높음 (25-30)</span>
+                            <span class="threshold-desc">변동성 확대</span>
+                        </div>
+                        <div class="threshold-item extreme">
+                            <span class="threshold-color"></span>
+                            <span class="threshold-label">극심 (&gt;30)</span>
+                            <span class="threshold-desc">공포 구간</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIX Historical Chart -->
+                <div class="vix-chart-section">
+                    <h3>VIX 추이 차트</h3>
+                    <div class="chart-controls">
+                        <div class="timeframe-buttons">
+                            <button class="tf-btn active" data-range="1M">1개월</button>
+                            <button class="tf-btn" data-range="3M">3개월</button>
+                            <button class="tf-btn" data-range="6M">6개월</button>
+                            <button class="tf-btn" data-range="1Y">1년</button>
+                            <button class="tf-btn" data-range="2Y">2년</button>
+                        </div>
+                    </div>
+                    <div id="vixHistoricalChart" class="vix-chart"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Macro Tab -->
         <section id="macro-tab" class="tab-content">
             <div class="macro-dashboard">
                 <div class="section-header">
-                    <h2 class="section-title">🌍 Macro Economic Indicators</h2>
+                    <h2 class="section-title">🌍 거시경제 지표</h2>
+                    <p class="section-desc">세계 경기 및 경제 활동 지표를 한눈에 확인하세요</p>
                 </div>
                 <div class="macro-grid">
                     <div class="macro-panel">
-                        <h3>OECD Composite Leading Indicator</h3>
+                        <h3>OECD 경기선행지수 (CLI)</h3>
+                        <p class="panel-desc">6~9개월 후 경기 방향을 예측하는 복합지표</p>
                         <div id="cliChart" class="panel-chart"></div>
                     </div>
                     <div class="macro-panel">
-                        <h3>PMI Manufacturing vs Services</h3>
+                        <h3>PMI 제조업 vs 서비스업</h3>
+                        <p class="panel-desc">50 이상이면 확장, 이하면 수축 국면</p>
                         <div id="pmiChart" class="panel-chart"></div>
                     </div>
                     <div class="macro-panel">
-                        <h3>Industrial Production</h3>
+                        <h3>산업생산지수</h3>
+                        <p class="panel-desc">제조업/광업/유틸리티 생산량 변화</p>
                         <div id="indproChart" class="panel-chart"></div>
                     </div>
                     <div class="macro-panel">
-                        <h3>Yield Curve (10Y-2Y Spread)</h3>
+                        <h3>수익률 곡선 (10Y-2Y)</h3>
+                        <p class="panel-desc">음수 전환 시 경기침체 경고 신호</p>
                         <div id="yieldChart" class="panel-chart"></div>
                     </div>
                 </div>
@@ -355,15 +627,15 @@
         <section id="sectors-tab" class="tab-content">
             <div class="sectors-dashboard">
                 <div class="section-header">
-                    <h2 class="section-title">🏭 Sector Analysis</h2>
-                    <p class="section-desc">섹터를 클릭하여 해당 종목 목록을 확인하세요</p>
+                    <h2 class="section-title">🏭 섹터별 분석</h2>
+                    <p class="section-desc">섹터를 클릭하면 해당 종목 목록과 상세 설명을 확인할 수 있습니다</p>
                 </div>
                 <div class="sectors-grid" id="sectorsGrid">
                     <!-- Sectors will be populated by JavaScript -->
                 </div>
                 <div class="sector-detail" id="sectorDetail" style="display: none;">
                     <div class="detail-header">
-                        <h3 id="sectorDetailTitle">Technology</h3>
+                        <h3 id="sectorDetailTitle">섹터명</h3>
                         <button class="btn-close" onclick="closeSectorDetail()">×</button>
                     </div>
                     <div class="detail-body">
@@ -379,7 +651,7 @@
         <section id="stocks-tab" class="tab-content">
             <div class="stocks-dashboard">
                 <div class="section-header">
-                    <h2 class="section-title">📊 Stock Charts</h2>
+                    <h2 class="section-title">📊 종목 차트</h2>
                     <div class="stock-search">
                         <input type="text" id="stockSearch" placeholder="종목 검색 (예: AAPL, 삼성전자)" class="search-input">
                         <button class="btn-search" onclick="searchStock()">검색</button>
@@ -413,56 +685,157 @@
         <section id="indicators-tab" class="tab-content">
             <div class="indicators-dashboard">
                 <div class="section-header">
-                    <h2 class="section-title">📉 Technical Indicators Reference</h2>
+                    <h2 class="section-title">� 기술적 지표 안내</h2>
+                    <p class="section-desc">스캐너에서 사용하는 기술적 지표의 의미와 해석 방법</p>
                 </div>
                 <div class="indicators-grid">
                     <div class="indicator-card">
-                        <h4>이동평균선 (MA)</h4>
-                        <p>5일, 20일, 60일, 120일 이동평균</p>
+                        <h4>📈 이동평균선 (MA)</h4>
+                        <p class="indicator-period">5일, 20일, 50일, 120일, 200일</p>
                         <ul>
-                            <li><strong>골든크로스:</strong> 단기 MA가 장기 MA를 상향 돌파</li>
-                            <li><strong>데드크로스:</strong> 단기 MA가 장기 MA를 하향 돌파</li>
+                            <li><strong>골든크로스:</strong> 단기 MA가 장기 MA를 상향 돌파 → <span class="signal-bull">상승 우세</span></li>
+                            <li><strong>데드크로스:</strong> 단기 MA가 장기 MA를 하향 돌파 → <span class="signal-bear">하락 우세</span></li>
                         </ul>
+                        <div class="indicator-tip">💡 50MA와 200MA의 관계가 가장 중요한 신호로 활용됩니다</div>
                     </div>
                     <div class="indicator-card">
-                        <h4>RSI (상대강도지수)</h4>
-                        <p>14일 기준, 0-100 범위</p>
+                        <h4>📊 RSI (상대강도지수)</h4>
+                        <p class="indicator-period">14일 기준, 0-100 범위</p>
                         <ul>
-                            <li><strong>과매수:</strong> RSI > 70</li>
-                            <li><strong>과매도:</strong> RSI < 30</li>
+                            <li><strong>과매수 (70 이상):</strong> 과열 구간 → <span class="signal-bear">조정 가능성</span></li>
+                            <li><strong>과매도 (30 이하):</strong> 침체 구간 → <span class="signal-bull">반등 기대</span></li>
+                            <li><strong>중립 (30-70):</strong> 정상 범위</li>
                         </ul>
+                        <div class="indicator-tip">💡 과매도 구간은 매수 기회, 과매수 구간은 주의 필요</div>
                     </div>
                     <div class="indicator-card">
-                        <h4>MACD</h4>
-                        <p>12일 EMA - 26일 EMA, Signal: 9일 EMA</p>
+                        <h4>📉 MACD</h4>
+                        <p class="indicator-period">12일 EMA - 26일 EMA, 시그널: 9일 EMA</p>
                         <ul>
-                            <li><strong>매수 신호:</strong> MACD가 Signal 상향 돌파</li>
-                            <li><strong>매도 신호:</strong> MACD가 Signal 하향 돌파</li>
+                            <li><strong>매수 신호:</strong> MACD가 시그널선 상향 돌파 → <span class="signal-bull">모멘텀 강화</span></li>
+                            <li><strong>매도 신호:</strong> MACD가 시그널선 하향 돌파 → <span class="signal-bear">모멘텀 약화</span></li>
+                            <li><strong>0선 기준:</strong> 상단=강세, 하단=약세</li>
                         </ul>
+                        <div class="indicator-tip">💡 히스토그램의 증가/감소로 추세 강도를 파악합니다</div>
                     </div>
                     <div class="indicator-card">
-                        <h4>볼린저 밴드</h4>
-                        <p>20일 MA ± 2 표준편차</p>
+                        <h4>🟠 볼린저 밴드</h4>
+                        <p class="indicator-period">20일 MA ± 2 표준편차</p>
                         <ul>
-                            <li><strong>상단 밴드 터치:</strong> 과열 가능성</li>
-                            <li><strong>하단 밴드 터치:</strong> 저점 가능성</li>
+                            <li><strong>상단 밴드 돌파:</strong> 과열 가능성 → <span class="signal-bear">조정 주의</span></li>
+                            <li><strong>하단 밴드 돌파:</strong> 침체 또는 반등 → <span class="signal-bull">저점 매수 고려</span></li>
+                            <li><strong>스퀘즈 (밴드 수축):</strong> 큰 변동 예고</li>
                         </ul>
+                        <div class="indicator-tip">💡 밴드폭이 좁아지면 큰 움직임이 임박했음을 의미</div>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>🟢 ADX (추세강도지수)</h4>
+                        <p class="indicator-period">14일 기준, 0-100 범위</p>
+                        <ul>
+                            <li><strong>25 이상:</strong> <span class="signal-bull">강한 추세</span> (추세추종 유효)</li>
+                            <li><strong>20-25:</strong> 추세 형성 중</li>
+                            <li><strong>20 미만:</strong> <span class="signal-warn">횡보/박스권</span> (추세 베팅 주의)</li>
+                        </ul>
+                        <div class="indicator-tip">💡 방향은 알려주지 않고 추세의 강도만 측정합니다</div>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>🔴 ATR (평균진폭)</h4>
+                        <p class="indicator-period">14일 기준</p>
+                        <ul>
+                            <li><strong>높은 ATR:</strong> 변동성 확대 → 손절 폭 확대 고려</li>
+                            <li><strong>낮은 ATR:</strong> 변동성 수축 → 브레이크아웃 대비</li>
+                        </ul>
+                        <div class="indicator-tip">💡 손절매 설정에 활용 (ex: 2×ATR)</div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Stock Detail Modal -->
+    <div id="stockDetailModal" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeStockModal()"></div>
+        <div class="modal-content stock-modal">
+            <div class="modal-header">
+                <h3 id="modalStockTitle">종목 상세</h3>
+                <button class="btn-close" onclick="closeStockModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="stock-detail-header">
+                    <div class="stock-info-main">
+                        <span class="stock-ticker-large" id="modalTicker">AAPL</span>
+                        <span class="stock-name-large" id="modalName">Apple Inc.</span>
+                    </div>
+                    <div class="stock-price-info">
+                        <span class="price-current" id="modalPrice">$185.42</span>
+                        <span class="price-change" id="modalChange">+2.31 (+1.26%)</span>
+                    </div>
+                </div>
+                
+                <div class="signal-summary">
+                    <div class="signal-score-display">
+                        <div class="score-circle" id="modalScoreCircle">
+                            <span class="score-value" id="modalScore">72</span>
+                        </div>
+                        <div class="score-info">
+                            <span class="score-label">신호 점수</span>
+                            <span class="score-status" id="modalStatus">양호</span>
+                        </div>
+                    </div>
+                    <div class="fulfillment-bar">
+                        <span class="fulfillment-label">신호 충족률</span>
+                        <div class="fulfillment-progress">
+                            <div class="progress-fill" id="modalFulfillment" style="width: 65%;"></div>
+                        </div>
+                        <span class="fulfillment-value" id="modalFulfillmentValue">65%</span>
+                    </div>
+                </div>
+
+                <div class="indicators-detail">
+                    <h4>기술적 지표 상세</h4>
+                    <div class="indicator-grid" id="modalIndicators">
+                        <!-- Indicator cards will be rendered here -->
+                    </div>
+                </div>
+
+                <div class="signal-history">
+                    <h4>최근 신호 변화</h4>
+                    <div class="signal-timeline" id="modalSignalTimeline">
+                        <!-- Signal timeline will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sector Detail Modal -->
+    <div id="sectorDetailModal" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeSectorModal()"></div>
+        <div class="modal-content sector-modal">
+            <div class="modal-header">
+                <h3 id="modalSectorTitle">섹터 상세</h3>
+                <button class="btn-close" onclick="closeSectorModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="sector-summary" id="modalSectorSummary">
+                    <!-- Sector summary will be rendered here -->
+                </div>
+                <div class="sector-stocks-list" id="modalSectorStocks">
+                    <!-- Sector stocks will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-disclaimer">
-                <p>⚠️ <strong>DISCLAIMER:</strong> This dashboard is for informational purposes only. 
-                It does not constitute investment advice. All investment decisions and resulting profits or losses 
-                are solely the responsibility of the user.</p>
+                <p>⚠️ <strong>면책 고지:</strong> 본 대시보드는 정보 제공 목적으로만 제공되며, 투자 조언이 아닙니다. 
+                모든 투자 결정과 그에 따른 손익은 전적으로 사용자 본인의 책임입니다.</p>
             </div>
             <div class="footer-sources">
-                <h4>Data Sources:</h4>
+                <h4>데이터 출처:</h4>
                 <div class="source-links">
                     <a href="https://fred.stlouisfed.org/" target="_blank">FRED</a>
                     <a href="https://www.oecd.org/en/data/indicators/composite-leading-indicator-cli.html" target="_blank">OECD CLI</a>
@@ -473,7 +846,7 @@
                 </div>
             </div>
             <div class="footer-info">
-                <p>© 2026 Sector Cycle Dashboard | <a href="https://github.com" target="_blank">GitHub</a></p>
+                <p>© 2026 섹터 사이클 대시보드 | <a href="https://github.com" target="_blank">GitHub</a></p>
             </div>
         </div>
     </footer>
@@ -481,5 +854,9 @@
     <script src="js/app.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/tradingview.js"></script>
+    <script src="js/indicators.js"></script>
+    <script src="js/scanner.js"></script>
+    <script src="js/heatmap.js"></script>
+    <script src="js/volatility.js"></script>
 </body>
 </html>

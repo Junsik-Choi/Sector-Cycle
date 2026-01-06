@@ -576,12 +576,41 @@ function loadSampleData() {
     updateDashboardCards(state.latestData);
 }
 
+// Korean translations for regime labels
+const REGIME_LABELS = {
+    expansion: '확장',
+    recovery: '회복',
+    slowdown: '둔화',
+    contraction: '침체',
+    normal: '보통',
+    elevated: '상승',
+    high: '높음',
+    extreme: '극심',
+    low: '낮음'
+};
+
+// Korean translations for specific card statuses
+const STATUS_LABELS = {
+    'Risk-On': '위험선호',
+    'Risk-Off': '안전선호',
+    'Balanced': '균형',
+    'Pressure': '압박',
+    'buy': '순매수',
+    'sell': '순매도'
+};
+
+function getKoreanLabel(value) {
+    if (!value) return 'N/A';
+    const lowerValue = String(value).toLowerCase();
+    return REGIME_LABELS[lowerValue] || STATUS_LABELS[value] || value;
+}
+
 function updateDashboardCards(data) {
     if (!data) return;
     
     // Update Macro card
     if (data.macro) {
-        updateElement('macroRegime', data.macro.regime, `regime-label ${data.macro.regime}`);
+        updateElement('macroRegime', getKoreanLabel(data.macro.regime), `regime-label ${data.macro.regime}`);
         updateElement('macroScore', data.macro.score);
         updateElement('cliValue', data.macro.cli?.usa?.toFixed?.(1) || data.macro.cli?.usa || 'N/A');
         updateElement('pmiValue', data.macro.pmi?.manufacturing?.toFixed?.(1) || data.macro.pmi?.manufacturing || 'N/A');
@@ -589,7 +618,7 @@ function updateDashboardCards(data) {
     
     // Update Risk/VIX card
     if (data.risk) {
-        updateElement('riskRegime', data.risk.regime, `regime-label ${data.risk.regime}`);
+        updateElement('riskRegime', getKoreanLabel(data.risk.regime), `regime-label ${data.risk.regime}`);
         updateElement('vixValue', data.risk.vix?.toFixed?.(1) || data.risk.vix || 'N/A');
         updateElement('vixChange', formatChange(data.risk.vixChange), 
             `metric-value ${data.risk.vixChange >= 0 ? 'positive' : 'negative'}`);
@@ -598,7 +627,7 @@ function updateDashboardCards(data) {
     
     // Update Trade card
     if (data.trade) {
-        updateElement('tradeRegime', data.trade.regime, `regime-label ${data.trade.regime}`);
+        updateElement('tradeRegime', getKoreanLabel(data.trade.regime), `regime-label ${data.trade.regime}`);
         updateElement('bdiValue', formatNumber(data.trade.bdi));
         updateElement('bdiChange', formatChange(data.trade.bdiChange),
             `metric-value ${data.trade.bdiChange >= 0 ? 'positive' : 'negative'}`);
@@ -607,23 +636,23 @@ function updateDashboardCards(data) {
     
     // Update Commodity card
     if (data.commodity) {
-        updateElement('commodityRegime', data.commodity.regime === 'contraction' ? 'Pressure' : data.commodity.regime,
-            `regime-label ${data.commodity.regime}`);
+        const commodityLabel = data.commodity.regime === 'contraction' ? '압박' : getKoreanLabel(data.commodity.regime);
+        updateElement('commodityRegime', commodityLabel, `regime-label ${data.commodity.regime}`);
         updateElement('commodityIndex', data.commodity.index?.toFixed(1) || 'N/A');
     }
     
     // Update Oil card
     if (data.oil) {
-        updateElement('oilRegime', data.oil.regime === 'normal' ? 'Balanced' : data.oil.regime,
-            `regime-label ${data.oil.regime}`);
+        const oilLabel = data.oil.regime === 'normal' ? '균형' : getKoreanLabel(data.oil.regime);
+        updateElement('oilRegime', oilLabel, `regime-label ${data.oil.regime}`);
         updateElement('oilPrice', `$${data.oil.price?.toFixed(1) || 'N/A'}`);
         updateElement('oilInventory', `${data.oil.inventory >= 0 ? '+' : ''}${data.oil.inventory?.toFixed(1) || 'N/A'}M bbl`);
     }
     
     // Update Korea card
     if (data.korea) {
-        updateElement('koreaRegime', data.korea.regime === 'expansion' ? 'Risk-On' : data.korea.regime,
-            `regime-label ${data.korea.regime}`);
+        const koreaLabel = data.korea.regime === 'expansion' ? '위험선호' : getKoreanLabel(data.korea.regime);
+        updateElement('koreaRegime', koreaLabel, `regime-label ${data.korea.regime}`);
         updateElement('kospiValue', formatNumber(data.korea.kospi));
     }
 }
@@ -677,8 +706,29 @@ function switchTab(tabId) {
     // Initialize tab-specific components
     if (tabId === 'stocks') {
         initTradingViewWidget();
+    } else if (tabId === 'heatmap') {
+        if (typeof SectorHeatmap !== 'undefined') {
+            SectorHeatmap.init();
+        }
+    } else if (tabId === 'scanner') {
+        if (typeof StockScanner !== 'undefined') {
+            StockScanner.init();
+        }
+    } else if (tabId === 'volatility') {
+        if (typeof VolatilityPanel !== 'undefined') {
+            VolatilityPanel.init();
+        }
     }
 }
+
+// Korean cycle labels for sectors
+const CYCLE_LABELS = {
+    expansion: '확장',
+    recovery: '회복',
+    slowdown: '둔화',
+    contraction: '침체',
+    normal: '보통'
+};
 
 // ============================================
 // Sectors Grid
@@ -696,16 +746,17 @@ function renderSectorsGrid() {
         
         const cycleClass = sector.cycle;
         const stockCount = (sector.stocks.us?.length || 0) + (sector.stocks.kr?.length || 0);
+        const cycleLabel = CYCLE_LABELS[sector.cycle] || sector.cycle;
         
         card.innerHTML = `
             <div class="sector-card-header">
                 <span class="sector-icon">${sector.icon}</span>
-                <span class="sector-name">${sector.name}</span>
+                <span class="sector-name">${sector.nameKr}</span>
             </div>
-            <div class="sector-korean">${sector.nameKr}</div>
+            <div class="sector-english">${sector.name}</div>
             <div class="sector-status">
-                <span class="sector-cycle regime-label ${cycleClass}">${capitalizeFirst(sector.cycle)}</span>
-                <span class="sector-stocks-count">${stockCount} stocks</span>
+                <span class="sector-cycle regime-label ${cycleClass}">${cycleLabel}</span>
+                <span class="sector-stocks-count">${stockCount}개 종목</span>
             </div>
         `;
         
@@ -738,8 +789,8 @@ function showSectorDetail(sectorKey) {
             <div class="explanation-header">
                 <span class="explanation-icon">${sector.icon}</span>
                 <div class="explanation-title">
-                    <h3>${sector.name} 섹터 분석</h3>
-                    <span class="cycle-badge ${sector.cycle}">${capitalizeFirst(sector.cycle)}</span>
+                    <h3>${sector.nameKr} 섹터 분석</h3>
+                    <span class="cycle-badge ${sector.cycle}">${CYCLE_LABELS[sector.cycle] || capitalizeFirst(sector.cycle)}</span>
                 </div>
             </div>
             <div class="explanation-body">
@@ -748,14 +799,14 @@ function showSectorDetail(sectorKey) {
                 </div>
                 
                 <div class="explanation-section">
-                    <h4>📈 상승 요인 (Why Rising)</h4>
+                    <h4>📈 상승 요인</h4>
                     <ul>
                         ${explanation.whyRising.map(reason => `<li>${reason}</li>`).join('')}
                     </ul>
                 </div>
                 
                 <div class="explanation-section">
-                    <h4>📉 하락 요인 (Why Falling)</h4>
+                    <h4>📉 하락 요인</h4>
                     <ul>
                         ${explanation.whyFalling.map(reason => `<li>${reason}</li>`).join('')}
                     </ul>
@@ -792,7 +843,7 @@ function showSectorDetail(sectorKey) {
     // US Stocks
     if (sector.stocks.us?.length) {
         const usHeader = document.createElement('h4');
-        usHeader.textContent = '🇺🇸 US Stocks';
+        usHeader.textContent = '🇺🇸 미국 종목';
         usHeader.style.cssText = 'grid-column: 1 / -1; margin: 16px 0 8px; color: var(--text-secondary);';
         stocksList.appendChild(usHeader);
         
@@ -804,7 +855,7 @@ function showSectorDetail(sectorKey) {
     // Korean Stocks
     if (sector.stocks.kr?.length) {
         const krHeader = document.createElement('h4');
-        krHeader.textContent = '🇰🇷 Korean Stocks';
+        krHeader.textContent = '🇰🇷 한국 종목';
         krHeader.style.cssText = 'grid-column: 1 / -1; margin: 16px 0 8px; color: var(--text-secondary);';
         stocksList.appendChild(krHeader);
         
@@ -969,9 +1020,42 @@ async function refreshData() {
     console.log('🔄 Refreshing data...');
     await loadData();
     updateLastUpdateTime();
+    
+    // Refresh new modules if available
+    if (typeof StockScanner !== 'undefined' && StockScanner.refresh) {
+        StockScanner.refresh();
+    }
+    if (typeof SectorHeatmap !== 'undefined' && SectorHeatmap.refresh) {
+        SectorHeatmap.refresh();
+    }
+    if (typeof VolatilityPanel !== 'undefined' && VolatilityPanel.refresh) {
+        VolatilityPanel.refresh();
+    }
+}
+
+// Close stock modal
+function closeStockModal() {
+    const modal = document.getElementById('stockDetailModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Close sector modal
+function closeSectorModal() {
+    const modal = document.getElementById('sectorDetailModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Run scanner (exposed globally)
+function runScanner() {
+    if (typeof StockScanner !== 'undefined') {
+        StockScanner.scan();
+    }
 }
 
 // Make functions globally accessible
 window.refreshData = refreshData;
 window.searchStock = searchStock;
 window.closeSectorDetail = closeSectorDetail;
+window.closeStockModal = closeStockModal;
+window.closeSectorModal = closeSectorModal;
+window.runScanner = runScanner;
