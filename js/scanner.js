@@ -49,19 +49,27 @@ const StockScanner = {
         });
 
         // Filter dropdowns
-        document.getElementById('scannerMarketFilter')?.addEventListener('change', (e) => {
+        document.getElementById('scannerMarket')?.addEventListener('change', (e) => {
             this.state.filters.market = e.target.value;
             this.applyFilters();
         });
 
-        document.getElementById('scannerSectorFilter')?.addEventListener('change', (e) => {
+        document.getElementById('scannerSector')?.addEventListener('change', (e) => {
             this.state.filters.sector = e.target.value;
             this.applyFilters();
         });
 
-        document.getElementById('scannerSignalFilter')?.addEventListener('change', (e) => {
+        document.getElementById('scannerSignal')?.addEventListener('change', (e) => {
             this.state.filters.signal = e.target.value;
             this.applyFilters();
+        });
+
+        document.getElementById('scannerSort')?.addEventListener('change', (e) => {
+            const [sortBy, sortOrder] = e.target.value.split('-');
+            this.state.sortBy = sortBy;
+            this.state.sortOrder = sortOrder || 'desc';
+            this.renderResults();
+            this.updateSortControls();
         });
 
         // Search
@@ -124,6 +132,10 @@ const StockScanner = {
         } finally {
             this.state.isScanning = false;
         }
+    },
+
+    scan(tickers = null) {
+        return this.scanAll(tickers);
     },
 
     processSignalsData(signalsData) {
@@ -231,7 +243,7 @@ const StockScanner = {
         }
         
         this.renderResults();
-        this.updateSortButtons();
+        this.updateSortControls();
     },
 
     applyFilters() {
@@ -262,6 +274,12 @@ const StockScanner = {
         if (signal !== 'all') {
             if (signal === 'bullish') {
                 results = results.filter(r => r.status.type === 'bullish' || r.status.type === 'positive');
+            } else if (signal === 'positive') {
+                results = results.filter(r => r.status.type === 'positive');
+            } else if (signal === 'neutral') {
+                results = results.filter(r => r.status.type === 'neutral');
+            } else if (signal === 'negative') {
+                results = results.filter(r => r.status.type === 'negative');
             } else if (signal === 'bearish') {
                 results = results.filter(r => r.status.type === 'bearish' || r.status.type === 'negative');
             } else if (signal === 'overbought') {
@@ -321,7 +339,7 @@ const StockScanner = {
     // Rendering
     // ============================================
     renderResults() {
-        const container = document.getElementById('scannerResults');
+        const container = document.getElementById('scannerTableBody');
         if (!container) return;
         
         const results = this.getFilteredAndSortedResults();
@@ -334,13 +352,16 @@ const StockScanner = {
         
         // Update summary
         this.updateSummary(results);
+        this.updateCount(results.length);
         
         if (pageResults.length === 0) {
             container.innerHTML = `
-                <div class="scanner-empty">
-                    <span class="empty-icon">📊</span>
-                    <p>조건에 맞는 종목이 없습니다.</p>
-                </div>
+                <tr class="scanner-empty">
+                    <td colspan="10">
+                        <span class="empty-icon">📊</span>
+                        <span>조건에 맞는 종목이 없습니다.</span>
+                    </td>
+                </tr>
             `;
             return;
         }
@@ -352,53 +373,23 @@ const StockScanner = {
     },
 
     renderResultRow(result) {
-        const changeClass = result.changePercent >= 0 ? 'positive' : 'negative';
-        const changeSign = result.changePercent >= 0 ? '+' : '';
         const statusClass = this.getStatusClass(result.status.type);
-        const priceDisplay = result.market === 'kr' 
-            ? `₩${result.price.toLocaleString()}` 
-            : `$${result.price.toFixed(2)}`;
-        
-        const signalBadges = result.signals.slice(0, 3).map(sig => {
-            const badgeClass = sig.positive === true ? 'positive' : sig.positive === false ? 'negative' : 'neutral';
-            return `<span class="signal-badge ${badgeClass}">${sig.name}: ${sig.status}</span>`;
-        }).join('');
-        
-        const vixWarningBadge = result.vixWarning 
-            ? '<span class="vix-warning-badge">⚠️ 변동성 높음</span>' 
-            : '';
-        
+        const fulfillmentMatched = result.signals.filter(s => s.positive).length;
+        const fulfillmentTotal = result.signals.length || 0;
+
         return `
-            <div class="scanner-row" data-ticker="${result.ticker}" onclick="StockScanner.showDetail('${result.ticker}', '${result.market}')">
-                <div class="scanner-cell ticker-cell">
-                    <span class="ticker">${result.ticker}</span>
-                    <span class="name">${result.name}</span>
-                    <span class="sector-tag">${this.getSectorName(result.sector_l1)}</span>
-                </div>
-                <div class="scanner-cell price-cell">
-                    <span class="price">${priceDisplay}</span>
-                    <span class="change ${changeClass}">${changeSign}${result.changePercent.toFixed(2)}%</span>
-                </div>
-                <div class="scanner-cell score-cell">
-                    <div class="score-bar-container">
-                        <div class="score-bar" style="width: ${result.score}%"></div>
-                        <span class="score-value">${result.score}</span>
-                    </div>
-                    <span class="status-label ${statusClass}">${result.status.label}</span>
-                </div>
-                <div class="scanner-cell fulfillment-cell">
-                    <span class="fulfillment-value">${result.fulfillmentRate}%</span>
-                    <span class="fulfillment-detail">(${result.signals.filter(s => s.positive).length}/${result.signals.length})</span>
-                </div>
-                <div class="scanner-cell signals-cell">
-                    ${signalBadges}
-                    ${vixWarningBadge}
-                </div>
-                <div class="scanner-cell indicators-cell">
-                    <span class="indicator-mini">RSI: ${result.indicators.rsi || 'N/A'}</span>
-                    <span class="indicator-mini">ADX: ${result.indicators.adx?.toFixed(0) || 'N/A'}</span>
-                </div>
-            </div>
+            <tr class="scanner-row" data-ticker="${result.ticker}" onclick="StockScanner.showDetail('${result.ticker}', '${result.market}')">
+                <td>${result.ticker}</td>
+                <td>${result.name}</td>
+                <td>${this.getSectorName(result.sector_l1)}</td>
+                <td>${result.score}</td>
+                <td>${result.fulfillmentRate}% (${fulfillmentMatched}/${fulfillmentTotal})</td>
+                <td>${result.indicators.rsi ?? 'N/A'}</td>
+                <td>${result.indicators.maCross ?? 'N/A'}</td>
+                <td>${result.indicators.macd ?? 'N/A'}</td>
+                <td>${result.indicators.adx?.toFixed(0) ?? 'N/A'}</td>
+                <td><span class="status-label ${statusClass}">${result.status.label}</span></td>
+            </tr>
         `;
     },
 
@@ -465,6 +456,13 @@ const StockScanner = {
         `;
     },
 
+    updateCount(total) {
+        const countEl = document.getElementById('scannerCount');
+        if (countEl) {
+            countEl.textContent = total;
+        }
+    },
+
     renderPagination(totalItems) {
         const container = document.getElementById('scannerPagination');
         if (!container) return;
@@ -502,13 +500,18 @@ const StockScanner = {
         this.renderResults();
     },
 
-    updateSortButtons() {
+    updateSortControls() {
         document.querySelectorAll('.scanner-sort-btn').forEach(btn => {
             btn.classList.remove('active', 'asc', 'desc');
             if (btn.dataset.sort === this.state.sortBy) {
                 btn.classList.add('active', this.state.sortOrder);
             }
         });
+
+        const sortSelect = document.getElementById('scannerSort');
+        if (sortSelect) {
+            sortSelect.value = `${this.state.sortBy}-${this.state.sortOrder}`;
+        }
     },
 
     // ============================================
@@ -642,13 +645,15 @@ const StockScanner = {
     // Progress & Error
     // ============================================
     showScanningProgress() {
-        const container = document.getElementById('scannerResults');
+        const container = document.getElementById('scannerTableBody');
         if (container) {
             container.innerHTML = `
-                <div class="scanner-loading">
-                    <div class="loading-spinner"></div>
-                    <p>종목 스캔 중...</p>
-                </div>
+                <tr class="scanner-loading">
+                    <td colspan="10">
+                        <div class="loading-spinner"></div>
+                        <span>종목 스캔 중...</span>
+                    </td>
+                </tr>
             `;
         }
     },
@@ -658,14 +663,16 @@ const StockScanner = {
     },
 
     showError(message) {
-        const container = document.getElementById('scannerResults');
+        const container = document.getElementById('scannerTableBody');
         if (container) {
             container.innerHTML = `
-                <div class="scanner-error">
-                    <span class="error-icon">❌</span>
-                    <p>${message}</p>
-                    <button onclick="StockScanner.scanAll()">다시 시도</button>
-                </div>
+                <tr class="scanner-error">
+                    <td colspan="10">
+                        <span class="error-icon">❌</span>
+                        <span>${message}</span>
+                        <button onclick="StockScanner.scanAll()">다시 시도</button>
+                    </td>
+                </tr>
             `;
         }
     }
