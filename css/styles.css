@@ -419,6 +419,8 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-md);
     background: var(--bg-tertiary);
     border-top: 1px solid var(--border-light);
@@ -429,9 +431,15 @@ a:hover {
     color: var(--text-muted);
 }
 
+.regime-hint {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
 .card-link {
     font-size: 0.8rem;
     color: var(--accent-blue);
+    margin-left: auto;
 }
 
 /* VIX Gauge */
@@ -713,6 +721,15 @@ a:hover {
 .sector-stocks-count {
     font-size: 0.8rem;
     color: var(--text-muted);
+}
+
+.sector-hint {
+    margin-top: var(--spacing-sm);
+}
+
+.sector-hint .regime-hint {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
 }
 
 /* Sector Detail Panel */
