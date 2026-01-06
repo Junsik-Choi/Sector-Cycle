@@ -583,14 +583,14 @@ function updateDashboardCards(data) {
     if (data.macro) {
         updateElement('macroRegime', data.macro.regime, `regime-label ${data.macro.regime}`);
         updateElement('macroScore', data.macro.score);
-        updateElement('cliValue', data.macro.cli?.us?.toFixed(1) || 'N/A');
-        updateElement('pmiValue', data.macro.pmi?.manufacturing?.toFixed(1) || 'N/A');
+        updateElement('cliValue', data.macro.cli?.usa?.toFixed?.(1) || data.macro.cli?.usa || 'N/A');
+        updateElement('pmiValue', data.macro.pmi?.manufacturing?.toFixed?.(1) || data.macro.pmi?.manufacturing || 'N/A');
     }
     
     // Update Risk/VIX card
     if (data.risk) {
         updateElement('riskRegime', data.risk.regime, `regime-label ${data.risk.regime}`);
-        updateElement('vixValue', data.risk.vix?.toFixed(1) || 'N/A');
+        updateElement('vixValue', data.risk.vix?.toFixed?.(1) || data.risk.vix || 'N/A');
         updateElement('vixChange', formatChange(data.risk.vixChange), 
             `metric-value ${data.risk.vixChange >= 0 ? 'positive' : 'negative'}`);
         updateVixGauge(data.risk.vix);
