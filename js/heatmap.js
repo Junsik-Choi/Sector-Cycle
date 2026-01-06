@@ -47,6 +47,7 @@ const SectorHeatmap = {
             
             // Process sector aggregations
             this.aggregateSectorData();
+            this.calculateMarketBreadth();
             
         } catch (error) {
             console.error('Failed to load heatmap data:', error);
@@ -56,21 +57,23 @@ const SectorHeatmap = {
 
     setupEventListeners() {
         // Level toggle (L1/L2)
-        document.querySelectorAll('.heatmap-level-btn').forEach(btn => {
+        document.querySelectorAll('.btn-toggle[data-level]').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                this.state.selectedLevel = e.target.dataset.level;
-                document.querySelectorAll('.heatmap-level-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
+                const target = e.currentTarget;
+                this.state.selectedLevel = target.dataset.level;
+                document.querySelectorAll('.btn-toggle[data-level]').forEach(b => b.classList.remove('active'));
+                target.classList.add('active');
                 this.render();
             });
         });
 
         // View mode toggle
-        document.querySelectorAll('.heatmap-view-btn').forEach(btn => {
+        document.querySelectorAll('.btn-toggle[data-view]').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                this.state.viewMode = e.target.dataset.view;
-                document.querySelectorAll('.heatmap-view-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
+                const target = e.currentTarget;
+                this.state.viewMode = target.dataset.view;
+                document.querySelectorAll('.btn-toggle[data-view]').forEach(b => b.classList.remove('active'));
+                target.classList.add('active');
                 this.render();
             });
         });
@@ -244,6 +247,14 @@ const SectorHeatmap = {
                 status: this.getStatusFromScore(score)
             };
         }
+
+        this.state.marketBreadth = {
+            total: 120,
+            goldenCross: Math.floor(Math.random() * 60) + 20,
+            above200MA: Math.floor(Math.random() * 60) + 20,
+            oversold: Math.floor(Math.random() * 20) + 5,
+            overbought: Math.floor(Math.random() * 20) + 5
+        };
     },
 
     // ============================================
@@ -258,6 +269,8 @@ const SectorHeatmap = {
         } else {
             this.renderTable(container);
         }
+
+        this.renderBreadthSummary();
     },
 
     renderHeatmap(container) {
@@ -394,6 +407,68 @@ const SectorHeatmap = {
         if (score <= 30) return this.config.colors.bearish;
         if (score <= 45) return this.config.colors.negative;
         return this.config.colors.neutral;
+    },
+
+    // ============================================
+    // Market Breadth Summary
+    // ============================================
+    calculateMarketBreadth() {
+        const stockSignals = this.signalsData?.stocks || {};
+        const allStocks = [
+            ...Object.values(stockSignals.us || {}),
+            ...Object.values(stockSignals.kr || {})
+        ];
+
+        const total = allStocks.length;
+        let goldenCross = 0;
+        let above200MA = 0;
+        let oversold = 0;
+        let overbought = 0;
+
+        for (const stock of allStocks) {
+            if (stock.maCross?.lastCross?.type === 'golden') goldenCross++;
+            if (stock.maCross?.currentPosition === 'above') above200MA++;
+            if (stock.rsi?.status?.type === 'oversold') oversold++;
+            if (stock.rsi?.status?.type === 'overbought') overbought++;
+        }
+
+        this.state.marketBreadth = {
+            total,
+            goldenCross,
+            above200MA,
+            oversold,
+            overbought
+        };
+    },
+
+    formatBreadthValue(count, total) {
+        if (!total) return '--';
+        return `${Math.round((count / total) * 100)}%`;
+    },
+
+    renderBreadthSummary() {
+        const breadth = this.state.marketBreadth;
+        if (!breadth) return;
+
+        const { total, goldenCross, above200MA, oversold, overbought } = breadth;
+
+        const goldenCrossEl = document.getElementById('goldenCrossRatio');
+        const above200El = document.getElementById('above200MACount');
+        const oversoldEl = document.getElementById('oversoldCount');
+        const overboughtEl = document.getElementById('overboughtCount');
+
+        if (goldenCrossEl) {
+            goldenCrossEl.textContent = this.formatBreadthValue(goldenCross, total);
+        }
+        if (above200El) {
+            above200El.textContent = this.formatBreadthValue(above200MA, total);
+        }
+        if (oversoldEl) {
+            oversoldEl.textContent = this.formatBreadthValue(oversold, total);
+        }
+        if (overboughtEl) {
+            overboughtEl.textContent = this.formatBreadthValue(overbought, total);
+        }
     },
 
     // ============================================
