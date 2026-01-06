@@ -1048,7 +1048,7 @@ function closeSectorModal() {
 // Run scanner (exposed globally)
 function runScanner() {
     if (typeof StockScanner !== 'undefined') {
-        StockScanner.scan();
+        StockScanner.scanAll();
     }
 }
 
