@@ -589,6 +589,18 @@ const REGIME_LABELS = {
     low: '낮음'
 };
 
+const REGIME_HINTS = {
+    expansion: '상승 우세/비중 확대 고려',
+    recovery: '반등 기대/분할 매수 유리',
+    slowdown: '모멘텀 둔화/리밸런싱 점검',
+    contraction: '하락 우세/주의·현금 비중',
+    normal: '중립 구간/분산 유지',
+    elevated: '변동성 확대/방어적 대응',
+    high: '고변동성/리스크 관리',
+    extreme: '극단 구간/현금 비중 확대',
+    low: '안정 구간/리스크온 가능'
+};
+
 // Korean translations for specific card statuses
 const STATUS_LABELS = {
     'Risk-On': '위험선호',
@@ -605,12 +617,19 @@ function getKoreanLabel(value) {
     return REGIME_LABELS[lowerValue] || STATUS_LABELS[value] || value;
 }
 
+function getRegimeHint(value) {
+    if (!value) return '';
+    const lowerValue = String(value).toLowerCase();
+    return REGIME_HINTS[lowerValue] || '';
+}
+
 function updateDashboardCards(data) {
     if (!data) return;
     
     // Update Macro card
     if (data.macro) {
         updateElement('macroRegime', getKoreanLabel(data.macro.regime), `regime-label ${data.macro.regime}`);
+        updateElement('macroHint', getRegimeHint(data.macro.regime));
         updateElement('macroScore', data.macro.score);
         updateElement('cliValue', data.macro.cli?.usa?.toFixed?.(1) || data.macro.cli?.usa || 'N/A');
         updateElement('pmiValue', data.macro.pmi?.manufacturing?.toFixed?.(1) || data.macro.pmi?.manufacturing || 'N/A');
@@ -619,6 +638,7 @@ function updateDashboardCards(data) {
     // Update Risk/VIX card
     if (data.risk) {
         updateElement('riskRegime', getKoreanLabel(data.risk.regime), `regime-label ${data.risk.regime}`);
+        updateElement('riskHint', getRegimeHint(data.risk.regime));
         updateElement('vixValue', data.risk.vix?.toFixed?.(1) || data.risk.vix || 'N/A');
         updateElement('vixChange', formatChange(data.risk.vixChange), 
             `metric-value ${data.risk.vixChange >= 0 ? 'positive' : 'negative'}`);
@@ -628,6 +648,7 @@ function updateDashboardCards(data) {
     // Update Trade card
     if (data.trade) {
         updateElement('tradeRegime', getKoreanLabel(data.trade.regime), `regime-label ${data.trade.regime}`);
+        updateElement('tradeHint', getRegimeHint(data.trade.regime));
         updateElement('bdiValue', formatNumber(data.trade.bdi));
         updateElement('bdiChange', formatChange(data.trade.bdiChange),
             `metric-value ${data.trade.bdiChange >= 0 ? 'positive' : 'negative'}`);
@@ -638,6 +659,7 @@ function updateDashboardCards(data) {
     if (data.commodity) {
         const commodityLabel = data.commodity.regime === 'contraction' ? '압박' : getKoreanLabel(data.commodity.regime);
         updateElement('commodityRegime', commodityLabel, `regime-label ${data.commodity.regime}`);
+        updateElement('commodityHint', getRegimeHint(data.commodity.regime));
         updateElement('commodityIndex', data.commodity.index?.toFixed(1) || 'N/A');
     }
     
@@ -645,6 +667,7 @@ function updateDashboardCards(data) {
     if (data.oil) {
         const oilLabel = data.oil.regime === 'normal' ? '균형' : getKoreanLabel(data.oil.regime);
         updateElement('oilRegime', oilLabel, `regime-label ${data.oil.regime}`);
+        updateElement('oilHint', getRegimeHint(data.oil.regime));
         updateElement('oilPrice', `$${data.oil.price?.toFixed(1) || 'N/A'}`);
         updateElement('oilInventory', `${data.oil.inventory >= 0 ? '+' : ''}${data.oil.inventory?.toFixed(1) || 'N/A'}M bbl`);
     }
@@ -653,6 +676,7 @@ function updateDashboardCards(data) {
     if (data.korea) {
         const koreaLabel = data.korea.regime === 'expansion' ? '위험선호' : getKoreanLabel(data.korea.regime);
         updateElement('koreaRegime', koreaLabel, `regime-label ${data.korea.regime}`);
+        updateElement('koreaHint', getRegimeHint(data.korea.regime));
         updateElement('kospiValue', formatNumber(data.korea.kospi));
     }
 }
@@ -747,6 +771,7 @@ function renderSectorsGrid() {
         const cycleClass = sector.cycle;
         const stockCount = (sector.stocks.us?.length || 0) + (sector.stocks.kr?.length || 0);
         const cycleLabel = CYCLE_LABELS[sector.cycle] || sector.cycle;
+        const cycleHint = getRegimeHint(sector.cycle);
         
         card.innerHTML = `
             <div class="sector-card-header">
@@ -757,6 +782,9 @@ function renderSectorsGrid() {
             <div class="sector-status">
                 <span class="sector-cycle regime-label ${cycleClass}">${cycleLabel}</span>
                 <span class="sector-stocks-count">${stockCount}개 종목</span>
+            </div>
+            <div class="sector-hint">
+                <span class="regime-hint">${cycleHint}</span>
             </div>
         `;
         
