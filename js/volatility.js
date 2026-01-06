@@ -64,8 +64,10 @@ const VolatilityPanel = {
     },
 
     processVixData(latestData, historyData) {
-        const vixValue = latestData?.risk?.vix || 18.5;
-        const vixHistory = historyData?.vix || [];
+        const parsedHistory = this.parseVixHistory(historyData);
+        const vixHistory = parsedHistory.length ? parsedHistory : (historyData?.indicators?.vix?.history || []);
+        const latestFromHistory = vixHistory.length ? vixHistory[vixHistory.length - 1].value : null;
+        const vixValue = latestData?.risk?.vix ?? latestFromHistory ?? 18.5;
         
         // Calculate 5-day change
         let change5D = 0;
@@ -88,11 +90,16 @@ const VolatilityPanel = {
         // Determine status
         const status = this.getVixStatus(vixValue, change5D);
         
+        const dailyChange = this.getDailyChange(vixHistory, vixValue);
+        const percentile = this.calculatePercentile(vixHistory, vixValue);
+
         this.state.current = {
             value: vixValue,
             change5D,
+            dailyChange,
             low52W,
             high52W,
+            percentile,
             status,
             lastUpdate: latestData?.metadata?.timestamp || new Date().toISOString()
         };
@@ -101,15 +108,75 @@ const VolatilityPanel = {
         this.state.warning = status.warning;
     },
 
+    parseVixHistory(historyData) {
+        const entries = historyData?.entries;
+        if (!Array.isArray(entries)) return [];
+
+        return entries
+            .map((entry) => {
+                const timestamp = entry?.snapshot?.timestamp || entry?.timestamp;
+                const value = entry?.snapshot?.risk?.vix;
+                if (!timestamp || value === null || value === undefined) return null;
+                const date = new Date(timestamp);
+                if (Number.isNaN(date.getTime())) return null;
+                return {
+                    date: date.toISOString().split('T')[0],
+                    value
+                };
+            })
+            .filter(Boolean)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+    },
+
+    getDailyChange(history, currentValue) {
+        if (!history.length) {
+            return { value: 0, percent: 0, hasData: false };
+        }
+
+        const sorted = [...history].sort((a, b) => new Date(a.date) - new Date(b.date));
+        const lastPoint = sorted[sorted.length - 1];
+        const prevPoint = sorted[sorted.length - 2];
+        if (!prevPoint) {
+            return { value: 0, percent: 0, hasData: false };
+        }
+
+        const current = currentValue ?? lastPoint.value;
+        const previous = prevPoint.value;
+        if (!previous) {
+            return { value: 0, percent: 0, hasData: false };
+        }
+
+        const value = current - previous;
+        const percent = (value / previous) * 100;
+        return { value, percent, hasData: true };
+    },
+
+    calculatePercentile(history, value) {
+        if (!history.length) return null;
+
+        const values = history
+            .map(point => point.value)
+            .filter(pointValue => pointValue !== null && pointValue !== undefined);
+
+        if (!values.length || value === null || value === undefined) return null;
+
+        const belowOrEqual = values.filter(pointValue => pointValue <= value).length;
+        return Math.round((belowOrEqual / values.length) * 100);
+    },
+
     generateDemoData() {
         const vixValue = 18.5;
         const change5D = -2.3;
+        const dailyChange = { value: -0.5, percent: -2.6, hasData: true };
+        const percentile = 35;
         
         this.state.current = {
             value: vixValue,
             change5D,
+            dailyChange,
             low52W: 12.1,
             high52W: 35.2,
+            percentile,
             status: this.getVixStatus(vixValue, change5D),
             lastUpdate: new Date().toISOString()
         };
@@ -185,6 +252,8 @@ const VolatilityPanel = {
         this.renderMainPanel();
         this.renderGauge();
         this.renderChart();
+        this.updateVixDetails();
+        this.setupChartControls();
         this.updateWarningBadges();
     },
 
@@ -305,50 +374,61 @@ const VolatilityPanel = {
     },
 
     renderGauge() {
-        const container = document.getElementById('vixGaugeContainer');
-        if (!container) return;
-        
         const { current } = this.state;
         if (!current) return;
-        
-        // Calculate gauge angle (180 degree arc)
+
+        const gaugeContainer = document.getElementById('vixGaugeLarge');
+        if (!gaugeContainer) return;
+
+        const gaugeFill = gaugeContainer.querySelector('#vixGaugeFill');
+        const needle = gaugeContainer.querySelector('#vixNeedle');
+        const valueLabel = document.getElementById('vixValueLarge');
+        const statusLabel = document.getElementById('vixStatusLarge');
+
         const maxVix = 50;
-        const angle = Math.min(180, (current.value / maxVix) * 180);
-        
-        container.innerHTML = `
-            <svg class="vix-gauge-svg" viewBox="0 0 200 120">
-                <!-- Background arc -->
-                <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" 
-                      stroke="#374151" stroke-width="12" fill="none"/>
-                
-                <!-- Colored segments -->
-                <path class="gauge-segment low" d="M 20 100 A 80 80 0 0 1 56 36" 
-                      stroke="#22c55e" stroke-width="12" fill="none"/>
-                <path class="gauge-segment normal" d="M 56 36 A 80 80 0 0 1 100 20" 
-                      stroke="#3b82f6" stroke-width="12" fill="none"/>
-                <path class="gauge-segment elevated" d="M 100 20 A 80 80 0 0 1 144 36" 
-                      stroke="#f59e0b" stroke-width="12" fill="none"/>
-                <path class="gauge-segment high" d="M 144 36 A 80 80 0 0 1 180 100" 
-                      stroke="#ef4444" stroke-width="12" fill="none"/>
-                
-                <!-- Needle -->
-                <g class="gauge-needle" transform="rotate(${angle - 90}, 100, 100)">
-                    <line x1="100" y1="100" x2="100" y2="30" stroke="${current.status.color}" stroke-width="3"/>
-                    <circle cx="100" cy="100" r="8" fill="${current.status.color}"/>
-                </g>
-                
-                <!-- Labels -->
-                <text x="20" y="115" class="gauge-label">0</text>
-                <text x="50" y="45" class="gauge-label">15</text>
-                <text x="95" y="25" class="gauge-label">25</text>
-                <text x="145" y="45" class="gauge-label">35</text>
-                <text x="175" y="115" class="gauge-label">50+</text>
-            </svg>
-        `;
+        const angle = Math.min(180, Math.max(0, (current.value / maxVix) * 180));
+
+        const toRadians = (deg) => (deg * Math.PI) / 180;
+        const center = { x: 100, y: 100 };
+        const radius = 80;
+        const startAngle = 180;
+        const endAngle = 180 - angle;
+        const start = {
+            x: center.x + radius * Math.cos(toRadians(startAngle)),
+            y: center.y + radius * Math.sin(toRadians(startAngle))
+        };
+        const end = {
+            x: center.x + radius * Math.cos(toRadians(endAngle)),
+            y: center.y + radius * Math.sin(toRadians(endAngle))
+        };
+        const largeArcFlag = angle > 180 ? 1 : 0;
+
+        if (gaugeFill) {
+            gaugeFill.setAttribute(
+                'd',
+                `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y}`
+            );
+        }
+
+        if (needle) {
+            needle.setAttribute('cx', end.x.toFixed(1));
+            needle.setAttribute('cy', end.y.toFixed(1));
+            needle.setAttribute('fill', current.status.color);
+        }
+
+        if (valueLabel) {
+            valueLabel.textContent = current.value.toFixed(1);
+            valueLabel.style.color = current.status.color;
+        }
+
+        if (statusLabel) {
+            statusLabel.textContent = current.status.label;
+            statusLabel.style.color = current.status.color;
+        }
     },
 
     renderChart(range = '1M') {
-        const container = document.getElementById('vixChart');
+        const container = document.getElementById('vixHistoricalChart') || document.getElementById('vixChart');
         if (!container || !window.LightweightCharts) return;
         
         // Clear previous chart
@@ -444,11 +524,57 @@ const VolatilityPanel = {
             case '1Y':
                 cutoff = now - (365 * 24 * 60 * 60 * 1000);
                 break;
+            case '2Y':
+                cutoff = now - (730 * 24 * 60 * 60 * 1000);
+                break;
             default:
                 cutoff = now - (30 * 24 * 60 * 60 * 1000);
         }
         
         return data.filter(point => new Date(point.date).getTime() >= cutoff);
+    },
+
+    updateVixDetails() {
+        const { current } = this.state;
+        if (!current) return;
+
+        const dailyChangeEl = document.getElementById('vixDailyChange');
+        const rangeEl = document.getElementById('vix52WRange');
+        const percentileEl = document.getElementById('vixPercentile');
+
+        if (dailyChangeEl) {
+            if (current.dailyChange?.hasData) {
+                const sign = current.dailyChange.value >= 0 ? '+' : '';
+                dailyChangeEl.textContent = `${sign}${current.dailyChange.value.toFixed(1)} (${sign}${current.dailyChange.percent.toFixed(1)}%)`;
+                dailyChangeEl.classList.toggle('positive', current.dailyChange.value >= 0);
+                dailyChangeEl.classList.toggle('negative', current.dailyChange.value < 0);
+            } else {
+                dailyChangeEl.textContent = 'N/A';
+            }
+        }
+
+        if (rangeEl) {
+            rangeEl.textContent = `${current.low52W.toFixed(1)} - ${current.high52W.toFixed(1)}`;
+        }
+
+        if (percentileEl) {
+            percentileEl.textContent = current.percentile !== null ? `${current.percentile}%` : 'N/A';
+        }
+    },
+
+    setupChartControls() {
+        const buttons = document.querySelectorAll('.tf-btn');
+        if (!buttons.length || this.chartControlsReady) return;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                this.renderChart(button.dataset.range);
+            });
+        });
+
+        this.chartControlsReady = true;
     },
 
     // ============================================
