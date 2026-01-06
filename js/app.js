@@ -471,7 +471,9 @@ let state = {
     currentTab: 'overview',
     latestData: null,
     historyData: null,
+    sectorsData: null,
     selectedSector: null,
+    selectedL1Filter: 'all',
     selectedStock: null,
     chartInstance: null
 };
@@ -512,9 +514,10 @@ async function initApp() {
 // ============================================
 async function loadData() {
     try {
-        const [latestRes, historyRes] = await Promise.all([
+        const [latestRes, historyRes, sectorsRes] = await Promise.all([
             fetch(`${CONFIG.dataPath}latest.json`),
-            fetch(`${CONFIG.dataPath}history.json`)
+            fetch(`${CONFIG.dataPath}history.json`),
+            fetch(`${CONFIG.dataPath}sectors_l2.json`)
         ]);
         
         if (latestRes.ok) {
@@ -524,6 +527,10 @@ async function loadData() {
         
         if (historyRes.ok) {
             state.historyData = await historyRes.json();
+        }
+
+        if (sectorsRes.ok) {
+            state.sectorsData = await sectorsRes.json();
         }
     } catch (error) {
         console.warn('📦 Using sample data (API data not available):', error.message);
@@ -733,20 +740,64 @@ const CYCLE_LABELS = {
 // ============================================
 // Sectors Grid
 // ============================================
+function getL2SectorData() {
+    return state.sectorsData?.sectors || null;
+}
+
+function getSectorCycle(sectorKey) {
+    return SECTORS[sectorKey]?.cycle || 'normal';
+}
+
+function createFilterButton(label, value, isActive) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `filter-btn${isActive ? ' active' : ''}`;
+    button.textContent = label;
+    button.dataset.filter = value;
+    button.addEventListener('click', () => {
+        state.selectedL1Filter = value;
+        renderSectorsGrid();
+    });
+    return button;
+}
+
 function renderSectorsGrid() {
     const grid = document.getElementById('sectorsGrid');
     if (!grid) return;
     
     grid.innerHTML = '';
-    
-    Object.entries(SECTORS).forEach(([key, sector]) => {
+
+    const sectorsData = getL2SectorData();
+    const sectorEntries = sectorsData ? Object.entries(sectorsData) : Object.entries(SECTORS);
+
+    const dashboard = grid.closest('.sectors-dashboard');
+    if (dashboard) {
+        let filterWrap = document.getElementById('sectorsFilter');
+        if (!filterWrap) {
+            filterWrap = document.createElement('div');
+            filterWrap.id = 'sectorsFilter';
+            filterWrap.className = 'sectors-filter';
+            dashboard.insertBefore(filterWrap, grid);
+        }
+        filterWrap.innerHTML = '';
+        filterWrap.appendChild(createFilterButton('전체', 'all', state.selectedL1Filter === 'all'));
+        sectorEntries.forEach(([key, sector]) => {
+            const label = sector.nameKr || SECTORS[key]?.nameKr || key;
+            filterWrap.appendChild(createFilterButton(label, key, state.selectedL1Filter === key));
+        });
+    }
+
+    sectorEntries.forEach(([key, sector]) => {
         const card = document.createElement('div');
         card.className = 'sector-card';
         card.onclick = () => showSectorDetail(key);
         
-        const cycleClass = sector.cycle;
-        const stockCount = (sector.stocks.us?.length || 0) + (sector.stocks.kr?.length || 0);
-        const cycleLabel = CYCLE_LABELS[sector.cycle] || sector.cycle;
+        const cycleClass = getSectorCycle(key);
+        const l2Groups = sector.l2 ? Object.values(sector.l2) : [];
+        const stockCount = l2Groups.length
+            ? l2Groups.reduce((sum, group) => sum + (group.stocks.us?.length || 0) + (group.stocks.kr?.length || 0), 0)
+            : (sector.stocks?.us?.length || 0) + (sector.stocks?.kr?.length || 0);
+        const cycleLabel = CYCLE_LABELS[cycleClass] || cycleClass;
         
         card.innerHTML = `
             <div class="sector-card-header">
@@ -762,10 +813,59 @@ function renderSectorsGrid() {
         
         grid.appendChild(card);
     });
+
+    if (sectorsData) {
+        const l2Section = document.createElement('div');
+        l2Section.className = 'l2-group-section';
+        l2Section.innerHTML = `
+            <div class="l2-section-header">
+                <h4>🧩 L2 세부 섹터</h4>
+                <span class="l2-section-desc">필터를 선택해 L2 그룹을 확인하세요.</span>
+            </div>
+        `;
+
+        const l2Grid = document.createElement('div');
+        l2Grid.className = 'l2-group-grid';
+
+        const filteredEntries = state.selectedL1Filter === 'all'
+            ? sectorEntries
+            : sectorEntries.filter(([key]) => key === state.selectedL1Filter);
+
+        filteredEntries.forEach(([sectorKey, sector]) => {
+            Object.entries(sector.l2 || {}).forEach(([l2Key, group]) => {
+                const groupCard = document.createElement('div');
+                groupCard.className = 'l2-group-card';
+                groupCard.onclick = () => showSectorDetail(sectorKey, l2Key);
+
+                const groupCount = (group.stocks.us?.length || 0) + (group.stocks.kr?.length || 0);
+                const parentName = sector.nameKr || SECTORS[sectorKey]?.nameKr || sector.name;
+
+                groupCard.innerHTML = `
+                    <div class="l2-group-header">
+                        <span class="l2-group-icon">${group.icon || sector.icon}</span>
+                        <div class="l2-group-title">
+                            <div class="l2-group-name">${group.nameKr}</div>
+                            <div class="l2-group-sub">${group.name}</div>
+                        </div>
+                    </div>
+                    <div class="l2-group-meta">
+                        <span class="l2-group-parent">${parentName}</span>
+                        <span class="l2-group-count">${groupCount}개 종목</span>
+                    </div>
+                `;
+
+                l2Grid.appendChild(groupCard);
+            });
+        });
+
+        l2Section.appendChild(l2Grid);
+        grid.appendChild(l2Section);
+    }
 }
 
-function showSectorDetail(sectorKey) {
-    const sector = SECTORS[sectorKey];
+function showSectorDetail(sectorKey, l2Key = null) {
+    const sectorsData = getL2SectorData();
+    const sector = sectorsData?.[sectorKey] || SECTORS[sectorKey];
     const explanation = SECTOR_EXPLANATIONS[sectorKey];
     if (!sector) return;
     
@@ -783,14 +883,15 @@ function showSectorDetail(sectorKey) {
     
     // Add Sector Explanation
     if (explanation) {
+        const cycle = getSectorCycle(sectorKey);
         const explanationDiv = document.createElement('div');
-        explanationDiv.className = `sector-explanation ${sector.cycle}`;
+        explanationDiv.className = `sector-explanation ${cycle}`;
         explanationDiv.innerHTML = `
             <div class="explanation-header">
                 <span class="explanation-icon">${sector.icon}</span>
                 <div class="explanation-title">
                     <h3>${sector.nameKr} 섹터 분석</h3>
-                    <span class="cycle-badge ${sector.cycle}">${CYCLE_LABELS[sector.cycle] || capitalizeFirst(sector.cycle)}</span>
+                    <span class="cycle-badge ${cycle}">${CYCLE_LABELS[cycle] || capitalizeFirst(cycle)}</span>
                 </div>
             </div>
             <div class="explanation-body">
@@ -839,28 +940,50 @@ function showSectorDetail(sectorKey) {
         `;
         stocksList.appendChild(explanationDiv);
     }
-    
-    // US Stocks
-    if (sector.stocks.us?.length) {
-        const usHeader = document.createElement('h4');
-        usHeader.textContent = '🇺🇸 미국 종목';
-        usHeader.style.cssText = 'grid-column: 1 / -1; margin: 16px 0 8px; color: var(--text-secondary);';
-        stocksList.appendChild(usHeader);
-        
-        sector.stocks.us.forEach(stock => {
-            stocksList.appendChild(createStockItem(stock, 'US'));
-        });
-    }
-    
-    // Korean Stocks
-    if (sector.stocks.kr?.length) {
-        const krHeader = document.createElement('h4');
-        krHeader.textContent = '🇰🇷 한국 종목';
-        krHeader.style.cssText = 'grid-column: 1 / -1; margin: 16px 0 8px; color: var(--text-secondary);';
-        stocksList.appendChild(krHeader);
-        
-        sector.stocks.kr.forEach(stock => {
-            stocksList.appendChild(createStockItem(stock, 'KR'));
+
+    if (sector.l2) {
+        const l2Header = document.createElement('h4');
+        l2Header.textContent = '🧩 L2 세부 섹터';
+        l2Header.style.cssText = 'grid-column: 1 / -1; margin: 8px 0 12px; color: var(--text-secondary);';
+        stocksList.appendChild(l2Header);
+
+        const l2Entries = Object.entries(sector.l2);
+        const filteredEntries = l2Key ? l2Entries.filter(([key]) => key === l2Key) : l2Entries;
+
+        filteredEntries.forEach(([groupKey, group]) => {
+            const groupCard = document.createElement('div');
+            groupCard.className = `l2-detail-card${groupKey === l2Key ? ' active' : ''}`;
+
+            const usTickers = group.stocks.us || [];
+            const krTickers = group.stocks.kr || [];
+            const usPreview = usTickers.slice(0, 6);
+            const krPreview = krTickers.slice(0, 6);
+            const etfInfo = [];
+            if (group.etf?.us) etfInfo.push(`🇺🇸 ${group.etf.us}`);
+            if (group.etf?.kr) etfInfo.push(`🇰🇷 ${group.etf.kr}`);
+
+            groupCard.innerHTML = `
+                <div class="l2-detail-header">
+                    <span class="l2-detail-icon">${group.icon || sector.icon}</span>
+                    <div>
+                        <div class="l2-detail-name">${group.nameKr}</div>
+                        <div class="l2-detail-sub">${group.name}</div>
+                    </div>
+                </div>
+                <div class="l2-detail-meta">
+                    <div class="l2-detail-label">대표 종목</div>
+                    <div class="l2-detail-stocks">
+                        ${usPreview.length ? `<span class="market-label">🇺🇸 ${usPreview.join(', ')}</span>` : ''}
+                        ${krPreview.length ? `<span class="market-label">🇰🇷 ${krPreview.join(', ')}</span>` : ''}
+                    </div>
+                </div>
+                <div class="l2-detail-meta">
+                    <div class="l2-detail-label">ETF</div>
+                    <div class="l2-detail-etf">${etfInfo.length ? etfInfo.join(' / ') : 'N/A'}</div>
+                </div>
+            `;
+
+            stocksList.appendChild(groupCard);
         });
     }
     
@@ -920,23 +1043,42 @@ function searchStock() {
     let found = false;
     let market = 'US';
     let stockName = query;
-    
-    // Search in sectors
-    for (const [key, sector] of Object.entries(SECTORS)) {
-        const usStock = sector.stocks.us?.find(s => s.ticker.toUpperCase() === query);
-        if (usStock) {
-            found = true;
-            market = 'US';
-            stockName = usStock.name;
-            break;
+
+    const sectorsData = getL2SectorData();
+    if (sectorsData) {
+        for (const sector of Object.values(sectorsData)) {
+            for (const group of Object.values(sector.l2 || {})) {
+                if (group.stocks.us?.some(ticker => ticker.toUpperCase() === query)) {
+                    found = true;
+                    market = 'US';
+                    break;
+                }
+                if (group.stocks.kr?.some(ticker => ticker === query)) {
+                    found = true;
+                    market = 'KR';
+                    break;
+                }
+            }
+            if (found) break;
         }
-        
-        const krStock = sector.stocks.kr?.find(s => s.ticker === query);
-        if (krStock) {
-            found = true;
-            market = 'KR';
-            stockName = krStock.name;
-            break;
+    } else {
+        // Search in fallback sectors
+        for (const sector of Object.values(SECTORS)) {
+            const usStock = sector.stocks.us?.find(s => s.ticker.toUpperCase() === query);
+            if (usStock) {
+                found = true;
+                market = 'US';
+                stockName = usStock.name;
+                break;
+            }
+            
+            const krStock = sector.stocks.kr?.find(s => s.ticker === query);
+            if (krStock) {
+                found = true;
+                market = 'KR';
+                stockName = krStock.name;
+                break;
+            }
         }
     }
     
