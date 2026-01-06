@@ -8,6 +8,8 @@
 // ============================================
 let mainChart = null;
 let miniCharts = {};
+let macroCharts = {};
+let macroChartObservers = {};
 
 // ============================================
 // Main Chart Initialization
@@ -251,6 +253,199 @@ function initMiniCharts() {
         
         miniCharts[config.id] = chart;
     });
+}
+
+// ============================================
+// Macro Charts
+// ============================================
+function initMacroCharts(historyData) {
+    if (!window.LightweightCharts) return;
+
+    const entries = Array.isArray(historyData?.entries) ? historyData.entries : [];
+    const sortedEntries = entries
+        .filter(entry => entry?.timestamp || entry?.snapshot?.timestamp)
+        .sort((a, b) => {
+            const timeA = new Date(a.timestamp || a.snapshot?.timestamp).getTime();
+            const timeB = new Date(b.timestamp || b.snapshot?.timestamp).getTime();
+            return timeA - timeB;
+        });
+
+    const cliData = buildSnapshotSeries(sortedEntries, snapshot => {
+        if (!snapshot?.macro?.cli) return null;
+        return snapshot.macro.cli.oecd ?? snapshot.macro.cli.usa ?? snapshot.macro.cli.kor ?? null;
+    });
+
+    const pmiManufacturingData = buildSnapshotSeries(sortedEntries, snapshot => snapshot?.macro?.pmi?.manufacturing ?? null);
+    const pmiServicesData = buildSnapshotSeries(sortedEntries, snapshot => snapshot?.macro?.pmi?.services ?? null);
+
+    const indproData = buildSnapshotSeries(sortedEntries, snapshot => {
+        const indpro = snapshot?.macro?.industrialProduction;
+        if (typeof indpro === 'number') return indpro;
+        return indpro?.value ?? null;
+    });
+
+    const yieldData = buildSnapshotSeries(sortedEntries, snapshot => {
+        const curve = snapshot?.macro?.yieldCurve;
+        if (typeof curve === 'number') return curve;
+        return curve?.spread ?? curve?.value ?? null;
+    });
+
+    const cliFallback = buildIndicatorSeries(historyData?.indicators?.cli?.countries?.USA, true);
+    const yieldFallback = buildIndicatorSeries(historyData?.indicators?.yieldCurve?.history);
+
+    renderMacroChart('cliChart', [
+        {
+            data: cliData.length > 0 ? cliData : cliFallback,
+            options: { color: '#58a6ff', lineWidth: 2 }
+        }
+    ], { referenceLines: [{ value: 100, title: 'Baseline', color: '#8b949e' }] });
+
+    renderMacroChart('pmiChart', [
+        {
+            data: pmiManufacturingData,
+            options: { color: '#a371f7', lineWidth: 2, title: 'Manufacturing' }
+        },
+        {
+            data: pmiServicesData,
+            options: { color: '#3fb950', lineWidth: 2, title: 'Services' }
+        }
+    ], { referenceLines: [{ value: 50, title: 'Expansion', color: '#d29922' }] });
+
+    renderMacroChart('indproChart', [
+        {
+            data: indproData,
+            options: { color: '#f85149', lineWidth: 2 }
+        }
+    ]);
+
+    renderMacroChart('yieldChart', [
+        {
+            data: yieldData.length > 0 ? yieldData : yieldFallback,
+            options: { color: '#f85149', lineWidth: 2 }
+        }
+    ], { referenceLines: [{ value: 0, title: 'Inversion', color: '#d29922' }] });
+}
+
+function renderMacroChart(containerId, seriesConfigs, { referenceLines = [] } = {}) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    clearMacroChart(containerId);
+
+    const hasData = seriesConfigs.some(config => Array.isArray(config.data) && config.data.length > 0);
+    if (!hasData) {
+        renderEmptyChart(container);
+        return;
+    }
+
+    const chart = LightweightCharts.createChart(container, {
+        width: container.clientWidth || 320,
+        height: container.clientHeight || 200,
+        layout: {
+            background: { type: 'solid', color: '#1c2128' },
+            textColor: '#8b949e',
+        },
+        grid: {
+            vertLines: { color: '#21262d' },
+            horzLines: { color: '#21262d' },
+        },
+        crosshair: {
+            mode: LightweightCharts.CrosshairMode.Normal,
+        },
+        rightPriceScale: {
+            borderColor: '#30363d',
+        },
+        timeScale: {
+            borderColor: '#30363d',
+            timeVisible: true,
+        },
+    });
+
+    seriesConfigs.forEach(config => {
+        if (!config.data || config.data.length === 0) return;
+        const series = chart.addLineSeries(config.options || {});
+        series.setData(config.data);
+    });
+
+    const anchorSeries = seriesConfigs.find(config => config.data && config.data.length > 0);
+    referenceLines.forEach(line => {
+        const lineSeries = chart.addLineSeries({
+            color: 'transparent',
+            lineWidth: 0,
+            lastValueVisible: false,
+            priceLineVisible: false,
+        });
+        const firstTime = anchorSeries?.data?.[0]?.time ?? Math.floor(Date.now() / 1000);
+        const lastTime = anchorSeries?.data?.[anchorSeries.data.length - 1]?.time ?? firstTime;
+        lineSeries.setData([
+            { time: firstTime, value: line.value },
+            { time: lastTime, value: line.value },
+        ]);
+        lineSeries.createPriceLine({
+            price: line.value,
+            color: line.color,
+            lineWidth: 1,
+            lineStyle: LightweightCharts.LineStyle.Dashed,
+            axisLabelVisible: true,
+            title: line.title,
+        });
+    });
+
+    chart.timeScale().fitContent();
+
+    const observer = new ResizeObserver(entries => {
+        if (entries.length === 0 || entries[0].target !== container) return;
+        const { width, height } = entries[0].contentRect;
+        chart.applyOptions({ width, height });
+    });
+    observer.observe(container);
+
+    macroCharts[containerId] = chart;
+    macroChartObservers[containerId] = observer;
+}
+
+function clearMacroChart(containerId) {
+    if (macroChartObservers[containerId]) {
+        macroChartObservers[containerId].disconnect();
+        delete macroChartObservers[containerId];
+    }
+    if (macroCharts[containerId]) {
+        macroCharts[containerId].remove();
+        delete macroCharts[containerId];
+    }
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.innerHTML = '';
+    }
+}
+
+function renderEmptyChart(container) {
+    container.innerHTML = '<div class="chart-empty">데이터 없음</div>';
+}
+
+function buildSnapshotSeries(entries, valueSelector) {
+    return entries.reduce((acc, entry) => {
+        const snapshot = entry?.snapshot;
+        const timestamp = entry?.timestamp || snapshot?.timestamp;
+        const value = valueSelector(snapshot);
+        if (!timestamp || typeof value !== 'number' || Number.isNaN(value)) return acc;
+        const time = Math.floor(new Date(timestamp).getTime() / 1000);
+        if (!Number.isFinite(time)) return acc;
+        acc.push({ time, value });
+        return acc;
+    }, []);
+}
+
+function buildIndicatorSeries(history, monthBased = false) {
+    if (!Array.isArray(history)) return [];
+    return history.reduce((acc, point) => {
+        if (!point?.date || typeof point.value !== 'number') return acc;
+        const dateString = monthBased ? `${point.date}-01` : point.date;
+        const time = Math.floor(new Date(dateString).getTime() / 1000);
+        if (!Number.isFinite(time)) return acc;
+        acc.push({ time, value: point.value });
+        return acc;
+    }, []);
 }
 
 // ============================================
@@ -601,3 +796,4 @@ window.initializeCharts = initializeCharts;
 window.updateMainChart = updateMainChart;
 window.createCandlestickChart = createCandlestickChart;
 window.generateCandlestickData = generateCandlestickData;
+window.initMacroCharts = initMacroCharts;

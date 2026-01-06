@@ -497,6 +497,9 @@ async function initApp() {
     // Render components
     renderSectorsGrid();
     initializeCharts();
+    if (typeof initMacroCharts !== 'undefined') {
+        initMacroCharts(state.historyData);
+    }
     
     // Update timestamp
     updateLastUpdateTime();
@@ -706,6 +709,10 @@ function switchTab(tabId) {
     // Initialize tab-specific components
     if (tabId === 'stocks') {
         initTradingViewWidget();
+    } else if (tabId === 'macro') {
+        if (typeof initMacroCharts !== 'undefined') {
+            initMacroCharts(state.historyData);
+        }
     } else if (tabId === 'heatmap') {
         if (typeof SectorHeatmap !== 'undefined') {
             SectorHeatmap.init();
