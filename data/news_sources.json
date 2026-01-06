@@ -1,0 +1,77 @@
+{
+  "macro": {
+    "keywords": ["PMI", "CLI", "금리", "경기선행"],
+    "sources": [
+      {
+        "name": "OECD - Economic Outlook",
+        "url": "https://www.oecd.org/economic-outlook/",
+        "rss": "https://www.oecd.org/feeds/latest/"
+      },
+      {
+        "name": "FRED 경제지표",
+        "url": "https://fred.stlouisfed.org/",
+        "rss": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CLI"
+      }
+    ]
+  },
+  "risk": {
+    "keywords": ["VIX", "스프레드", "리스크 프리미엄"],
+    "sources": [
+      {
+        "name": "CBOE Volatility Index",
+        "url": "https://www.cboe.com/tradable_products/vix/",
+        "rss": "https://www.cboe.com/about/news/rss"
+      },
+      {
+        "name": "FRED - High Yield Spread",
+        "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+        "rss": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLH0A0HYM2"
+      }
+    ]
+  },
+  "trade": {
+    "keywords": ["BDI", "WCI", "컨테이너 운임", "물류"],
+    "sources": [
+      {
+        "name": "Baltic Exchange",
+        "url": "https://www.balticexchange.com/",
+        "rss": "https://www.balticexchange.com/en/data-services/feeds.html"
+      },
+      {
+        "name": "Drewry WCI",
+        "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+        "rss": "https://www.drewry.co.uk/rss/news"
+      }
+    ]
+  },
+  "commodity": {
+    "keywords": ["원자재", "에너지", "금속", "식량"],
+    "sources": [
+      {
+        "name": "World Bank Commodity Markets",
+        "url": "https://www.worldbank.org/en/research/commodity-markets",
+        "rss": "https://www.worldbank.org/en/research/commodity-markets/rss"
+      },
+      {
+        "name": "FAO Food Price Index",
+        "url": "https://www.fao.org/worldfoodsituation/foodpricesindex",
+        "rss": "https://www.fao.org/rss/en/worldfoodsituation"
+      }
+    ]
+  },
+  "oil": {
+    "keywords": ["WTI", "Brent", "원유 재고", "EIA"],
+    "sources": [
+      {
+        "name": "EIA Petroleum",
+        "url": "https://www.eia.gov/petroleum/",
+        "rss": "https://www.eia.gov/rss/petroleum.xml"
+      },
+      {
+        "name": "ICE Brent",
+        "url": "https://www.theice.com/products/219/Brent-Crude-Futures",
+        "rss": "https://www.theice.com/feed/ice-futures-news"
+      }
+    ]
+  }
+}

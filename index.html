@@ -758,6 +758,155 @@
         </section>
     </main>
 
+    <!-- Card Detail Modal -->
+    <div id="cardDetailModal" class="modal card-detail-modal" style="display: none;">
+        <div class="modal-overlay" data-card-detail-close></div>
+        <div class="modal-content card-detail-content">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span id="cardDetailIcon" class="modal-icon">📌</span>
+                    <div>
+                        <h3 id="cardDetailTitle">카드 상세</h3>
+                        <span id="cardDetailSubtitle" class="modal-subtitle">최근 업데이트</span>
+                    </div>
+                </div>
+                <button class="btn-close" type="button" data-card-detail-close>×</button>
+            </div>
+            <div class="modal-body">
+                <div class="card-detail-meta">
+                    <span id="cardDetailUpdated" class="meta-item">업데이트: -</span>
+                    <span id="cardDetailRegime" class="regime-label">-</span>
+                </div>
+                <div id="cardDetailBody" class="card-detail-body"></div>
+                <div class="card-detail-news">
+                    <h4>관련 뉴스 보기</h4>
+                    <ul id="cardDetailNews" class="news-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Detail Templates -->
+    <template id="card-template-macro">
+        <div class="detail-section">
+            <h4>거시 지표 요약</h4>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">CLI (OECD)</span>
+                    <span class="detail-value" data-field="macro-cli">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">PMI 제조업</span>
+                    <span class="detail-value" data-field="macro-pmi">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">산업생산</span>
+                    <span class="detail-value" data-field="macro-industrial">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h4>추세 요약</h4>
+            <div class="trend-list" data-field="macro-trend"></div>
+        </div>
+    </template>
+
+    <template id="card-template-risk">
+        <div class="detail-section">
+            <h4>리스크 지표 요약</h4>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">VIX</span>
+                    <span class="detail-value" data-field="risk-vix">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">고수익 스프레드</span>
+                    <span class="detail-value" data-field="risk-spread">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">52주 범위</span>
+                    <span class="detail-value" data-field="risk-range">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h4>추세 요약</h4>
+            <div class="trend-list" data-field="risk-trend"></div>
+        </div>
+    </template>
+
+    <template id="card-template-trade">
+        <div class="detail-section">
+            <h4>교역 지표 요약</h4>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">BDI</span>
+                    <span class="detail-value" data-field="trade-bdi">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">WCI</span>
+                    <span class="detail-value" data-field="trade-wci">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">주요 노선</span>
+                    <span class="detail-value" data-field="trade-route">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h4>추세 요약</h4>
+            <div class="trend-list" data-field="trade-trend"></div>
+        </div>
+    </template>
+
+    <template id="card-template-commodity">
+        <div class="detail-section">
+            <h4>원자재 지표 요약</h4>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">WB 지수</span>
+                    <span class="detail-value" data-field="commodity-index">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">에너지</span>
+                    <span class="detail-value" data-field="commodity-energy">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">식량(FAO)</span>
+                    <span class="detail-value" data-field="commodity-food">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h4>추세 요약</h4>
+            <div class="trend-list" data-field="commodity-trend"></div>
+        </div>
+    </template>
+
+    <template id="card-template-oil">
+        <div class="detail-section">
+            <h4>유가 밸런스 요약</h4>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">WTI</span>
+                    <span class="detail-value" data-field="oil-wti">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Brent</span>
+                    <span class="detail-value" data-field="oil-brent">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">재고</span>
+                    <span class="detail-value" data-field="oil-inventory">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h4>추세 요약</h4>
+            <div class="trend-list" data-field="oil-trend"></div>
+        </div>
+    </template>
+
     <!-- Stock Detail Modal -->
     <div id="stockDetailModal" class="modal" style="display: none;">
         <div class="modal-overlay" onclick="closeStockModal()"></div>

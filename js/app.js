@@ -471,6 +471,7 @@ let state = {
     currentTab: 'overview',
     latestData: null,
     historyData: null,
+    newsSources: null,
     selectedSector: null,
     selectedStock: null,
     chartInstance: null
@@ -490,6 +491,7 @@ async function initApp() {
     setupNavigation();
     setupChartControls();
     setupTimeframeButtons();
+    setupCardDetailEvents();
     
     // Load initial data
     await loadData();
@@ -515,9 +517,10 @@ async function initApp() {
 // ============================================
 async function loadData() {
     try {
-        const [latestRes, historyRes] = await Promise.all([
+        const [latestRes, historyRes, newsRes] = await Promise.all([
             fetch(`${CONFIG.dataPath}latest.json`),
-            fetch(`${CONFIG.dataPath}history.json`)
+            fetch(`${CONFIG.dataPath}history.json`),
+            fetch(`${CONFIG.dataPath}news_sources.json`)
         ]);
         
         if (latestRes.ok) {
@@ -527,6 +530,10 @@ async function loadData() {
         
         if (historyRes.ok) {
             state.historyData = await historyRes.json();
+        }
+
+        if (newsRes.ok) {
+            state.newsSources = await newsRes.json();
         }
     } catch (error) {
         console.warn('📦 Using sample data (API data not available):', error.message);
@@ -578,6 +585,39 @@ function loadSampleData() {
     
     updateDashboardCards(state.latestData);
 }
+
+const CARD_DETAIL_CONFIG = {
+    macro: {
+        title: '거시 경기',
+        subtitle: 'CLI/PMI 중심 경기 흐름',
+        icon: '🌍',
+        templateId: 'card-template-macro'
+    },
+    risk: {
+        title: '리스크 지수',
+        subtitle: '변동성 및 위험 지표',
+        icon: '⚠️',
+        templateId: 'card-template-risk'
+    },
+    trade: {
+        title: '교역 동향',
+        subtitle: '운임과 교역량 추적',
+        icon: '🚢',
+        templateId: 'card-template-trade'
+    },
+    commodity: {
+        title: '원자재',
+        subtitle: '가격지수와 공급 흐름',
+        icon: '🧱',
+        templateId: 'card-template-commodity'
+    },
+    oil: {
+        title: '유가 밸런스',
+        subtitle: '재고와 가격 추세',
+        icon: '🛢️',
+        templateId: 'card-template-oil'
+    }
+};
 
 // Korean translations for regime labels
 const REGIME_LABELS = {
@@ -714,6 +754,246 @@ function setupNavigation() {
             const tabId = tab.dataset.tab;
             switchTab(tabId);
         });
+    });
+}
+
+// ============================================
+// Card Detail Modal
+// ============================================
+function setupCardDetailEvents() {
+    document.querySelectorAll('.summary-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const cardType = card.dataset.card;
+            openCardDetail(cardType);
+        });
+    });
+
+    document.querySelectorAll('.card-link').forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const cardType = link.closest('.summary-card')?.dataset?.card;
+            openCardDetail(cardType);
+        });
+    });
+
+    document.querySelectorAll('[data-card-detail-close]').forEach(closeBtn => {
+        closeBtn.addEventListener('click', closeCardDetail);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeCardDetail();
+        }
+    });
+}
+
+function openCardDetail(cardType) {
+    if (!cardType || !CARD_DETAIL_CONFIG[cardType]) return;
+
+    const modal = document.getElementById('cardDetailModal');
+    if (!modal) return;
+
+    updateCardDetailContent(cardType);
+    modal.style.display = 'block';
+}
+
+function closeCardDetail() {
+    const modal = document.getElementById('cardDetailModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function updateCardDetailContent(cardType) {
+    const config = CARD_DETAIL_CONFIG[cardType];
+    const latest = state.latestData?.[cardType];
+    const previousSnapshot = getLatestHistorySnapshot();
+    const previous = previousSnapshot?.[cardType];
+
+    updateElement('cardDetailTitle', config.title);
+    updateElement('cardDetailSubtitle', config.subtitle);
+    updateElement('cardDetailIcon', config.icon);
+
+    const updated = state.latestData?.timestamp ? new Date(state.latestData.timestamp) : new Date();
+    updateElement('cardDetailUpdated', `업데이트: ${updated.toLocaleString('ko-KR')}`);
+
+    const regimeLabel = latest?.regime ? getKoreanLabel(latest.regime) : '-';
+    updateElement('cardDetailRegime', regimeLabel, `regime-label ${latest?.regime || ''}`);
+
+    const body = document.getElementById('cardDetailBody');
+    if (!body) return;
+    body.innerHTML = '';
+
+    const template = document.getElementById(config.templateId);
+    if (template) {
+        body.appendChild(template.content.cloneNode(true));
+    }
+
+    fillCardTemplate(cardType, latest, previous);
+    renderNewsList(cardType);
+}
+
+function fillCardTemplate(cardType, latest, previous) {
+    if (!latest) return;
+
+    switch (cardType) {
+        case 'macro':
+            setFieldValue('macro-cli', formatNumber(latest.cli?.oecd ?? latest.cli?.usa));
+            setFieldValue('macro-pmi', latest.pmi?.manufacturing?.toFixed(1));
+            setFieldValue('macro-industrial', latest.industrialProduction?.value?.toFixed(1));
+            renderTrendList('macro-trend', [
+                buildTrendItem('CLI 변화', latest.cli?.oecd ?? latest.cli?.usa, previous?.cli?.oecd ?? previous?.cli?.usa, 1),
+                buildTrendItem('PMI 제조업 변화', latest.pmi?.manufacturing, previous?.pmi?.manufacturing, 1),
+                buildTrendItem('산업생산 변화', latest.industrialProduction?.value, previous?.industrialProduction?.value, 1)
+            ]);
+            break;
+        case 'risk':
+            setFieldValue('risk-vix', latest.vix?.toFixed(1));
+            setFieldValue('risk-spread', latest.highYieldSpread?.value?.toFixed(2));
+            setFieldValue('risk-range', `${latest.range52w?.low ?? '-'} - ${latest.range52w?.high ?? '-'}`);
+            renderTrendList('risk-trend', [
+                buildTrendItem('VIX 변화', latest.vix, previous?.vix, 1),
+                buildTrendItem('하이일드 스프레드 변화', latest.highYieldSpread?.value, previous?.highYieldSpread?.value, 2)
+            ]);
+            break;
+        case 'trade':
+            setFieldValue('trade-bdi', formatNumber(latest.bdi));
+            setFieldValue('trade-wci', formatNumber(latest.wci));
+            setFieldValue('trade-route', formatRouteSummary(latest.routes));
+            renderTrendList('trade-trend', [
+                buildTrendItem('BDI 변화', latest.bdi, previous?.bdi, 0),
+                buildTrendItem('WCI 변화', latest.wci, previous?.wci, 0)
+            ]);
+            break;
+        case 'commodity':
+            setFieldValue('commodity-index', latest.index?.toFixed(1));
+            setFieldValue('commodity-energy', formatSignedPercent(latest.energy));
+            setFieldValue('commodity-food', formatFoodSummary(latest));
+            renderTrendList('commodity-trend', [
+                buildTrendItem('WB 지수 변화', latest.index, previous?.index, 1),
+                buildTrendItem('에너지 변화', latest.energy, previous?.energy, 1, '%p'),
+                buildTrendItem('FAO 식량 변화', latest.fao?.overall?.change, previous?.fao?.overall?.change, 1, '%p')
+            ]);
+            break;
+        case 'oil':
+            setFieldValue('oil-wti', `$${latest.wtiPrice?.toFixed(1) || '-'}`);
+            setFieldValue('oil-brent', `$${latest.brentPrice?.toFixed(1) || '-'}`);
+            setFieldValue('oil-inventory', `${latest.inventory >= 0 ? '+' : ''}${latest.inventory?.toFixed(1) || '-'}M bbl`);
+            renderTrendList('oil-trend', [
+                buildTrendItem('WTI 변화', latest.wtiPrice, previous?.wtiPrice, 1),
+                buildTrendItem('Brent 변화', latest.brentPrice, previous?.brentPrice, 1),
+                buildTrendItem('재고 변화', latest.inventory, previous?.inventory, 1)
+            ]);
+            break;
+        default:
+            break;
+    }
+}
+
+function setFieldValue(field, value) {
+    const target = document.querySelector(`[data-field="${field}"]`);
+    if (target) {
+        target.textContent = value !== undefined && value !== null ? value : '-';
+    }
+}
+
+function buildTrendItem(label, current, previous, decimals = 1, suffix = '') {
+    const delta = formatDelta(current, previous, decimals, suffix);
+    return {
+        label,
+        value: delta.value,
+        direction: delta.direction
+    };
+}
+
+function renderTrendList(field, items) {
+    const container = document.querySelector(`[data-field="${field}"]`);
+    if (!container) return;
+    container.innerHTML = '';
+
+    items.forEach(item => {
+        const entry = document.createElement('div');
+        entry.className = 'trend-item';
+        entry.innerHTML = `
+            <span class="trend-label">${item.label}</span>
+            <span class="trend-value ${item.direction}">${item.value}</span>
+        `;
+        container.appendChild(entry);
+    });
+}
+
+function formatDelta(current, previous, decimals = 1, suffix = '') {
+    if (current === null || current === undefined || previous === null || previous === undefined) {
+        return { value: '데이터 없음', direction: 'neutral' };
+    }
+    const diff = current - previous;
+    const sign = diff > 0 ? '+' : '';
+    const formatted = `${sign}${diff.toFixed(decimals)}${suffix === '%p' ? '%' : suffix}`;
+    return {
+        value: formatted,
+        direction: diff > 0 ? 'positive' : diff < 0 ? 'negative' : 'neutral'
+    };
+}
+
+function formatSignedPercent(value) {
+    if (value === null || value === undefined) return '-';
+    const sign = value > 0 ? '+' : '';
+    return `${sign}${value.toFixed(1)}%`;
+}
+
+function formatRouteSummary(routes) {
+    if (!routes) return '-';
+    const entries = Object.entries(routes);
+    if (!entries.length) return '-';
+    const [key, value] = entries[0];
+    return `${key.replace(/_/g, ' ')} ${formatNumber(value)}`;
+}
+
+function formatFoodSummary(latest) {
+    const faoValue = latest.fao?.overall?.value;
+    const faoChange = latest.fao?.overall?.change;
+    if (faoValue === undefined || faoValue === null) return '-';
+    const changeText = faoChange !== undefined ? ` (${formatSignedPercent(faoChange)})` : '';
+    return `${faoValue.toFixed(1)}${changeText}`;
+}
+
+function getLatestHistorySnapshot() {
+    const entries = state.historyData?.entries;
+    if (!entries || !entries.length) return null;
+    return entries[entries.length - 1]?.snapshot || null;
+}
+
+function renderNewsList(cardType) {
+    const container = document.getElementById('cardDetailNews');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const newsData = state.newsSources?.[cardType];
+    if (!newsData || !newsData.sources?.length) {
+        const emptyItem = document.createElement('li');
+        emptyItem.className = 'news-item';
+        emptyItem.textContent = '관련 뉴스 소스를 준비 중입니다.';
+        container.appendChild(emptyItem);
+        return;
+    }
+
+    newsData.sources.forEach(source => {
+        const item = document.createElement('li');
+        item.className = 'news-item';
+        item.innerHTML = `
+            <a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.name}</a>
+            ${source.rss ? `<a href="${source.rss}" target="_blank" rel="noopener noreferrer">RSS</a>` : ''}
+        `;
+
+        if (newsData.keywords?.length) {
+            const keywords = document.createElement('div');
+            keywords.className = 'news-keywords';
+            keywords.textContent = `키워드: ${newsData.keywords.join(', ')}`;
+            item.appendChild(keywords);
+        }
+
+        container.appendChild(item);
     });
 }
 
