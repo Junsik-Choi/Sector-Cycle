@@ -665,6 +665,31 @@ a:hover {
     margin-bottom: var(--spacing-lg);
 }
 
+.sectors-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--accent-blue);
+    color: #fff;
+    border-color: var(--accent-blue);
+}
+
 .sector-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -712,6 +737,80 @@ a:hover {
 
 .sector-stocks-count {
     font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.l2-group-section {
+    grid-column: 1 / -1;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.l2-section-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.l2-section-header h4 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.l2-section-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.l2-group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.l2-group-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.l2-group-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+.l2-group-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.l2-group-icon {
+    font-size: 1.4rem;
+}
+
+.l2-group-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.l2-group-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.l2-group-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 
@@ -799,6 +898,62 @@ a:hover {
 .stock-info-mini .name {
     font-size: 0.75rem;
     color: var(--text-muted);
+}
+
+.l2-detail-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.l2-detail-card.active {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-sm);
+}
+
+.l2-detail-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.l2-detail-icon {
+    font-size: 1.3rem;
+}
+
+.l2-detail-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.l2-detail-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.l2-detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.8rem;
+}
+
+.l2-detail-label {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.l2-detail-stocks,
+.l2-detail-etf {
+    color: var(--text-secondary);
+}
+
+.market-label {
+    display: block;
 }
 
 /* ============================================
